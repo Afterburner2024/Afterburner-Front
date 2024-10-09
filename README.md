@@ -1,6 +1,10 @@
 # Afterburner-Front
 
 ![React](https://img.shields.io/badge/React-v18.3.1-61DAFB?logo=react&logoColor=white)
+![Redux](https://img.shields.io/badge/Redux-v9.1.2-764ABC?logo=redux&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-v1.7.7-5A29E4?logo=axios&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-v9.12.0-4B32C3?logo=eslint&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v3.4.13-38B2AC?logo=tailwindcss&logoColor=white)
 
 > Afterburner-Frontend 협업가이드
 
