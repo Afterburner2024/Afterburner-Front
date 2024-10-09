@@ -34,7 +34,7 @@
 
 1. **리포지토리 클론:**
    ```bash
-   git clone https://github.com/your-repository-url.git
+   git clone https://github.com/Afterburner2024/Afterburner-Front.git
    ```
 2. **프로젝트 디렉토리로 이동:**
    ```bash
