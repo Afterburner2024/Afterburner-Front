@@ -169,8 +169,9 @@ afterburner-front/
 
 - ppudding3861 | 강형석 | [깃허브](https://github.com/ppudding3861)
 
+
 ## 🔥 Architecture
-![front-architecture](https://github.com/user-attachments/assets/59fe627d-a46d-43a8-bc31-581331998099)
+![front-architecture](https://github.com/user-attachments/assets/24d2e814-35d1-41df-928f-3623646d7f46)
 
 ## 🔥 Stack
 
