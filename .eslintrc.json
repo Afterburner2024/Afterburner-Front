@@ -15,6 +15,10 @@
     "prettier/prettier": "error",
     "react/react-in-jsx-scope": "off"
   },
+  "globals": {
+    "process": "readonly",
+    "module": "readonly"
+  },
   "settings": {
     "react": {
       "version": "detect"

@@ -1,0 +1,63 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import supabase from "../utils/supabase";
+
+const fetchAllData = createAsyncThunk("data/fetchAllData", async () => {
+  try {
+    const { data: afterburner, error: afterburnerError } = await supabase
+      .from("afterburner")
+      .select("id, afterburner_title, afterburner_contents");
+
+    console.log("Afterburner:", afterburner, "Error:", afterburnerError);
+
+    const { data: functions, error: functionsError } = await supabase
+      .from("functions")
+      .select(
+        "id, func_title1, func_title2, func_title3, func_contents1, func_contents2, func_contents3",
+      );
+
+    console.log("Functions:", functions, "Error:", functionsError);
+
+    const { data: introduction, error: introductionError } = await supabase
+      .from("introduction")
+      .select("id, intro_title1, intro_title2, intro_contents");
+
+    console.log("Introduction:", introduction, "Error:", introductionError);
+
+    const { data: main, error: mainError } = await supabase
+      .from("main")
+      .select("id, main_title1, main_title2, main_sub_title");
+
+    console.log("Main:", main, "Error:", mainError);
+
+    const { data: reviews, error: reviewsError } = await supabase
+      .from("reviews")
+      .select(
+        "id, review_name1, review_contents1, review_name2, review_contents2, review_name3, review_contents3, review_name4, review_contents4, review_name5, review_contents5",
+      );
+
+    console.log("Reviews:", reviews, "Error:", reviewsError);
+
+    if (
+      afterburnerError ||
+      functionsError ||
+      introductionError ||
+      mainError ||
+      reviewsError
+    ) {
+      throw new Error("Error fetching data from one or more tables.");
+    }
+
+    return {
+      afterburner,
+      functions,
+      introduction,
+      main,
+      reviews,
+    };
+  } catch (error) {
+    console.error("Error in fetchAllData:", error);
+    throw error;
+  }
+});
+
+export default fetchAllData;
