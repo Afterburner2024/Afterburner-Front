@@ -13,8 +13,7 @@
 <img src="https://github.com/user-attachments/assets/1dd89ce1-9f85-44a4-ad63-5e6192950fad" alt="Afterburner-Logo" width="600" height="auto"><br>
 
 > 우리 어플리케이션은 사용자 친화적인 UI와 관리 편의성을 중점으로 개발된 웹 플랫폼입니다.<br>
-> 프론트엔드에서는 **React**를 기반으로 하여 빠른 렌더링과 컴포넌트 재사용성을 극대화하였으며,<br>
-> **Redux**를 통해 전역 상태 관리를 효율적으로 처리하고 있습니다.<br>
+> 프론트엔드에서는 **React**를 기반으로 하여 빠른 렌더링과 컴포넌트 재사용성을 극대화하였으며,<br> > **Redux**를 통해 전역 상태 관리를 효율적으로 처리하고 있습니다.<br>
 > 또한, **Axios**를 활용하여 백엔드 API와의 원활한 통신을 지원하여 실시간 데이터 반영과 동기화를 쉽게 처리할 수 있습니다.<br>
 
 ## 🔥 **Feature**
@@ -72,9 +71,11 @@
   - `docs` : 문서 관련 변경
 
 ## 🔥 **코드 스타일 및 품질 (Code Style & Quality)**
+
 > 본 프로젝트는 네이버 ESLint 가이드를 이용합니다
 
 - **ESLint**: Linting 도구로, 코드 품질을 향상시키고 일관성을 유지하기 위해 코드 스타일을 검사합니다.
+
   - 프로젝트에서는 **eslint-config-naver** 설정을 기반으로 네이버의 코드 스타일 가이드를 준수하고 있습니다.
   - 주요 규칙:
     - **모듈화**: 모든 파일은 적절히 모듈화되어 있어야 하며, 불필요한 의존성을 피해야 합니다.
@@ -85,8 +86,10 @@
     ```
 
 - **Prettier**: 코드 포매팅 도구로, 모든 코드의 스타일을 일관되게 유지하는 데 사용됩니다.
+
   - 프로젝트에서는 **Prettier**와 **ESLint**를 함께 사용하여 코드 포매팅을 자동으로 적용합니다.
   - 파일을 저장할 때 자동으로 포매팅이 적용되도록 다음과 같은 VS Code 설정을 활성화하세요 (setting.json):
+
     ```json
     {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -101,11 +104,11 @@
     ```bash
     npx prettier --write .
     ```
-    
+
 ## 🔥 **Tailwind CSS 사용법 (Tailwind CSS)**
 
-* 자세한 Tailwind CSS 사용법과 스타일 가이드는 공식 문서를 참고해 주세요:
-* [Tailwind Docs](https://tailwindcss.com/docs/installation)
+- 자세한 Tailwind CSS 사용법과 스타일 가이드는 공식 문서를 참고해 주세요:
+- [Tailwind Docs](https://tailwindcss.com/docs/installation)
 
 ## 🔥 **폴더 구조 (Folder Structure)**
 
@@ -170,8 +173,8 @@ afterburner-front/
 
 - ppudding3861 | 강형석 | [깃허브](https://github.com/ppudding3861)
 
-
 ## 🔥 Architecture
+
 ![front-architecture](https://github.com/user-attachments/assets/24d2e814-35d1-41df-928f-3623646d7f46)
 
 ## 🔥 Stack
@@ -179,5 +182,4 @@ afterburner-front/
 - React: 사용자 인터페이스 개발에 사용되는 자바스크립트 라이브러리로, 컴포넌트 기반으로 구성되어 효율적인 페이지 렌더링을 지원합니다.
 
 - Redux: 전역 상태 관리를 책임지는 라이브러리로, 어플리케이션 상태를 체계적으로 관리하여 복잡한 데이터 흐름을 단순화합니다.
-  
 - Axios: HTTP 클라이언트 라이브러리로, API 요청을 간편하게 처리하고 비동기 데이터 처리를 지원합니다.

@@ -10,7 +10,7 @@ const fetchAllData = createAsyncThunk("data/fetchAllData", async () => {
     const { data: functions, error: functionsError } = await supabase
       .from("functions")
       .select(
-        "id, func_title1, func_title2, func_title3, func_contents1, func_contents2, func_contents3"
+        "id, func_title1, func_title2, func_title3, func_contents1, func_contents2, func_contents3",
       );
 
     const { data: introduction, error: introductionError } = await supabase
@@ -24,7 +24,7 @@ const fetchAllData = createAsyncThunk("data/fetchAllData", async () => {
     const { data: reviews, error: reviewsError } = await supabase
       .from("reviews")
       .select(
-        "id, review_name1, review_contents1, review_name2, review_contents2, review_name3, review_contents3, review_name4, review_contents4, review_name5, review_contents5"
+        "id, review_name1, review_contents1, review_name2, review_contents2, review_name3, review_contents3, review_name4, review_contents4, review_name5, review_contents5",
       );
 
     if (
