@@ -45,7 +45,7 @@ const fetchAllData = createAsyncThunk("data/fetchAllData", async () => {
       reviews,
     };
   } catch (error) {
-    console.error("Error in fetchAllData:", error);
+    // console.error("Error in fetchAllData:", error);
     throw error;
   }
 });
