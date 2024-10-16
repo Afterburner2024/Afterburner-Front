@@ -175,7 +175,14 @@ afterburner-front/
 
 ## 🔥 Architecture
 
-![front-architecture](https://github.com/user-attachments/assets/24d2e814-35d1-41df-928f-3623646d7f46)
+- 유저 페이지
+
+![front-architecture / user](https://github.com/user-attachments/assets/07da9135-dddb-4cf0-b6ca-a0ec7a5bd379)
+
+
+- 어드민 페이지
+
+![front-architecture / admin](https://github.com/user-attachments/assets/24d2e814-35d1-41df-928f-3623646d7f46)
 
 ## 🔥 Stack
 
