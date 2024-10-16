@@ -15,8 +15,9 @@
 <img src="https://github.com/user-attachments/assets/1dd89ce1-9f85-44a4-ad63-5e6192950fad" alt="Afterburner-Logo" width="600" height="auto"><br>
 
 > 우리 어플리케이션은 사용자 친화적인 UI와 관리 편의성을 중점으로 개발된 웹 플랫폼입니다.<br>
-> 프론트엔드에서는 **React**를 기반으로 하여 빠른 렌더링과 컴포넌트 재사용성을 극대화하였으며,<br> > **Redux**를 통해 전역 상태 관리를 효율적으로 처리하고 있습니다.<br>
-> 또한, **Axios**를 활용하여 백엔드 API와의 원활한 통신을 지원하여 실시간 데이터 반영과 동기화를 쉽게 처리할 수 있습니다.<br>
+> 프론트엔드에서는 **React**를 기반으로 하여 빠른 렌더링과 컴포넌트 재사용성을 극대화하였으며,<br>
+> **Redux**를 통해 전역 상태 관리를 효율적으로 처리하고 있습니다.<br>
+> 또한, Supabase를 활용해 실시간 데이터 동기화와 통신을 원활하게 처리하여 데이터의 즉각적인 반영이 가능하도록 설계하였습니다.<br>
 
 ## 🔥 **Feature**
 
@@ -115,49 +116,32 @@
 ## 🔥 **폴더 구조 (Folder Structure)**
 
 ```bash
-afterburner-front/
-│
-├── node_modules/
-├── public/
-├── src/
-│   ├── app/
-│   │   └── store.js                # Redux Store 설정
-│   ├── assets/                     # 정적 파일 (이미지, 폰트 등)
-│   │   └── logo.svg
-│   ├── components/                 # 재사용 가능한 컴포넌트들
-│   │   └── Header.js
-│   │   └── Footer.js
-│   ├── pages/                      # 각 페이지 구성 요소
-│   │   ├── HomePage/
-│   │   │   ├── HomePage.js         # 홈 페이지 컴포넌트
-│   │   │   └── HomePage.css        # 홈 페이지 스타일
-│   │   ├── AboutPage/
-│   │   │   ├── AboutPage.js        # 소개 페이지 컴포넌트
-│   │   │   └── AboutPage.css       # 소개 페이지 스타일
-│   │   ├── AdminPage/
-│   │   │   ├── AdminPage.js        # 어드민 페이지 컴포넌트
-│   │   │   └── AdminPage.css       # 어드민 페이지 스타일
-│   ├── services/                   # API 관련 파일
-│   │   └── axiosInstance.js
-│   ├── styles/                     # 전역 스타일 파일
-│   │   └── variables.css           # CSS 변수
-│   │   └── global.css              # 전역 스타일
-│   ├── utils/                      # 유틸리티 함수 모음
-│   │   └── helpers.js              # 공통 헬퍼 함수
-│   ├── App.js                      # 최상위 컴포넌트
-│   ├── App.css                     # App 스타일 파일
-│   ├── index.js                    # 진입점 파일 (ReactDOM.render)
-│   ├── index.css                   # index 스타일 파일
-│   ├── reportWebVitals.js          # 웹 성능 측정 파일
-│   ├── setupTests.js               # 테스트 설정 파일
-│   └── .eslintrc.json              # ESLint 설정 파일
-│
-├── .gitignore                      # Git 무시할 파일들
-├── eslint.config.mjs               # ESLint 설정 파일 (모듈 방식)
-├── package-lock.json               # npm 의존성 잠금 파일
-├── package.json                    # 프로젝트 의존성 설정
-├── README.md                       # 프로젝트 설명 파일
-└── tailwind.config.js              # Tailwind CSS 설정 파일
+AFTERBURNER-FRONT/
+├── node_modules/                  # 프로젝트에서 사용하는 모든 npm 패키지가 설치되는 디렉토리
+├── public/                        # 정적 파일들이 위치하는 디렉토리 (favicon, index.html 등)
+├── src/                           # 소스 코드가 담긴 디렉토리
+│   ├── actions/                   # Redux 액션을 정의한 파일들이 있는 디렉토리
+│   │   └── dataActions.js         # 데이터를 다루는 액션들이 정의된 파일
+│   ├── app/                       # 애플리케이션 전역 상태 관련 파일들이 위치한 디렉토리
+│   │   ├── store.js               # Redux 스토어 설정 파일
+│   ├── assets/                    # 이미지, 스타일 파일 등의 정적 자원이 포함된 디렉토리
+│   ├── components/                # 재사용 가능한 컴포넌트들이 위치한 디렉토리
+│   ├── features/                  # 각 기능(feature)에 대한 상태 관리를 담당하는 디렉토리
+│   │   └── dataSlice.js           # 데이터를 다루는 Redux 슬라이스가 정의된 파일
+│   ├── utils/                     # 유틸리티 함수 또는 설정 파일들이 포함된 디렉토리
+│   │   └── supabase.js            # Supabase와의 통신을 설정하는 파일
+│   ├── App.js                     # React 애플리케이션의 루트 컴포넌트
+│   ├── index.js                   # ReactDOM을 사용해 애플리케이션을 렌더링하는 진입점 파일
+│   └── postcss.config.js          # PostCSS 설정 파일 (TailwindCSS와 함께 사용)
+├── .env.local                     # 환경 변수를 설정하는 파일
+├── .eslintrc.json                 # ESLint 설정 파일
+├── .gitignore                     # Git에서 추적하지 않을 파일 목록
+├── eslint.config.mjs              # ESLint의 추가 설정 파일
+├── netlify.toml                   # Netlify 배포 설정 파일
+├── package-lock.json              # 프로젝트에서 설치된 npm 패키지 버전 잠금 파일
+├── package.json                   # 프로젝트 정보 및 npm 스크립트, 의존성 목록 파일
+├── README.md                      # 프로젝트에 대한 설명 및 설치 가이드가 포함된 파일
+└── tailwind.config.js             # TailwindCSS 설정 파일
 ```
 
 ## 🔥 **테스트 (Testing)**
