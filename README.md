@@ -7,7 +7,6 @@
 ![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 
-
 > Afterburner-Frontend 협업가이드
 
 ## 🔥 **프로젝트소개 (Introduction)**
@@ -15,8 +14,7 @@
 <img src="https://github.com/user-attachments/assets/1dd89ce1-9f85-44a4-ad63-5e6192950fad" alt="Afterburner-Logo" width="600" height="auto"><br>
 
 > 우리 어플리케이션은 사용자 친화적인 UI와 관리 편의성을 중점으로 개발된 웹 플랫폼입니다.<br>
-> 프론트엔드에서는 **React**를 기반으로 하여 빠른 렌더링과 컴포넌트 재사용성을 극대화하였으며,<br>
-> **Redux**를 통해 전역 상태 관리를 효율적으로 처리하고 있습니다.<br>
+> 프론트엔드에서는 **React**를 기반으로 하여 빠른 렌더링과 컴포넌트 재사용성을 극대화하였으며,<br> > **Redux**를 통해 전역 상태 관리를 효율적으로 처리하고 있습니다.<br>
 > 또한, Supabase를 활용해 실시간 데이터 동기화와 통신을 원활하게 처리하여 데이터의 즉각적인 반영이 가능하도록 설계하였습니다.<br>
 
 ## 🔥 **Feature**
@@ -164,7 +162,6 @@ AFTERBURNER-FRONT/
 - 유저 페이지
 
 ![front-architecture / user](https://github.com/user-attachments/assets/07da9135-dddb-4cf0-b6ca-a0ec7a5bd379)
-
 
 - 어드민 페이지
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import fetchAllData from "../actions/dataActions";
 import { selectAllData, selectStatus } from "../features/dataSlice";
 import AppStore from "../assets/images/app-store.png";
@@ -14,15 +13,6 @@ const MainPage = () => {
   const data = useSelector(selectAllData);
   const status = useSelector(selectStatus);
   const [main, setMain] = useState({});
-  const navigate = useNavigate();
-
-  const handleSelectChange = (event) => {
-    const selectedValue = event.target.value;
-
-    if (selectedValue) {
-      navigate(selectedValue);
-    }
-  };
 
   useEffect(() => {
     if (status === "idle") {
@@ -48,16 +38,6 @@ const MainPage = () => {
     <div>
       <img src={Logo} alt="Logo" />
       <br />
-      <select onChange={handleSelectChange}>
-        {" "}
-        <option value="">Select a page</option> {/* 기본 옵션 추가 */}
-        <option value="/">main</option>
-        <option value="/introduction">introduction</option>
-        <option value="/function">function</option>
-        <option value="/reviews">reviews</option>
-        <option value="/support">support</option>
-        <option value="/afterburner">afterburner</option>
-      </select>
       <h1>{main.main_title1}</h1>
       <h1>{main.main_title2}</h1>
       <h3>{main.main_sub_title}</h3>
