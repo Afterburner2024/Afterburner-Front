@@ -42,7 +42,7 @@ const MailService = ({ isPopupOpen, onClose }) => {
           onClose();
         },
         (error) => {
-          toast.error("메일 전송에 실패했습니다. 다시 시도해주세요.", {
+          toast.error(`메일 전송에 실패했습니다. 오류: ${error.message}`, {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: true,
@@ -51,7 +51,6 @@ const MailService = ({ isPopupOpen, onClose }) => {
             draggable: true,
             progress: undefined,
           });
-          console.log("FAILED...", error);
         },
       );
   };
