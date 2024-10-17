@@ -47,7 +47,7 @@ function App() {
   return (
     <div className="app-container">
       <WheelNavigation />
-      <TransitionGroup className="page-wrapper">
+      <TransitionGroup className="page-wrapper bg-mainBg">
         <CSSTransition
           key={location.pathname}
           timeout={0}
