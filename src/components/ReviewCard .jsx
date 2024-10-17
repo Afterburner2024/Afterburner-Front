@@ -9,8 +9,10 @@ const ReviewCard = ({ avatarUrl, reviewName, reviewContents }) => {
         className="w-16 h-16 rounded-full object-cover border-2 border-mainBg bg-white"
       />
       <div>
-        <h3 className="text-md-title font-bold">{reviewName}</h3>
-        <p className="text-content leading-relaxed">{reviewContents}</p>
+        <h3 className="font-title text-md-title font-bold">{reviewName}</h3>
+        <p className="font-batang text-content leading-relaxed">
+          {reviewContents}
+        </p>
       </div>
     </div>
   );

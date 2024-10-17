@@ -8,6 +8,7 @@ import Reviews from "./pages/Reviews";
 import Support from "./pages/Support";
 import Afterburner from "./pages/Afterburner";
 import WheelNavigation from "./components/WheelNavigation";
+import Navigation from "./components/Navigation";
 
 import "./assets/css/app.css"; // 애니메이션 관련 CSS 포함
 
@@ -46,6 +47,7 @@ function App() {
 
   return (
     <div className="app-container">
+      {location.pathname !== "/" ? <Navigation /> : null}
       <WheelNavigation />
       <TransitionGroup className="page-wrapper bg-mainBg">
         <CSSTransition

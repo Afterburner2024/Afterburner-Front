@@ -61,12 +61,12 @@ const MailService = ({ isPopupOpen, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-1/3">
-        <h2 className="text-lg-title text-center text-fontBlack mb-4">
+        <h2 className="font-title text-lg-title text-center text-fontBlack mb-4">
           문의 사항
         </h2>
         <form ref={form} onSubmit={sendEmail}>
           <div className="mb-2">
-            <label className="block text-content text-fontBlack mb-1">
+            <label className="font-title block text-content text-fontBlack mb-1">
               Email
             </label>
             <input
@@ -80,7 +80,7 @@ const MailService = ({ isPopupOpen, onClose }) => {
             />
           </div>
           <div className="mb-2">
-            <label className="block text-content text-fontBlack mb-2">
+            <label className="font-title block text-content text-fontBlack mb-2">
               Name
             </label>
             <input
@@ -94,7 +94,7 @@ const MailService = ({ isPopupOpen, onClose }) => {
             />
           </div>
           <div className="mb-2">
-            <label className="block text-content text-fontBlack mb-2">
+            <label className="font-title block text-content text-fontBlack mb-2">
               Message
             </label>
             <textarea
@@ -110,7 +110,7 @@ const MailService = ({ isPopupOpen, onClose }) => {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="bg-highlightBlue text-white text-comment p-2 rounded"
+              className="font-title bg-highlightBlue text-white text-comment p-2 rounded"
             >
               보내기
             </button>
@@ -120,7 +120,7 @@ const MailService = ({ isPopupOpen, onClose }) => {
                 setFormData({ from_email: "", from_name: "", message: "" });
                 onClose();
               }}
-              className="ml-4 bg-gray-500 text-white text-comment p-2 rounded"
+              className="font-title ml-4 bg-gray-500 text-white text-comment p-2 rounded"
             >
               닫기
             </button>

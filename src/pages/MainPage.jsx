@@ -37,19 +37,19 @@ const MainPage = () => {
     <div className="flex flex-col md:flex-row min-h-screen">
       {/* 좌측 텍스트 및 다운로드 버튼 영역 */}
       <div className="bg-mainBg text-fontWhite flex flex-col justify-center items-center w-full md:w-1/2 p-8">
-        <h1 className="text-lg-title mb-2">{main.main_title1}</h1>
-        <h1 className="text-lg-title mb-4">{main.main_title2}</h1>
-        <h3 className="text-sm-title mb-8">{main.main_sub_title}</h3>
+        <h1 className="font-title text-lg-title mb-2">{main.main_title1}</h1>
+        <h1 className="font-title text-lg-title mb-4">{main.main_title2}</h1>
+        <h3 className="font-title text-sm-title mb-8">{main.main_sub_title}</h3>
 
         {/* 앱스토어 다운로드 */}
-        <p className="mb-2">앱스토어 다운로드</p>
+        <p className="font-batang text-content mb-2">앱스토어 다운로드</p>
         <div className="flex space-x-4 mb-6">
           <img src={AppStore} alt="Download on AppStore" className="w-32" />
           <img src={GooglePlay} alt="Get it on GooglePlay" className="w-32" />
         </div>
 
         {/* QR코드 다운로드 */}
-        <p className="mb-2">QR코드 다운로드</p>
+        <p className="font-batang text-content mb-2">QR코드 다운로드</p>
         <img src={QR} alt="QR Code" className="w-24" />
       </div>
 

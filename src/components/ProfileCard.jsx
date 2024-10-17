@@ -18,10 +18,12 @@ const ProfileCard = ({ user }) => {
         alt={user.contributor_name}
         className="w-20 border-2 rounded-full mb-4"
       />
-      <h2 className="text-sm-title font-bold text-center mb-2">
+      <h2 className="font-title text-sm-title font-bold text-center mb-2">
         {user.contributor_username}
       </h2>
-      <h3 className="text-content text-center">{user.contributor_name}</h3>
+      <h3 className="font-batang text-content text-center">
+        {user.contributor_name}
+      </h3>
     </div>
   );
 };

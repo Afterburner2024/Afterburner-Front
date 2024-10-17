@@ -1,22 +1,49 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
+  const location = useLocation();
+
   return (
-    <nav className="fixed right-4 top-4 flex flex-col space-y-2 text-white">
-      <Link to="/introduction" className="hover:text-blue-500">
+    <nav className="fixed h-dvh right-5 flex flex-col justify-center space-y-4 text-white z-10 mr-4">
+      <Link
+        to="/introduction"
+        className={`font-title text-content hover:text-highlightBlue ${
+          location.pathname === "/introduction" ? "text-highlightBlue" : ""
+        }`}
+      >
         Introduction
       </Link>
-      <Link to="/functions" className="hover:text-blue-500">
+      <Link
+        to="/function"
+        className={`font-title text-content hover:text-highlightBlue ${
+          location.pathname === "/function" ? "text-highlightBlue" : ""
+        }`}
+      >
         Functions
       </Link>
-      <Link to="/reviews" className="hover:text-blue-500">
+      <Link
+        to="/reviews"
+        className={`font-title text-content hover:text-highlightBlue ${
+          location.pathname === "/reviews" ? "text-highlightBlue" : ""
+        }`}
+      >
         Reviews
       </Link>
-      <Link to="/support" className="hover:text-blue-500">
+      <Link
+        to="/support"
+        className={`font-title text-content hover:text-highlightBlue ${
+          location.pathname === "/support" ? "text-highlightBlue" : ""
+        }`}
+      >
         Support
       </Link>
-      <Link to="/afterburner" className="hover:text-blue-500">
+      <Link
+        to="/afterburner"
+        className={`font-title text-content hover:text-highlightBlue ${
+          location.pathname === "/afterburner" ? "text-highlightBlue" : ""
+        }`}
+      >
         Afterburner
       </Link>
     </nav>

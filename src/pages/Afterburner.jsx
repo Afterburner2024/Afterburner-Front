@@ -13,8 +13,6 @@ const Afterburner = () => {
 
   const contributors = data.contributor || [];
 
-  console.log(selectAllData.contributor);
-
   useEffect(() => {
     if (data.afterburner && data.afterburner.length > 0) {
       setAfterburner(data.afterburner[0]);
@@ -25,9 +23,11 @@ const Afterburner = () => {
     <div className="min-h-screen bg-mainBg text-fontWhite flex flex-col items-start justify-start p-28">
       {/* 타이틀 및 내용 */}
       <div className="w-full text-left mb-4">
-        <h1 className="text-lg-title mb-4">{afterburner.afterburner_title}</h1>
+        <h1 className="font-title text-lg-title mb-4">
+          {afterburner.afterburner_title}
+        </h1>
         <p
-          className="text-content leading-relaxed mb-4"
+          className="font-batang text-content leading-relaxed mb-4"
           dangerouslySetInnerHTML={{
             __html: afterburner.afterburner_contents
               ? afterburner.afterburner_contents.split(/[.,]/).join("<br />")
@@ -37,15 +37,17 @@ const Afterburner = () => {
       </div>
 
       {/* 기여자 프로필 카드 */}
-      <h1 className="text-md-title text-left mb-4">Contributor</h1>
+      <h1 className="font-title text-md-title text-left mb-4">Contributor</h1>
       <div className="flex flex-wrap justify-start items-start space-x-4 mb-8">
         {contributors.map((contributor) => (
-          <ProfileCard key={contributor.username} user={contributor} />
+          <ProfileCard key={contributor.id} user={contributor} />
         ))}
       </div>
 
       {/* 커뮤니티 버튼들 */}
-      <h1 className="text-md-title text-left mb-4">Join our Community</h1>
+      <h1 className="font-title text-md-title text-left mb-4">
+        Join our Community
+      </h1>
       <div className="flex space-x-4 items-start">
         <a
           href="https://discord.gg/SH2p3sfASc"

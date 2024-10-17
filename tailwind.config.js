@@ -19,6 +19,10 @@ module.exports = {
         content: ["16px"],
         comment: ["14px"],
       },
+      fontFamily: {
+        title: ["GyeonggiTitleM"],
+        batang: ["GyeonggiBatang"],
+      },
     },
   },
   plugins: [],

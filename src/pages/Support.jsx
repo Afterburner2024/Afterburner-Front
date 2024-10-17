@@ -16,17 +16,19 @@ const Support = () => {
       <div className="flex flex-grow items-center justify-between p-8">
         {/* 좌측 콘텐츠 */}
         <div className="w-1/2 p-28">
-          <h1 className="text-lg-title mb-2">Support</h1>
-          <h2 className="text-md-title mb-4">도움이 필요하신가요?</h2>
-          <h3 className="text-sm-title mb-8">
+          <h1 className="font-title text-lg-title mb-2">Support</h1>
+          <h2 className="font-title text-md-title mb-4">
+            도움이 필요하신가요?
+          </h2>
+          <h3 className="font-batang text-sm-title mb-8">
             아래의 방법으로 지원해드리겠습니다!
           </h3>
 
           {/* FAQ 섹션 */}
-          <h2 className="text-md-title mb-4">FAQ</h2>
+          <h2 className="font-title text-md-title mb-4">FAQ</h2>
           <img src={FAQ} alt="FAQ" className="mb-8 w-40 h-auto" />
 
-          <h2 className="text-md-title mb-4">Contact Form</h2>
+          <h2 className="font-title text-md-title mb-4">Contact Form</h2>
           {/* 메일 이미지 클릭 시 팝업 열림 */}
           <img
             src={Mail}
