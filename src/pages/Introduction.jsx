@@ -32,7 +32,6 @@ const Introduction = () => {
                       {index < arr.length - 1 && (
                         <>
                           <br />
-                          <br />
                         </>
                       )}
                     </span>
