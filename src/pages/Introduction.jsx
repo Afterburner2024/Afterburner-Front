@@ -22,22 +22,14 @@ const Introduction = () => {
           <h1 className="text-lg-title mb-4">Afterburner</h1>
           <h2 className="text-md-title mb-2">{intro.intro_title1}</h2>
           <h3 className="text-sm-title mb-4">{intro.intro_title2}</h3>
-          <p className="text-content mb-6 leading-relaxed">
-            {intro.intro_contents
-              ? intro.intro_contents
-                  .split(/[.,]/)
-                  .map((sentence, index, arr) => (
-                    <span key={index}>
-                      {sentence.trim()}
-                      {index < arr.length - 1 && (
-                        <>
-                          <br />
-                        </>
-                      )}
-                    </span>
-                  ))
-              : "Loading..."}
-          </p>
+          <p
+            className="text-content mb-6 leading-relaxed"
+            dangerouslySetInnerHTML={{
+              __html: intro.intro_contents
+                ? intro.intro_contents.split(/[.,]/).join("<br />")
+                : "Loading...",
+            }}
+          ></p>
         </div>
 
         {/* 우측 마스코트 이미지 */}
