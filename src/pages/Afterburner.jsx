@@ -11,20 +11,15 @@ const Afterburner = () => {
   const data = useSelector(selectAllData);
   const [afterburner, setAfterburner] = useState({});
 
+  const contributors = data.contributor || [];
+
+  console.log(selectAllData.contributor);
+
   useEffect(() => {
     if (data.afterburner && data.afterburner.length > 0) {
       setAfterburner(data.afterburner[0]);
     }
   }, [data]);
-
-  const users = [
-    { username: "stjoo0925", name: "주순태" },
-    { username: "ppudding3861", name: "강형석" },
-    { username: "hwangjeonghan", name: "황정한" },
-    { username: "dansun2", name: "이서현" },
-    { username: "KHY90", name: "김화연" },
-    { username: "wooseungyeop", name: "우승엽" },
-  ];
 
   return (
     <div className="min-h-screen bg-mainBg text-fontWhite flex flex-col items-start justify-start p-28">
@@ -41,11 +36,11 @@ const Afterburner = () => {
         ></p>
       </div>
 
-      {/* 유저 프로필 카드 */}
+      {/* 기여자 프로필 카드 */}
       <h1 className="text-md-title text-left mb-4">Contributor</h1>
       <div className="flex flex-wrap justify-start items-start space-x-4 mb-8">
-        {users.map((user) => (
-          <ProfileCard key={user.username} user={user} />
+        {contributors.map((contributor) => (
+          <ProfileCard key={contributor.username} user={contributor} />
         ))}
       </div>
 

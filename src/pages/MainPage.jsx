@@ -38,7 +38,7 @@ const MainPage = () => {
       {/* 좌측 텍스트 및 다운로드 버튼 영역 */}
       <div className="bg-mainBg text-fontWhite flex flex-col justify-center items-center w-full md:w-1/2 p-8">
         <h1 className="text-lg-title mb-2">{main.main_title1}</h1>
-        <h1 className="text-md-title mb-4">{main.main_title2}</h1>
+        <h1 className="text-lg-title mb-4">{main.main_title2}</h1>
         <h3 className="text-sm-title mb-8">{main.main_sub_title}</h3>
 
         {/* 앱스토어 다운로드 */}

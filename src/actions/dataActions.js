@@ -27,12 +27,17 @@ const fetchAllData = createAsyncThunk("data/fetchAllData", async () => {
         "id, review_name1, review_contents1, review_name2, review_contents2, review_name3, review_contents3, review_name4, review_contents4, review_name5, review_contents5",
       );
 
+    const { data: contributor, error: contributorError } = await supabase
+      .from("contributor")
+      .select("id, contributor_username, contributor_name");
+
     if (
       afterburnerError ||
       functionsError ||
       introductionError ||
       mainError ||
-      reviewsError
+      reviewsError ||
+      contributorError
     ) {
       throw new Error("Error fetching data from one or more tables.");
     }
@@ -43,6 +48,7 @@ const fetchAllData = createAsyncThunk("data/fetchAllData", async () => {
       introduction,
       main,
       reviews,
+      contributor,
     };
   } catch (error) {
     // console.error("Error in fetchAllData:", error);

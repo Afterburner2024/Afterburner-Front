@@ -11,6 +11,7 @@ const dataSlice = createSlice({
     introduction: [],
     main: [],
     reviews: [],
+    contributor: [],
     status: "idle",
     error: null,
   },
@@ -27,6 +28,7 @@ const dataSlice = createSlice({
         state.introduction = action.payload.introduction || [];
         state.main = action.payload.main || [];
         state.reviews = action.payload.reviews || [];
+        state.contributor = action.payload.contributor || [];
       })
       .addCase(fetchAllData.rejected, (state, action) => {
         state.status = "failed";
@@ -45,6 +47,7 @@ export const selectAllData = createSelector([selectDataState], (dataState) => ({
   introduction: dataState.introduction,
   main: dataState.main,
   reviews: dataState.reviews,
+  contributor: dataState.contributor,
 }));
 
 // 다른 상태 선택자들
