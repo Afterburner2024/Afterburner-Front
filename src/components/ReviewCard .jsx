@@ -2,7 +2,7 @@ import React from "react";
 
 const ReviewCard = ({ avatarUrl, reviewName, reviewContents }) => {
   return (
-    <div className="flex items-center space-x-4 bg-headerFooter p-6 w-full md:w-2/3 rounded-lg shadow-lg">
+    <div className="flex items-center space-x-4 bg-headerFooter p-6 w-full md:w-2/3 rounded-lg shadow-lg ">
       <img
         src={avatarUrl}
         alt={`${reviewName} Avatar`}

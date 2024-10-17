@@ -1,14 +1,14 @@
 import React from "react";
 import FAQ from "../assets/images/FAQ.png";
-import Discord from "../assets/images/Discord.png";
 import Mascot from "../assets/images/support-mascot.png";
+import Mail from "../assets/images/mail-to.png";
 
 const Support = () => {
   return (
     <div className="min-h-screen bg-mainBg text-fontWhite flex flex-col justify-between">
       <div className="flex flex-grow items-center justify-between p-8">
         {/* 좌측 콘텐츠 */}
-        <div className="w-1/2 p-16">
+        <div className="w-1/2 p-28">
           <h1 className="text-lg-title mb-2">Support</h1>
           <h2 className="text-md-title mb-4">도움이 필요하신가요?</h2>
           <h3 className="text-sm-title mb-8">
@@ -17,17 +17,10 @@ const Support = () => {
 
           {/* FAQ 섹션 */}
           <h2 className="text-md-title mb-4">FAQ</h2>
-          <ul className="list-disc ml-6 mb-4">
-            <li>Afterburner FAQ</li>
-          </ul>
-          <img src={FAQ} alt="FAQ" className="mb-8 w-32" />
+          <img src={FAQ} alt="FAQ" className="mb-8 w-40 h-auto" />
 
-          {/* Contact Us 섹션 */}
-          <h2 className="text-md-title mb-4">Contact us</h2>
-          <ul className="list-disc ml-6 mb-4">
-            <li>Afterburner 공식디스코드</li>
-          </ul>
-          <img src={Discord} alt="Discord" className="mb-8 w-32" />
+          <h2 className="text-md-title mb-4">Contact Form</h2>
+          <img src={Mail} alt="Mail" className="mb-8 w-40 h-auto" />
         </div>
 
         {/* 우측 마스코트 */}

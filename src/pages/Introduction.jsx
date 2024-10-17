@@ -18,7 +18,7 @@ const Introduction = () => {
       {/* 메인 콘텐츠: 좌측 텍스트, 우측 마스코트 */}
       <div className="flex flex-grow items-center justify-between p-8">
         {/* 좌측 텍스트 */}
-        <div className="w-1/2 p-16">
+        <div className="w-1/2 p-28">
           <h1 className="text-lg-title mb-6">Afterburner</h1>
           <h2 className="text-md-title mb-2">{intro.intro_title1}</h2>
           <h3 className="text-md-title mb-6">{intro.intro_title2}</h3>
