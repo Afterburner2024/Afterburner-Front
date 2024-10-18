@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 import fetchAllData from "../actions/dataActions";
 import { selectAllData, selectStatus } from "../features/dataSlice";
 import AppStore from "../assets/images/app-store.png";
@@ -36,9 +35,14 @@ const MainPage = () => {
   }
 
   const handleButtonClick = () => {
-    toast.info("추가 예정입니다.", {
-      position: "top-center",
-      autoClose: 1000,
+    Swal.fire({
+      icon: "info",
+      title: "추가 예정입니다.",
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: true,
     });
   };
 
@@ -73,8 +77,6 @@ const MainPage = () => {
       >
         {/* 이곳에 배경 이미지가 설정됩니다 */}
       </div>
-
-      <ToastContainer />
     </div>
   );
 };

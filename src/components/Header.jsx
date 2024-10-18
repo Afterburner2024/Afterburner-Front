@@ -1,7 +1,6 @@
-// components/Header.js
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import Logo from "../assets/images/afterburner-logo.png";
 import Github from "../assets/images/github.svg";
 import Appstore from "../assets/images/appstore.svg";
@@ -10,9 +9,14 @@ import GooglePlay from "../assets/images/googleplay.svg";
 const Header = () => {
   const location = useLocation();
   const handleButtonClick = () => {
-    toast.info("추가 예정입니다.", {
-      position: "top-center",
-      autoClose: 1000,
+    Swal.fire({
+      icon: "info",
+      title: "추가 예정입니다.",
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: true,
     });
   };
 

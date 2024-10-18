@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 const MailService = ({ isPopupOpen, onClose }) => {
   const form = useRef();
@@ -29,27 +28,27 @@ const MailService = ({ isPopupOpen, onClose }) => {
       )
       .then(
         () => {
-          toast.success("메일이 성공적으로 전송되었습니다!", {
+          Swal.fire({
+            icon: "success",
+            title: "메일이 성공적으로 전송되었습니다!",
+            showConfirmButton: false,
+            timer: 3000,
             position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
+            toast: true,
+            timerProgressBar: true,
           });
-          setFormData({ from_email: "", from_name: "", message: "" }); // Clear form fields
+          setFormData({ from_email: "", from_name: "", message: "" });
           onClose();
         },
         (error) => {
-          toast.error(`메일 전송에 실패했습니다. 오류: ${error.message}`, {
+          Swal.fire({
+            icon: "error",
+            title: `메일 전송에 실패했습니다. 오류: ${error.message}`,
+            showConfirmButton: false,
+            timer: 3000,
             position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
+            toast: true,
+            timerProgressBar: true,
           });
         },
       );
@@ -58,7 +57,7 @@ const MailService = ({ isPopupOpen, onClose }) => {
   if (!isPopupOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-8 rounded-lg shadow-lg w-1/3">
         <h2 className="font-title text-lg-title text-center text-fontBlack mb-4">
           문의 사항
@@ -126,7 +125,6 @@ const MailService = ({ isPopupOpen, onClose }) => {
           </div>
         </form>
       </div>
-      <ToastContainer />
     </div>
   );
 };

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { ToastContainer } from "react-toastify";
-
 import MainPage from "./pages/MainPage";
 import Introduction from "./pages/Introduction";
 import Functions from "./pages/Functions";
@@ -51,7 +49,6 @@ function App() {
 
   return (
     <div className="app-container">
-      <ToastContainer />
       <WheelNavigation />
       <Header />
       {location.pathname !== "/" ? <Navigation /> : null}

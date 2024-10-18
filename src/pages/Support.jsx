@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 import MailService from "../components/Mail";
 import FAQ from "../assets/images/FAQ.png";
 import Mascot from "../assets/images/support-mascot.png";
@@ -14,9 +13,14 @@ const Support = () => {
   };
 
   const handleButtonClick = () => {
-    toast.info("추가 예정입니다.", {
-      position: "top-center",
-      autoClose: 1000,
+    Swal.fire({
+      icon: "info",
+      title: "추가 예정입니다.",
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: true,
     });
   };
 
