@@ -18,26 +18,36 @@ const Header = () => {
 
   return (
     <header className="w-full fixed flex justify-between items-center p-8 z-20">
-      <div className="w-full flex flex-row justify-between">
+      <div className="w-full flex flex-row justify-between z-20">
         <Link to="/">
           <img src={Logo} alt="Afterburner Logo" className="w-40" />
         </Link>
-        <div className="flex flex-row items-center rounded-xl bg-white p-2 shadow-xl">
+        <div className="flex flex-row items-center rounded-xl bg-white p-2 shadow-xl z-20">
           <a
             href="https://github.com/Afterburner2024"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={Github} alt="Github" className="w-6 h-auto mx-2" />
+            <img src={Github} alt="Github" className="w-6 h-auto mx-2 z-20" />
           </a>
-          <button onClick={handleButtonClick} className="focus:outline-none">
-            <img src={Appstore} alt="Appstore" className="w-6 h-auto mx-2" />
+          <button
+            onClick={handleButtonClick}
+            className="focus:outline-none z-20"
+          >
+            <img
+              src={Appstore}
+              alt="Appstore"
+              className="w-6 h-auto mx-2 z-20"
+            />
           </button>
-          <button onClick={handleButtonClick} className="focus:outline-none">
+          <button
+            onClick={handleButtonClick}
+            className="focus:outline-none z-20"
+          >
             <img
               src={GooglePlay}
               alt="GooglePlay"
-              className="w-6 h-auto mx-2"
+              className="w-6 h-auto mx-2 z-20"
             />
           </button>
         </div>
