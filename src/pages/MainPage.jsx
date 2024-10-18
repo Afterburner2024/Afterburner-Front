@@ -39,9 +39,9 @@ const MainPage = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen">
+    <div className="flex flex-row min-h-screen">
       {/* 좌측 텍스트 및 다운로드 버튼 영역 */}
-      <div className="bg-mainBg text-fontWhite flex flex-col justify-center items-center w-full sm:w-full p-8">
+      <div className="w-1/2 bg-mainBg text-fontWhite flex flex-col justify-center items-center sm:w-full p-8">
         <h1 className="font-title text-xl-title">{main.main_title1}</h1>
         <h1 className="font-title text-xl-title mb-4">{main.main_title2}</h1>
         <h3 className="font-title text-sm-title mb-8">{main.main_sub_title}</h3>
@@ -72,7 +72,7 @@ const MainPage = () => {
 
       {/* 우측 배경 이미지 영역 */}
       <div
-        className="w-full md:w-1/2 bg-cover bg-no-repeat bg-center sm:hidden"
+        className="w-1/2 bg-cover bg-no-repeat bg-center sm:hidden"
         style={{ backgroundImage: `url(${BG1})` }}
       >
         {/* 이곳에 배경 이미지가 설정됩니다 */}
