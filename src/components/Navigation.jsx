@@ -8,7 +8,7 @@ const Navigation = () => {
     <nav className="fixed h-dvh right-5 flex flex-col justify-center space-y-4 text-white z-10 mr-4">
       <Link
         to="/introduction"
-        className={`font-title text-content hover:text-highlightBlue ${
+        className={`font-title text-xs-title hover:text-highlightBlue ${
           location.pathname === "/introduction" ? "text-highlightBlue" : ""
         }`}
       >
@@ -16,7 +16,7 @@ const Navigation = () => {
       </Link>
       <Link
         to="/function"
-        className={`font-title text-content hover:text-highlightBlue ${
+        className={`font-title text-xs-title hover:text-highlightBlue ${
           location.pathname === "/function" ? "text-highlightBlue" : ""
         }`}
       >
@@ -24,7 +24,7 @@ const Navigation = () => {
       </Link>
       <Link
         to="/reviews"
-        className={`font-title text-content hover:text-highlightBlue ${
+        className={`font-title text-xs-title hover:text-highlightBlue ${
           location.pathname === "/reviews" ? "text-highlightBlue" : ""
         }`}
       >
@@ -32,7 +32,7 @@ const Navigation = () => {
       </Link>
       <Link
         to="/support"
-        className={`font-title text-content hover:text-highlightBlue ${
+        className={`font-title text-xs-title hover:text-highlightBlue ${
           location.pathname === "/support" ? "text-highlightBlue" : ""
         }`}
       >
@@ -40,7 +40,7 @@ const Navigation = () => {
       </Link>
       <Link
         to="/afterburner"
-        className={`font-title text-content hover:text-highlightBlue ${
+        className={`font-title text-xs-title hover:text-highlightBlue ${
           location.pathname === "/afterburner" ? "text-highlightBlue" : ""
         }`}
       >

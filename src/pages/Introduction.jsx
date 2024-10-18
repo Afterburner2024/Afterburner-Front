@@ -19,7 +19,7 @@ const Introduction = () => {
       <div className="flex flex-grow items-center justify-between p-8">
         {/* 좌측 텍스트 */}
         <div className="w-1/2 p-28">
-          <h1 className="font-title text-lg-title mb-6">Afterburner</h1>
+          <h1 className="font-title text-xl-title mb-6">Afterburner</h1>
           <h2 className="font-title text-md-title mb-2">
             {intro.intro_title1}
           </h2>
@@ -27,7 +27,7 @@ const Introduction = () => {
             {intro.intro_title2}
           </h3>
           <p
-            className="font-batang text-content mb-6 leading-relaxed"
+            className="font-batang text-content-md mb-6 leading-normal"
             dangerouslySetInnerHTML={{
               __html: intro.intro_contents
                 ? intro.intro_contents.split(/[.,]/).join("<br />")
@@ -37,7 +37,7 @@ const Introduction = () => {
         </div>
 
         {/* 우측 마스코트 이미지 */}
-        <div className="w-1/2 flex justify-center">
+        <div className="w-1/2 flex justify-center animate__animated animate__fadeInRight animate-delay">
           <img src={Mascot} alt="Mascot" className="w-150" />
         </div>
       </div>

@@ -64,3 +64,23 @@ body {
   transform: translateY(100%);
   transition: transform 100ms ease-in-out;
 }
+
+.animate-delay {
+  animation-delay: 0.75s;
+}
+
+.animate-delay2 {
+  animation-delay: 0.85s;
+}
+
+.animate-delay3 {
+  animation-delay: 0.95s;
+}
+
+.animate-delay4 {
+  animation-delay: 1.05s;
+}
+
+.animate-delay5 {
+  animation-delay: 1.15s;
+}

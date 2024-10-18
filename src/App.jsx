@@ -8,9 +8,11 @@ import Reviews from "./pages/Reviews";
 import Support from "./pages/Support";
 import Afterburner from "./pages/Afterburner";
 import WheelNavigation from "./components/WheelNavigation";
+import Header from "./components/Header";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
 
-import "./assets/css/app.css"; // 애니메이션 관련 CSS 포함
+import "./assets/css/app.css";
 
 const routeOrder = [
   { path: "/", element: <MainPage /> },
@@ -47,8 +49,9 @@ function App() {
 
   return (
     <div className="app-container">
-      {location.pathname !== "/" ? <Navigation /> : null}
       <WheelNavigation />
+      {location.pathname !== "/" ? <Header /> : null}
+      {location.pathname !== "/" ? <Navigation /> : null}
       <TransitionGroup className="page-wrapper bg-mainBg">
         <CSSTransition
           key={location.pathname}
@@ -70,6 +73,7 @@ function App() {
           </Routes>
         </CSSTransition>
       </TransitionGroup>
+      <Footer />
     </div>
   );
 }

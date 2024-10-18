@@ -34,35 +34,45 @@ const Reviews = () => {
           <>
             {/* 좌측 3개의 카드 */}
             <div className="space-y-6 flex flex-col justify-center items-end">
-              <ReviewCard
-                avatarUrl={getAvatarUrl(storedSeeds[0])}
-                reviewName={review.review_name1}
-                reviewContents={review.review_contents1}
-              />
-              <ReviewCard
-                avatarUrl={getAvatarUrl(storedSeeds[2])}
-                reviewName={review.review_name3}
-                reviewContents={review.review_contents3}
-              />
-              <ReviewCard
-                avatarUrl={getAvatarUrl(storedSeeds[4])}
-                reviewName={review.review_name5}
-                reviewContents={review.review_contents5}
-              />
+              <div className="flex flex-col justify-center items-end animate__animated animate__fadeInLeft animate-delay">
+                <ReviewCard
+                  avatarUrl={getAvatarUrl(storedSeeds[0])}
+                  reviewName={review.review_name1}
+                  reviewContents={review.review_contents1}
+                />
+              </div>
+              <div className="flex flex-col justify-center items-end animate__animated animate__fadeInLeft animate-delay3">
+                <ReviewCard
+                  avatarUrl={getAvatarUrl(storedSeeds[2])}
+                  reviewName={review.review_name3}
+                  reviewContents={review.review_contents3}
+                />
+              </div>
+              <div className="flex flex-col justify-center items-end animate__animated animate__fadeInLeft animate-delay5">
+                <ReviewCard
+                  avatarUrl={getAvatarUrl(storedSeeds[4])}
+                  reviewName={review.review_name5}
+                  reviewContents={review.review_contents5}
+                />
+              </div>
             </div>
 
             {/* 우측 2개의 카드 */}
             <div className="space-y-6 flex flex-col justify-center items-start">
-              <ReviewCard
-                avatarUrl={getAvatarUrl(storedSeeds[1])}
-                reviewName={review.review_name2}
-                reviewContents={review.review_contents2}
-              />
-              <ReviewCard
-                avatarUrl={getAvatarUrl(storedSeeds[3])}
-                reviewName={review.review_name4}
-                reviewContents={review.review_contents4}
-              />
+              <div className="flex flex-col justify-center items-start animate__animated animate__fadeInRight animate-delay2">
+                <ReviewCard
+                  avatarUrl={getAvatarUrl(storedSeeds[1])}
+                  reviewName={review.review_name2}
+                  reviewContents={review.review_contents2}
+                />
+              </div>
+              <div className="flex flex-col justify-center items-start animate__animated animate__fadeInRight animate-delay4">
+                <ReviewCard
+                  avatarUrl={getAvatarUrl(storedSeeds[3])}
+                  reviewName={review.review_name4}
+                  reviewContents={review.review_contents4}
+                />
+              </div>
             </div>
           </>
         )}
