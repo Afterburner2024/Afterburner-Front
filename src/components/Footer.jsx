@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="fixed bottom-0 left-0 w-full flex justify-between items-center py-4 z-10">
       {/* 첫 번째 영역 */}
       <div className="flex-1 flex justify-start ml-5">
-        <div className="font-title text-fontWhite text-content-sm text-3xl">
+        <div className="font-title text-fontWhite text-content-sm sm:text-content-ll">
           © 2024 Afterburner. All rights reserved.
         </div>
       </div>

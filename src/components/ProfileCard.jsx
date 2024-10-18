@@ -3,7 +3,7 @@ import Github from "../assets/images/github.svg";
 
 const ProfileCard = ({ user }) => {
   return (
-    <div className="flex flex-col justify-center items-center w-44 h-56 border-2 bg-headerFooter rounded-xl shadow-lg">
+    <div className="flex flex-col justify-center items-center w-44 h-56 border-2 bg-headerFooter rounded-xl shadow-lg sm:w-32 sm:h-40">
       <div className="w-full flex justify-end">
         <a
           href={`https://github.com/${user.contributor_username}`}
@@ -16,12 +16,12 @@ const ProfileCard = ({ user }) => {
       <img
         src={`https://github.com/${user.contributor_username}.png?size=80`}
         alt={user.contributor_name}
-        className="w-20 border-2 rounded-full mb-4"
+        className="w-20 border-2 rounded-full mb-4 sm:w-16"
       />
-      <h2 className="font-title text-xs-title font-bold text-center mb-2">
+      <h2 className="font-title text-xs-title font-bold text-center mb-2 sm:text-sm">
         {user.contributor_username}
       </h2>
-      <h3 className="font-batang text-content-sm text-center">
+      <h3 className="font-batang text-content-sm text-center sm:text-xs">
         {user.contributor_name}
       </h3>
     </div>

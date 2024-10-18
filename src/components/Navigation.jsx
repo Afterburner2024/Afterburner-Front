@@ -5,7 +5,7 @@ const Navigation = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed h-dvh right-5 flex flex-col justify-center space-y-4 text-white z-10 mr-4">
+    <nav className="fixed h-dvh right-5 flex flex-col justify-center space-y-4 text-white z-10 mr-4 sm:hidden">
       <Link
         to="/introduction"
         className={`font-title text-xs-title hover:text-highlightBlue ${

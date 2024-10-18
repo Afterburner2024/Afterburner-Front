@@ -29,7 +29,7 @@ const Reviews = () => {
 
   return (
     <div className="min-h-screen bg-mainBg text-fontWhite flex flex-col justify-center">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-8">
+      <div className="flex flex-row gap-6 p-8 sm:flex sm:flex-col">
         {storedSeeds.length > 0 && (
           <>
             {/* 좌측 3개의 카드 */}

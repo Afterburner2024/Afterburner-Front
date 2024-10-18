@@ -21,6 +21,7 @@ module.exports = {
         "content-lg": ["20px"],
         "content-md": ["16px"],
         "content-sm": ["14px"],
+        "content-ll": ["10px"],
         "comment-lg": ["16px"],
         "comment-md": ["14px"],
         "comment-sm": ["12px"],
@@ -28,6 +29,19 @@ module.exports = {
       fontFamily: {
         title: ["GoodNeighbors-Good-Neighbors-Bold"],
         batang: ["NanumSquareNeo"],
+      },
+      screens: {
+        xl: { max: "1279px" },
+        // => @media (max-width: 1279px) { ... }
+
+        lg: { max: "1023px" },
+        // => @media (max-width: 1023px) { ... }
+
+        md: { max: "767px" },
+        // => @media (max-width: 767px) { ... }
+
+        sm: { max: "639px" },
+        // => @media (max-width: 639px) { ... }
       },
     },
   },

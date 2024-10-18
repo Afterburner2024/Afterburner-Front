@@ -20,14 +20,17 @@ const Afterburner = () => {
   }, [data]);
 
   return (
-    <div className="min-h-screen bg-mainBg text-fontWhite flex flex-col items-start justify-evenly p-28">
+    <div
+      className="min-h-screen bg-mainBg text-fontWhite flex flex-col items-start justify-center 
+    p-28 sm:p-4"
+    >
       {/* 타이틀 및 내용 */}
       <div className="w-full text-left mb-4">
         <h1 className="font-title text-xl-title mb-4">
           {afterburner.afterburner_title}
         </h1>
         <p
-          className="font-batang text-content-md leading-normal mb-4"
+          className="font-batang text-content-md leading-normal mb-4 sm:text-comment-sm"
           dangerouslySetInnerHTML={{
             __html: afterburner.afterburner_contents
               ? afterburner.afterburner_contents.split(/[.,]/).join("<br />")
@@ -37,12 +40,14 @@ const Afterburner = () => {
       </div>
 
       {/* 기여자 프로필 카드 */}
-      <h1 className="font-title text-md-title text-left mb-4">Contributor</h1>
-      <div className="flex flex-wrap justify-start items-start space-x-4 mb-8">
+      <h1 className="font-title text-md-title text-left mb-4 sm:hidden">
+        Contributor
+      </h1>
+      <div className="flex flex-wrap justify-start items-start space-x-4 mb-8 sm:flex-row sm:space-x-0 sm:justify-evenly sm:mb-2">
         {contributors.map((contributor, index) => (
           <div
             key={contributor.id}
-            className="animate__animated animate__zoomInUp"
+            className="animate__animated animate__zoomInUp sm:mb-2"
             style={{ animationDelay: `${index * 0.3}s` }} // 각 카드마다 0.3초 간격으로 딜레이
           >
             <ProfileCard user={contributor} />

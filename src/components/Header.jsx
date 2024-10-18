@@ -27,7 +27,7 @@ const Header = () => {
           <img src={Logo} alt="Afterburner Logo" className="w-40" />
         </Link>
         {location.pathname !== "/" && (
-          <div className="flex flex-row items-center rounded-xl bg-white p-2 shadow-xl z-20">
+          <div className="flex flex-row items-center rounded-xl bg-white p-2 shadow-xl z-20 sm:hidden">
             <a
               href="https://github.com/Afterburner2024"
               target="_blank"
