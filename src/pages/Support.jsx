@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MailService from "../components/Mail";
 import FAQ from "../assets/images/FAQ.png";
@@ -56,8 +56,6 @@ const Support = () => {
           <img src={Mascot} alt="Mascot" className="w-150" />
         </div>
       </div>
-
-      <ToastContainer />
     </div>
   );
 };
