@@ -32,7 +32,7 @@ const Support = () => {
           <h1 className="font-title text-xl-title mb-2 sm:text-xl-title">
             Support
           </h1>
-          <h2 className="font-title text-md-title mb-4 sm:text-sm-title">
+          <h2 className="font-title text-md-title mb-4 sm:text-sm-title sm:mb-2">
             도움이 필요하신가요?
           </h2>
           <h3 className="font-batang text-xs-title mb-8 sm:text-content-md sm:mb-4">
@@ -40,17 +40,23 @@ const Support = () => {
           </h3>
 
           {/* FAQ 섹션 */}
-          <h2 className="font-title text-md-title mb-4">FAQ</h2>
+          <h2 className="font-title text-md-title mb-4 sm:mb-2">FAQ</h2>
           <button onClick={handleButtonClick} className="focus:outline-none">
-            <img src={FAQ} alt="FAQ" className="mb-8 w-40 h-auto sm:w-32" />
+            <img
+              src={FAQ}
+              alt="FAQ"
+              className="mb-8 w-40 h-auto sm:w-28 sm:mb-2"
+            />
           </button>
 
-          <h2 className="font-title text-md-title mb-4">Contact Form</h2>
+          <h2 className="font-title text-md-title mb-4 sm:mb-2">
+            Contact Form
+          </h2>
           {/* 메일 이미지 클릭 시 팝업 열림 */}
           <img
             src={Mail}
             alt="Mail"
-            className="mb-8 w-40 h-auto cursor-pointer sm:w-32"
+            className="mb-8 w-40 h-auto cursor-pointer sm:w-28 sm:mb-2"
             onClick={togglePopup}
           />
           {/* 팝업창 */}

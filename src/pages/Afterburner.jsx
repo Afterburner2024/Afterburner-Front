@@ -25,12 +25,12 @@ const Afterburner = () => {
     p-28 sm:p-4"
     >
       {/* 타이틀 및 내용 */}
-      <div className="w-full text-left mb-4">
-        <h1 className="font-title text-xl-title mb-4">
+      <div className="w-full text-left mb-4 sm:mb-1">
+        <h1 className="font-title text-xl-title mb-4 sm:mb-1">
           {afterburner.afterburner_title}
         </h1>
         <p
-          className="font-batang text-content-md leading-normal mb-4 sm:text-comment-sm"
+          className="font-batang text-content-md leading-normal mb-4 sm:text-content-ll sm:mb-1"
           dangerouslySetInnerHTML={{
             __html: afterburner.afterburner_contents
               ? afterburner.afterburner_contents.split(/[.,]/).join("<br />")
@@ -40,10 +40,10 @@ const Afterburner = () => {
       </div>
 
       {/* 기여자 프로필 카드 */}
-      <h1 className="font-title text-md-title text-left mb-4 sm:hidden">
+      <h1 className="font-title text-md-title text-left mb-4 sm:mb-2">
         Contributor
       </h1>
-      <div className="flex flex-wrap justify-start items-start space-x-4 mb-8 sm:flex-row sm:space-x-0 sm:justify-evenly sm:mb-2">
+      <div className="flex flex-wrap justify-start items-start space-x-4 mb-8 sm:flex-row sm:space-x-0 sm:justify-evenly sm:mb-1">
         {contributors.map((contributor, index) => (
           <div
             key={contributor.id}
@@ -56,7 +56,7 @@ const Afterburner = () => {
       </div>
 
       {/* 커뮤니티 버튼들 */}
-      <h1 className="font-title text-md-title text-left mb-4">
+      <h1 className="font-title text-md-title text-left mb-4 sm:mb-2">
         Join our Community
       </h1>
       <div className="flex space-x-4 items-start">

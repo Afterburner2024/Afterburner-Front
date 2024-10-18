@@ -21,7 +21,7 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full fixed flex justify-between items-center p-8 z-20">
+    <header className="w-full fixed flex justify-between items-center p-8 z-20 sm:p-4">
       <div className="w-full flex flex-row justify-between z-20">
         <Link to="/">
           <img src={Logo} alt="Afterburner Logo" className="w-40" />

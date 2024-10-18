@@ -24,14 +24,16 @@ const Functions = () => {
         {/* 기능 1 */}
         <div
           className="bg-headerFooter p-6 m-4 w-1/4 rounded-lg shadow-lg min-h-[34rem] flex flex-col 
-        justify-evenly animate__animated animate__fadeInUp animate-delay sm:flex-col sm:w-3/4 sm:h-auto sm:justify-center sm:min-h-40"
+        justify-evenly animate__animated animate__fadeInUp animate-delay sm:flex-col sm:w-5/6 sm:h-auto sm:justify-center sm:min-h-36 sm:p-3 sm:m-2"
         >
           <img
             src={SI1}
             alt="기능 1 이미지"
             className="mb-4 w-full h-64 object-cover rounded-lg sm:hidden"
           />
-          <h3 className="font-title text-md-title mb-4">{func.func_title1}</h3>
+          <h3 className="font-title text-md-title mb-4 sm:mb-1 sm:text-xs-title">
+            {func.func_title1}
+          </h3>
           <p className="font-batang text-content-sm leading-normal sm:text-content-ll">
             {func.func_contents1}
           </p>
@@ -40,10 +42,12 @@ const Functions = () => {
         {/* 기능 2 */}
         <div
           className="bg-headerFooter p-6 m-4 w-1/4 rounded-lg shadow-lg min-h-[34rem] flex flex-col 
-        justify-evenly animate__animated animate__fadeInUp animate-delay2 sm:flex-col sm:w-3/4 sm:h-auto sm:justify-center sm:min-h-40"
+        justify-evenly animate__animated animate__fadeInUp animate-delay2 sm:flex-col sm:w-5/6 sm:h-auto sm:justify-center sm:min-h-36 sm:p-3 sm:m-2"
         >
-          <h3 className="font-title text-md-title mb-4">{func.func_title2}</h3>
-          <p className="font-batang text-content-sm leading-normal mb-4 sm:text-content-ll">
+          <h3 className="font-title text-md-title mb-4 sm:mb-1 sm:text-xs-title">
+            {func.func_title2}
+          </h3>
+          <p className="font-batang text-content-sm leading-normal sm:text-content-ll">
             {func.func_contents2}
           </p>
           <img
@@ -56,14 +60,16 @@ const Functions = () => {
         {/* 기능 3 */}
         <div
           className="bg-headerFooter p-6 m-4 w-1/4 rounded-lg shadow-lg min-h-[34rem] flex flex-col 
-        justify-evenly animate__animated animate__fadeInUp animate-delay3 sm:flex-col sm:w-3/4 sm:h-auto sm:justify-center sm:min-h-40"
+        justify-evenly animate__animated animate__fadeInUp animate-delay3 sm:flex-col sm:w-5/6 sm:h-auto sm:justify-center sm:min-h-36 sm:p-3 sm:m-2"
         >
           <img
             src={SI3}
             alt="기능 3 이미지"
             className="mb-4 w-full h-64 object-cover rounded-lg sm:hidden"
           />
-          <h3 className="font-title text-md-title mb-4">{func.func_title3}</h3>
+          <h3 className="font-title text-md-title mb-4 sm:mb-1 sm:text-xs-title">
+            {func.func_title3}
+          </h3>
           <p className="font-batang text-content-sm leading-normal sm:text-content-ll">
             {func.func_contents3}
           </p>

@@ -29,11 +29,14 @@ const Reviews = () => {
 
   return (
     <div className="min-h-screen bg-mainBg text-fontWhite flex flex-col justify-center">
-      <div className="flex flex-row gap-6 p-8 sm:flex sm:flex-col">
+      <div className="hidden text-center text-title text-md-title sm:block">
+        Reviews
+      </div>
+      <div className="flex flex-row gap-6 p-8 sm:flex sm:flex-col sm:p-4 sm:gap-3">
         {storedSeeds.length > 0 && (
           <>
             {/* 좌측 3개의 카드 */}
-            <div className="space-y-6 flex flex-col justify-center items-end">
+            <div className="space-y-6 flex flex-col justify-center items-end sm:space-y-3">
               <div className="flex flex-col justify-center items-end animate__animated animate__fadeInLeft animate-delay">
                 <ReviewCard
                   avatarUrl={getAvatarUrl(storedSeeds[0])}
@@ -58,7 +61,7 @@ const Reviews = () => {
             </div>
 
             {/* 우측 2개의 카드 */}
-            <div className="space-y-6 flex flex-col justify-center items-start">
+            <div className="space-y-6 flex flex-col justify-center items-start sm:space-y-3">
               <div className="flex flex-col justify-center items-start animate__animated animate__fadeInRight animate-delay2">
                 <ReviewCard
                   avatarUrl={getAvatarUrl(storedSeeds[1])}

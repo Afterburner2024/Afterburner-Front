@@ -15,7 +15,7 @@ const Footer = () => {
       </div>
 
       {/* 두 번째 영역 (화살표) */}
-      <div className="flex-1 flex justify-center">
+      <div className="flex-1 flex justify-center sm:justify-end sm:mr-5">
         {location.pathname !== "/afterburner" && (
           <div className="animate-bounce text-white text-2xl">
             <img src={Down} alt="Down" className="mx-auto" />
@@ -24,7 +24,7 @@ const Footer = () => {
       </div>
 
       {/* 세 번째 영역 */}
-      <div className="flex-1 flex justify-end mr-5">
+      <div className="flex-1 flex justify-end mr-5 sm:hidden">
         <a
           href="https://app.netlify.com/sites/afterburner2024/deploys"
           target="_blank"
