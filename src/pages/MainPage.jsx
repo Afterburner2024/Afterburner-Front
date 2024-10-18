@@ -26,14 +26,6 @@ const MainPage = () => {
     }
   }, [data]);
 
-  if (status === "loading") {
-    return <div className="text-center text-white">Loading...</div>;
-  }
-
-  if (status === "failed") {
-    return <div className="text-center text-red-500">Error loading data.</div>;
-  }
-
   const handleButtonClick = () => {
     Swal.fire({
       icon: "info",

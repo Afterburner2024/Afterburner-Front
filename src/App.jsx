@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { useSelector } from "react-redux";
 import MainPage from "./pages/MainPage";
 import Introduction from "./pages/Introduction";
 import Functions from "./pages/Functions";
@@ -8,9 +9,11 @@ import Reviews from "./pages/Reviews";
 import Support from "./pages/Support";
 import Afterburner from "./pages/Afterburner";
 import WheelNavigation from "./components/WheelNavigation";
+import Loading from "./components/Loading";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import { selectStatus } from "./features/dataSlice"; // 로딩 상태 선택자 추가
 
 import "./assets/css/app.css";
 
@@ -26,7 +29,9 @@ const routeOrder = [
 function App() {
   const location = useLocation();
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
-  const [isScrollingDown, setIsScrollingDown] = useState(true); // 스크롤 방향 저장
+  const [isScrollingDown, setIsScrollingDown] = useState(true);
+  const status = useSelector(selectStatus);
+  const [isPreRendered, setIsPreRendered] = useState(false);
 
   const handleScroll = (event) => {
     const deltaY = event.deltaY;
@@ -46,6 +51,27 @@ function App() {
       window.removeEventListener("wheel", handleScroll);
     };
   }, [currentPageIndex]);
+
+  useEffect(() => {
+    if (status === "loading") {
+      setIsPreRendered(true);
+    }
+  }, [status]);
+
+  useEffect(() => {
+    if (status !== "loading" && isPreRendered) {
+      const preRenderTimer = setTimeout(() => {
+        setIsPreRendered(false);
+      }, 2000);
+
+      return () => clearTimeout(preRenderTimer);
+    }
+    return undefined;
+  }, [status, isPreRendered]);
+
+  if (isPreRendered) {
+    return <Loading />;
+  }
 
   return (
     <div className="app-container">
