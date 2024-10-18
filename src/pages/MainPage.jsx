@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import fetchAllData from "../actions/dataActions";
 import { selectAllData, selectStatus } from "../features/dataSlice";
 import AppStore from "../assets/images/app-store.png";
@@ -33,6 +35,13 @@ const MainPage = () => {
     return <div className="text-center text-red-500">Error loading data.</div>;
   }
 
+  const handleButtonClick = () => {
+    toast.info("추가 예정입니다.", {
+      position: "top-center",
+      autoClose: 1000,
+    });
+  };
+
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
       {/* 좌측 텍스트 및 다운로드 버튼 영역 */}
@@ -44,16 +53,12 @@ const MainPage = () => {
         {/* 앱스토어 다운로드 */}
         <p className="font-batang text-content-md mb-2">앱스토어 다운로드</p>
         <div className="flex space-x-4 mb-6">
-          <img
-            src={AppStore}
-            alt="Download on AppStore"
-            className="w-40 h-auto"
-          />
-          <img
-            src={GooglePlay}
-            alt="Get it on GooglePlay"
-            className="w-40 h-auto"
-          />
+          <button onClick={handleButtonClick} className="focus:outline-none">
+            <img src={AppStore} alt="AppStore" className="w-48 h-auto" />
+          </button>
+          <button onClick={handleButtonClick} className="focus:outline-none">
+            <img src={GooglePlay} alt="GooglePlay" className="w-48 h-auto" />
+          </button>
         </div>
 
         {/* QR코드 다운로드 */}
@@ -68,6 +73,8 @@ const MainPage = () => {
       >
         {/* 이곳에 배경 이미지가 설정됩니다 */}
       </div>
+
+      <ToastContainer />
     </div>
   );
 };

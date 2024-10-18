@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import MailService from "../components/Mail";
 import FAQ from "../assets/images/FAQ.png";
 import Mascot from "../assets/images/support-mascot.png";
@@ -9,6 +11,13 @@ const Support = () => {
 
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
+  };
+
+  const handleButtonClick = () => {
+    toast.info("추가 예정입니다.", {
+      position: "top-center",
+      autoClose: 1000,
+    });
   };
 
   return (
@@ -26,7 +35,9 @@ const Support = () => {
 
           {/* FAQ 섹션 */}
           <h2 className="font-title text-md-title mb-4">FAQ</h2>
-          <img src={FAQ} alt="FAQ" className="mb-8 w-40 h-auto" />
+          <button onClick={handleButtonClick} className="focus:outline-none">
+            <img src={FAQ} alt="FAQ" className="mb-8 w-40 h-auto" />
+          </button>
 
           <h2 className="font-title text-md-title mb-4">Contact Form</h2>
           {/* 메일 이미지 클릭 시 팝업 열림 */}
@@ -45,6 +56,8 @@ const Support = () => {
           <img src={Mascot} alt="Mascot" className="w-150" />
         </div>
       </div>
+
+      <ToastContainer />
     </div>
   );
 };
