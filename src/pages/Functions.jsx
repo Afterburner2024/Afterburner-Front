@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAllData } from "../features/dataSlice";
-import SI1 from "../assets/images/fc-sample1.webp";
-import SI2 from "../assets/images/fc-sample2.webp";
-import SI3 from "../assets/images/fc-sample3.webp";
+import SI1 from "../assets/images/functionImg/fc-sample1.webp";
+import SI2 from "../assets/images/functionImg/fc-sample2.webp";
+import SI3 from "../assets/images/functionImg/fc-sample3.webp";
 
 const Functions = () => {
   const data = useSelector(selectAllData);

@@ -6,13 +6,25 @@ import { selectAllData, selectStatus } from "../features/dataSlice";
 import AppStore from "../assets/images/app-store.png";
 import GooglePlay from "../assets/images/google-play.png";
 import QR from "../assets/images/QR.png";
-import BG1 from "../assets/images/main-bg-1.png";
+import BG1 from "../assets/images/mainBg/main-bg-1.webp";
+import BG2 from "../assets/images/mainBg/main-bg-2.webp";
+import BG3 from "../assets/images/mainBg/main-bg-3.webp";
 
 const MainPage = () => {
   const dispatch = useDispatch();
   const data = useSelector(selectAllData);
   const status = useSelector(selectStatus);
   const [main, setMain] = useState({});
+  const [backgroundImage, setBackgroundImage] = useState("");
+
+  const backgroundImages = [BG1, BG2, BG3];
+
+  useEffect(() => {
+    const randomImage =
+      backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
+
+    setBackgroundImage(randomImage);
+  }, []);
 
   useEffect(() => {
     if (status === "idle") {
@@ -73,7 +85,7 @@ const MainPage = () => {
       {/* 우측 배경 이미지 영역 */}
       <div
         className="w-1/2 bg-cover bg-no-repeat bg-center sm:hidden"
-        style={{ backgroundImage: `url(${BG1})` }}
+        style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         {/* 이곳에 배경 이미지가 설정됩니다 */}
       </div>
