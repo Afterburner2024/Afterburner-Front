@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import { selectStatus } from "./features/dataSlice";
 
 import "./assets/css/app.css";
+import "./assets/css/curtain.css";
 
 const routeOrder = [
   { path: "/", element: <MainPage /> },
@@ -33,9 +34,11 @@ function App() {
   const [isScrollingDown, setIsScrollingDown] = useState(true);
   const status = useSelector(selectStatus);
   const [isPreRendered, setIsPreRendered] = useState(false);
+  const [curtainClosed, setCurtainClosed] = useState(false);
 
   const throttleRef = useRef(false);
 
+  // 페이지 인덱스 업데이트
   useEffect(() => {
     const currentIndex = routeOrder.findIndex(
       (route) => route.path === location.pathname,
@@ -46,6 +49,7 @@ function App() {
     }
   }, [location.pathname]);
 
+  // 페이지 전환 핸들러
   const handlePageChange = (direction) => {
     if (throttleRef.current) return;
 
@@ -66,6 +70,7 @@ function App() {
     }, 1500);
   };
 
+  // 스크롤 핸들러
   const handleScroll = (event) => {
     if (event.deltaY > 0) {
       handlePageChange("down");
@@ -74,12 +79,14 @@ function App() {
     }
   };
 
+  // 스와이프 핸들러
   const swipeHandlers = useSwipeable({
     onSwipedUp: () => handlePageChange("down"),
     onSwipedDown: () => handlePageChange("up"),
     trackMouse: true,
   });
 
+  // 스크롤 이벤트 등록
   useEffect(() => {
     window.addEventListener("wheel", handleScroll);
     return () => {
@@ -87,22 +94,26 @@ function App() {
     };
   }, [currentPageIndex]);
 
+  // 로딩 상태 확인 및 프리렌더링 상태 설정
   useEffect(() => {
     if (status === "loading") {
       setIsPreRendered(true);
-    }
-  }, [status]);
-
-  useEffect(() => {
-    if (status !== "loading" && isPreRendered) {
+      setCurtainClosed(false);
+      return () => {};
+    } else {
       const preRenderTimer = setTimeout(() => {
         setIsPreRendered(false);
-      }, 2000);
+
+        const curtainTimer = setTimeout(() => {
+          setCurtainClosed(true);
+        }, 100);
+
+        return () => clearTimeout(curtainTimer);
+      }, 1000);
 
       return () => clearTimeout(preRenderTimer);
     }
-    return undefined;
-  }, [status, isPreRendered]);
+  }, [status]);
 
   if (isPreRendered) {
     return <Loading />;
@@ -110,6 +121,11 @@ function App() {
 
   return (
     <div {...swipeHandlers} className="app-container">
+      {location.pathname === "/" && (
+        <div
+          className={`curtain ${curtainClosed ? "curtain-closed" : ""}`}
+        ></div>
+      )}
       <Header />
       {location.pathname !== "/" ? <Navigation /> : null}
       <TransitionGroup className="page-wrapper bg-mainBg">
