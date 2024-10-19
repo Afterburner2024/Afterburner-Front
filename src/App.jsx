@@ -34,10 +34,18 @@ function App() {
   const status = useSelector(selectStatus);
   const [isPreRendered, setIsPreRendered] = useState(false);
 
-  // Ref to store the throttle status
   const throttleRef = useRef(false);
 
-  // Combined function for both scroll and swipe events
+  useEffect(() => {
+    const currentIndex = routeOrder.findIndex(
+      (route) => route.path === location.pathname,
+    );
+
+    if (currentIndex !== -1) {
+      setCurrentPageIndex(currentIndex);
+    }
+  }, [location.pathname]);
+
   const handlePageChange = (direction) => {
     if (throttleRef.current) return;
 
@@ -58,7 +66,6 @@ function App() {
     }, 1500);
   };
 
-  // Scroll handler
   const handleScroll = (event) => {
     if (event.deltaY > 0) {
       handlePageChange("down");
@@ -67,7 +74,6 @@ function App() {
     }
   };
 
-  // Swipe handlers
   const swipeHandlers = useSwipeable({
     onSwipedUp: () => handlePageChange("down"),
     onSwipedDown: () => handlePageChange("up"),
