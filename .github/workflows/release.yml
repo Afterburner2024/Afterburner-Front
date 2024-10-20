@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: "14"
 
+      - name: Install jq
+        run: sudo apt-get install jq
+
       - name: Get the version from package.json
         id: get_version
         run: |
@@ -25,6 +28,11 @@ jobs:
           NOTES=$(cat package.json | jq -r .releaseNotes)
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "NOTES=$NOTES" >> $GITHUB_ENV
+
+      - name: Debugging environment variables
+        run: |
+          echo "Version: $VERSION"
+          echo "Release Notes: $NOTES"
 
       - name: Create GitHub Release
         id: create_release
