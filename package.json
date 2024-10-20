@@ -1,6 +1,6 @@
 {
   "name": "afterburner-front",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "releaseNotes": "Github action을 이용한 릴리즈 버전 자동관리 적용됨",
   "private": true,
   "dependencies": {
