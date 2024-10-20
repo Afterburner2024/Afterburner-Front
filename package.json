@@ -1,6 +1,7 @@
 {
   "name": "afterburner-front",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "releaseNotes": "Github action을 이용한 릴리즈 버전 자동관리 적용됨",
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
