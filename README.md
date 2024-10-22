@@ -18,6 +18,10 @@
 > **Redux**를 통해 전역 상태 관리를 효율적으로 처리하고 있습니다.<br>
 > 또한, Supabase를 활용해 실시간 데이터 동기화와 통신을 원활하게 처리하여 데이터의 즉각적인 반영이 가능하도록 설계하였습니다.<br>
 
+## 🔥 Architecture
+
+![afterburner-front-user-architecture](https://github.com/user-attachments/assets/fc10cf05-e63b-46d7-89ff-4e8d6164fb4d)
+
 ## 🔥 **Feature**
 
 - **1st Flow**
@@ -178,11 +182,6 @@ AFTERBURNER-FRONT/
 
 - ppudding3861 | 강형석 | [깃허브](https://github.com/ppudding3861)
 
-## 🔥 Architecture
-
-- 유저 페이지
-
-![front-architecture / user](https://github.com/user-attachments/assets/07da9135-dddb-4cf0-b6ca-a0ec7a5bd379)
 
 ## 🔥 Stack
 
