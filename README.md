@@ -1,4 +1,4 @@
-<img src="https://github.com/user-attachments/assets/690b0fa2-6393-4216-87fb-643895455dc0" alt="Afterburner-Logo" width="245" height="auto"><br>
+<img src="https://github.com/user-attachments/assets/a1ed491e-a6f8-4c6c-8ef4-0d2cd6c495da" alt="Afterburner-Logo" width="245" height="auto"><br>
 
 ![React](https://img.shields.io/badge/React-v18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![Redux](https://img.shields.io/badge/Redux-v9.1.2-764ABC?style=for-the-badge&logo=redux&logoColor=white)
@@ -183,4 +183,12 @@ AFTERBURNER-FRONT/
 
 ## 🔥 Stack
 
-<img src="https://github.com/user-attachments/assets/5e740c59-41b1-4b62-9a44-432fbb50ffa2" alt="Stack Image">
+<img src="https://github.com/user-attachments/assets/aa09ee62-ba34-4182-ba44-624394eaf251" alt="VS Code" width="150" height="42">
+<img src="https://github.com/user-attachments/assets/a7f1350b-dfb8-4237-9d99-45f30eaeb279" alt="JavaScript" width="150" height="42">
+<img src="https://github.com/user-attachments/assets/706850e1-df30-4ec9-b227-be226c4e9076" alt="React" width="150" height="42">
+<img src="https://github.com/user-attachments/assets/13a11495-6be9-4344-b5da-f54ba4cff76e" alt="Redux" width="150" height="42">
+<img src="https://github.com/user-attachments/assets/2d7cc200-df4d-484c-937c-5625a2cc91b7" alt="Tailwind CSS" width="150" height="42">
+<img src="https://github.com/user-attachments/assets/ea409869-e1a1-4621-829f-9a881ba39bc6" alt="Storybook" width="150" height="42">
+<img src="https://github.com/user-attachments/assets/ab75815e-708d-4672-8eb8-079c12d06ca4" alt="Netlify" width="150" height="42">
+
+
