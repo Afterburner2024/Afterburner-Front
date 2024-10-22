@@ -22,7 +22,7 @@ const Afterburner = () => {
   return (
     <div
       className="min-h-screen bg-mainBg text-fontWhite flex flex-col items-start justify-center 
-    p-28 sm:p-4"
+    p-28 ml-24 sm:ml-0 sm:p-4"
     >
       {/* 타이틀 및 내용 */}
       <div className="w-full text-left mb-4 sm:mb-1">

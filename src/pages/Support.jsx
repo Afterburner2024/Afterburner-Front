@@ -28,7 +28,7 @@ const Support = () => {
     <div className="min-h-screen bg-mainBg text-fontWhite flex flex-col justify-between">
       <div className="flex flex-grow items-center justify-between p-8 sm:p-4 sm:flex-col sm:justify-center">
         {/* 좌측 콘텐츠 */}
-        <div className="w-1/2 p-28 sm:p-1 sm:w-full">
+        <div className="w-1/2 p-28 ml-24 sm:ml-0 sm:p-1 sm:w-full">
           <h1 className="font-title text-xl-title mb-2 sm:text-xl-title">
             Support
           </h1>

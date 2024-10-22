@@ -16,7 +16,7 @@ const Introduction = () => {
   return (
     <div className="min-h-screen bg-mainBg text-fontWhite flex flex-col justify-between sm:p-1">
       {/* 메인 콘텐츠: 좌측 텍스트, 우측 마스코트 */}
-      <div className="flex flex-grow items-center justify-between p-8 sm:p-1 sm:flex-col sm:justify-center">
+      <div className="flex flex-grow items-center justify-between ml-24 p-8 sm:ml-0 sm:p-1 sm:flex-col sm:justify-center">
         {/* 좌측 텍스트 */}
         <div className="w-1/2 p-28 sm:w-full sm:p-4">
           <h1 className="font-title text-xl-title mb-6">Introduction</h1>
