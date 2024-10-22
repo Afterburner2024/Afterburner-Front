@@ -1,4 +1,4 @@
-# Afterburner-Front
+<img src="https://github.com/user-attachments/assets/690b0fa2-6393-4216-87fb-643895455dc0" alt="Afterburner-Logo" width="245" height="auto"><br>
 
 ![React](https://img.shields.io/badge/React-v18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![Redux](https://img.shields.io/badge/Redux-v9.1.2-764ABC?style=for-the-badge&logo=redux&logoColor=white)
@@ -10,8 +10,6 @@
 > Afterburner-Frontend 협업가이드
 
 ## 🔥 **프로젝트소개 (Introduction)**
-
-<img src="https://github.com/user-attachments/assets/1dd89ce1-9f85-44a4-ad63-5e6192950fad" alt="Afterburner-Logo" width="600" height="auto"><br>
 
 > 우리 어플리케이션은 사용자 친화적인 UI와 관리 편의성을 중점으로 개발된 웹 플랫폼입니다.<br>
 > 프론트엔드에서는 **React**를 기반으로 하여 빠른 렌더링과 컴포넌트 재사용성을 극대화하였으며,<br>
@@ -185,6 +183,4 @@ AFTERBURNER-FRONT/
 
 ## 🔥 Stack
 
-- React: 사용자 인터페이스 개발에 사용되는 자바스크립트 라이브러리로, 컴포넌트 기반으로 구성되어 효율적인 페이지 렌더링을 지원합니다.
-
-- Redux: 전역 상태 관리를 책임지는 라이브러리로, 어플리케이션 상태를 체계적으로 관리하여 복잡한 데이터 흐름을 단순화합니다.
+<img src="https://github.com/user-attachments/assets/5e740c59-41b1-4b62-9a44-432fbb50ffa2" alt="Stack Image">
