@@ -1,7 +1,7 @@
 {
   "name": "afterburner-front",
-  "version": "1.1.0",
-  "releaseNotes": "Github action을 이용한 릴리즈 버전 자동관리 적용됨",
+  "version": "1.1.1",
+  "releaseNotes": "Introduction, Support, Afterburner 간격조정 / 로고 변경",
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
