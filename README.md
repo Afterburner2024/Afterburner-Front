@@ -165,13 +165,6 @@ AFTERBURNER-FRONT/
 └── tailwind.config.js             # TailwindCSS 설정 파일
 ```
 
-## 🔥 **테스트 (Testing)**
-
-- **단위 테스트 (Unit Tests)**: Jest와 React Testing Library를 사용해 컴포넌트를 테스트합니다.
-  ```bash
-  npm test
-  ```
-
 ## 🔥 **Contributor**
 
 ### 1st Contributor
