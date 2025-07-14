@@ -3,31 +3,43 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import {
+  House,
+  CalendarCheck,
+  Handshake,
+  NotebookPen,
+  SquareCode,
+} from "lucide-react";
 
 const sidebarNavItems = [
   {
     id: "home",
     title: "Home",
+    icon: <House className="w-4 h-4" />,
     href: "/",
   },
   {
     id: "attendance",
     title: "출석 게시판",
+    icon: <CalendarCheck className="w-4 h-4" />,
     href: "/attendance",
   },
   {
     id: "recruitment",
     title: "팀원모집",
+    icon: <Handshake className="w-4 h-4" />,
     href: "/recruitment",
   },
   {
     id: "project-log",
     title: "프로젝트 일지",
+    icon: <NotebookPen className="w-4 h-4" />,
     href: "/project-log",
   },
   {
     id: "afterburner",
     title: "Afterburner",
+    icon: <SquareCode className="w-4 h-4" />,
     href: "/afterburner",
   },
 ];
@@ -37,6 +49,7 @@ interface SideNavProps extends React.HTMLAttributes<HTMLElement> {
     id: string;
     href: string;
     title: string;
+    icon: React.ReactNode;
   }[];
 }
 
@@ -66,7 +79,10 @@ export function SideNav({
               : "transparent"
           )}
         >
-          {item.title}
+          <div className="flex items-center gap-2">
+            {item.icon}
+            <span>{item.title}</span>
+          </div>
         </Link>
       ))}
     </nav>
