@@ -36,13 +36,13 @@ export function MainLayout({ children }: MainLayoutProps) {
         {/* 모바일 메뉴 */}
         <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
           <SheetContent side="left" className="w-[240px] p-0">
-            <SheetHeader className="p-4 border-b">
+            <SheetHeader className="sr-only">
               <SheetTitle>내비게이션</SheetTitle>
               <SheetDescription>
                 페이지를 탐색할 수 있는 메뉴입니다.
               </SheetDescription>
             </SheetHeader>
-            <ScrollArea className="h-[calc(100%-80px)] py-6 pr-4">
+            <ScrollArea className="h-full py-6 pr-4">
               <SideNav onItemClick={closeMobileMenu} />
             </ScrollArea>
           </SheetContent>

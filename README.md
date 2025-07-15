@@ -1,87 +1,161 @@
 <img src="https://github.com/user-attachments/assets/a1ed491e-a6f8-4c6c-8ef4-0d2cd6c495da" alt="Afterburner-Logo" width="245" height="auto"><br>
 
+![Next.js](https://img.shields.io/badge/Next.js-v15.3.5-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![React](https://img.shields.io/badge/React-v18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=white)
-![Redux](https://img.shields.io/badge/Redux-v9.1.2-764ABC?style=for-the-badge&logo=redux&logoColor=white)
-![ESLint](https://img.shields.io/badge/ESLint-v9.12.0-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v3.4.13-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-v4.9.5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v3.4.14-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![shadcn/ui](https://img.shields.io/badge/shadcn/ui-000000?style=for-the-badge&logo=shadcnui&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-v8.57.1-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
 
-> Afterburner-Frontend 협업가이드
+> 국비교육 수료생을 위한 커뮤니티 플랫폼 - Afterburner Frontend
 
-## 🔥 **프로젝트소개 (Introduction)**
+## 🔥 **프로젝트 소개 (Introduction)**
 
-> 우리 어플리케이션은 사용자 친화적인 UI와 관리 편의성을 중점으로 개발된 웹 플랫폼입니다.<br>
-> 프론트엔드에서는 **React**를 기반으로 하여 빠른 렌더링과 컴포넌트 재사용성을 극대화하였으며,<br>
-> **Redux**를 통해 전역 상태 관리를 효율적으로 처리하고 있습니다.<br>
-> 또한, Supabase를 활용해 실시간 데이터 동기화와 통신을 원활하게 처리하여 데이터의 즉각적인 반영이 가능하도록 설계하였습니다.<br>
+> Afterburner는 국비교육 수료생들을 위한 커뮤니티 플랫폼입니다.<br> > **Next.js 15**를 기반으로 한 현대적인 웹 애플리케이션으로, **TypeScript**로 타입 안정성을 확보하고<br> > **shadcn/ui** 컴포넌트 라이브러리를 활용하여 일관되고 접근성 높은 UI를 제공합니다.<br> > **App Router**를 사용한 파일 기반 라우팅과 서버 컴포넌트를 통해 최적화된 성능을 구현했습니다.<br>
 
-## 🔥 Architecture
+## 🔥 **주요 기능 (Features)**
 
-![afterburner-front-user-architecture](https://github.com/user-attachments/assets/fc10cf05-e63b-46d7-89ff-4e8d6164fb4d)
+### 🎯 **커뮤니티 기능**
 
-## 🔥 **Feature**
+- **출석 게시판**: 매일 출석 체크와 커뮤니티 소통
+- **팀원 모집**: 프로젝트 팀원 모집 및 협업
+- **프로젝트 일지**: 개발 경험과 학습 기록 공유
+- **Afterburner 소개**: 플랫폼 정보 및 참여자 프로필
 
-- **1st Flow**
+### 🎨 **사용자 경험**
 
-  - 애플리케이션 소개 페이지: 프로젝트 애플리케이션에 대한 비전과 기능설명, 설치링크등을 제공
+- **다크/라이트 테마**: 사용자 환경에 맞는 테마 전환
+- **반응형 디자인**: 모바일과 데스크톱 최적화
+- **접근성**: WCAG 가이드라인 준수
+- **모바일 네비게이션**: 터치 친화적인 사이드 메뉴
 
-  - 어드민 페이지: 어드민 페이지에서는 다양한 데이터 처리와 대시보드 UI를 제공하여 관리자들이 효율적으로 작업을 처리할 수 있도록 설계
+## 🔥 **기술 스택 (Tech Stack)**
 
-- **2nd Flow**
+### **Frontend**
 
-  - 기획 예정입니다.
+- **Next.js 15**: App Router, Server Components, Image Optimization
+- **React 18**: Concurrent Features, Suspense, Error Boundaries
+- **TypeScript**: 정적 타입 검사 및 개발 생산성 향상
+- **Tailwind CSS**: 유틸리티 우선 CSS 프레임워크
+- **shadcn/ui**: Radix UI 기반 컴포넌트 라이브러리
+
+### **개발 도구**
+
+- **ESLint**: TypeScript 및 Next.js 규칙 적용
+- **Prettier**: 코드 포매팅 자동화
+- **Lucide React**: 일관된 아이콘 시스템
 
 ## 🔥 **시작하기 (Getting Started)**
+
+### 요구사항
+
+- Node.js 18.0.0 이상
+- npm 또는 yarn 패키지 매니저
 
 ### 설치 방법
 
 1. **리포지토리 클론:**
+
    ```bash
    git clone https://github.com/Afterburner2024/Afterburner-Front.git
    ```
+
 2. **프로젝트 디렉토리로 이동:**
+
    ```bash
-   cd afterburner-front
+   cd Afterburner-Front
    ```
+
 3. **의존성 설치:**
+
    ```bash
    npm install
    ```
+
 4. **개발 서버 실행:**
+
    ```bash
-   npm start
+   npm run dev
    ```
+
 5. **애플리케이션 접속:**
    브라우저에서 `http://localhost:3000`에 접속하여 확인합니다.
 
+### 빌드 및 배포
+
+```bash
+# 프로덕션 빌드
+npm run build
+
+# 프로덕션 서버 실행
+npm run start
+
+# 코드 검사
+npm run lint
+```
+
+## 🔥 **프로젝트 구조 (Project Structure)**
+
+```bash
+Afterburner-Front/
+├── public/                        # 정적 파일 (이미지, 아이콘 등)
+│   ├── images/                    # 프로젝트 이미지 파일들
+│   ├── favicon.ico                # 파비콘
+│   └── manifest.json              # PWA 매니페스트
+├── src/                           # 소스 코드
+│   ├── app/                       # Next.js App Router 디렉토리
+│   │   ├── globals.css            # 전역 스타일
+│   │   ├── layout.tsx             # 루트 레이아웃
+│   │   ├── page.tsx               # 홈 페이지
+│   │   ├── attendance/            # 출석 게시판 페이지
+│   │   ├── recruitment/           # 팀원 모집 페이지
+│   │   ├── project-log/           # 프로젝트 일지 페이지
+│   │   └── afterburner/           # Afterburner 소개 페이지
+│   ├── components/                # 재사용 컴포넌트
+│   │   ├── ui/                    # shadcn/ui 기본 컴포넌트
+│   │   ├── layouts/               # 레이아웃 컴포넌트
+│   │   ├── header.tsx             # 헤더 컴포넌트
+│   │   ├── footer.tsx             # 푸터 컴포넌트
+│   │   └── side-nav.tsx           # 사이드 네비게이션
+│   ├── lib/                       # 유틸리티 함수
+│   │   └── utils.ts               # 공통 유틸리티
+│   └── assets/                    # 정적 자산
+│       └── css/                   # 추가 스타일 파일
+├── components.json                # shadcn/ui 설정
+├── tailwind.config.ts             # Tailwind CSS 설정
+├── next.config.js                 # Next.js 설정
+├── tsconfig.json                  # TypeScript 설정
+├── eslint.config.mjs              # ESLint 설정
+└── package.json                   # 프로젝트 메타데이터 및 의존성
+```
+
+## 🔥 **개발 가이드 (Development Guide)**
+
+### 컴포넌트 개발
+
+- **shadcn/ui** 컴포넌트를 우선 사용
+- 커스텀 컴포넌트는 `src/components/` 에 위치
+- TypeScript 인터페이스 정의 필수
+
+### 스타일링
+
+- **Tailwind CSS** 유틸리티 클래스 사용
+- 커스텀 스타일은 `src/assets/css/` 에 위치
+- 다크 테마 지원을 위한 CSS 변수 활용
+
+### 라우팅
+
+- **App Router** 파일 기반 라우팅 사용
+- 페이지는 `src/app/` 디렉토리에 위치
+- 레이아웃 컴포넌트로 공통 UI 관리
+
 ## 🔥 **브랜치 전략 (Branch Strategy)**
-
-### 버전 관리 규칙
-> 프로젝트 버전 관리는 **Github Actions**으로 Pipeline이 구축되어 있습니다.<br />
-> 변경 내역을 프로젝트 **package.json**에서 `version`, `releaseNotes` 에 내용을 추가하여<br />
-> 적용할수 있습니다.
-
-- "version"
-  - `주 버전` . `부 버전` . `수정 버전` EX) 1.0.0
-    
-  - 주 버전
-    - 주 버전은 하위 호환성이 깨지는 큰 변경 사항이 있을 때 업데이트됩니다.
-      
-  - 부 버전
-    - 부 버전은 하위 호환성을 유지하는 새로운 기능이 추가되었을 때 업데이트됩니다.
-      
-  - 수정 버전
-    - 수정 버전은 버그 수정과 같은 사소한 변경 사항이 있을 때 업데이트됩니다.
-
-- "releaseNotes"
-  - 릴리즈 변경내역을 기술합니다. 
 
 ### 브랜치 네이밍 규칙
 
 - `main` : 안정적인 릴리스 브랜치
 - `develop` : 기능들이 병합되는 개발 브랜치
-- `feature/{feature-name}` : 새로운 기능을 위한 브랜치
+- `feat/{feature-name}` : 새로운 기능을 위한 브랜치
 - `fix/{issue-name}` : 버그 수정을 위한 브랜치
 
 ### 커밋 메시지 규칙
@@ -91,97 +165,73 @@
   - `feat` : 새로운 기능 추가
   - `fix` : 버그 수정
   - `refactor` : 코드 리팩토링
-  - `style` : 코드 스타일 수정 (공백, 세미콜론 등)
+  - `style` : 코드 스타일 수정
   - `docs` : 문서 관련 변경
+  - `chore` : 기타 작업
 
-## 🔥 **코드 스타일 및 품질 (Code Style & Quality)**
+## 🔥 **코드 품질 (Code Quality)**
 
-> 본 프로젝트는 네이버 ESLint 가이드를 이용합니다
+### ESLint 설정
 
-- **ESLint**: Linting 도구로, 코드 품질을 향상시키고 일관성을 유지하기 위해 코드 스타일을 검사합니다.
+- Next.js 및 TypeScript 규칙 적용
+- React Hooks 규칙 포함
+- 접근성 규칙 적용
 
-  - 프로젝트에서는 **eslint-config-naver** 설정을 기반으로 네이버의 코드 스타일 가이드를 준수하고 있습니다.
-  - 주요 규칙:
-    - **모듈화**: 모든 파일은 적절히 모듈화되어 있어야 하며, 불필요한 의존성을 피해야 합니다.
-    - **코드 간결성**: 불필요한 주석 및 공백을 제거하고 코드를 간결하게 유지합니다.
-  - Lint를 실행하여 코드 검사를 진행하려면 다음 명령어를 사용하세요:
-    ```bash
-    npm run lint
-    ```
+### TypeScript 설정
 
-- **Prettier**: 코드 포매팅 도구로, 모든 코드의 스타일을 일관되게 유지하는 데 사용됩니다.
+- 엄격한 타입 검사 활성화
+- 절대 경로 import 지원 (`@/` 접두사)
 
-  - 프로젝트에서는 **Prettier**와 **ESLint**를 함께 사용하여 코드 포매팅을 자동으로 적용합니다.
-  - 파일을 저장할 때 자동으로 포매팅이 적용되도록 다음과 같은 VS Code 설정을 활성화하세요 (setting.json):
+### VS Code 설정 권장
 
-    ```json
-    {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true,
-      "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-      }
-    }
-    ```
-
-  - 수동으로 모든 파일을 포맷하려면 다음 명령어를 사용하세요:
-    ```bash
-    npx prettier --write .
-    ```
-
-## 🔥 **Tailwind CSS 사용법 (Tailwind CSS)**
-
-- 자세한 Tailwind CSS 사용법과 스타일 가이드는 공식 문서를 참고해 주세요:
-- [Tailwind Docs](https://tailwindcss.com/docs/installation)
-
-## 🔥 **폴더 구조 (Folder Structure)**
-
-```bash
-AFTERBURNER-FRONT/
-├── node_modules/                  # 프로젝트에서 사용하는 모든 npm 패키지가 설치되는 디렉토리
-├── public/                        # 정적 파일들이 위치하는 디렉토리 (favicon, index.html 등)
-├── src/                           # 소스 코드가 담긴 디렉토리
-│   ├── actions/                   # Redux 액션을 정의한 파일들이 있는 디렉토리
-│   │   └── dataActions.js         # 데이터를 다루는 액션들이 정의된 파일
-│   ├── app/                       # 애플리케이션 전역 상태 관련 파일들이 위치한 디렉토리
-│   │   ├── store.js               # Redux 스토어 설정 파일
-│   ├── assets/                    # 이미지, 스타일 파일 등의 정적 자원이 포함된 디렉토리
-│   ├── components/                # 재사용 가능한 컴포넌트들이 위치한 디렉토리
-│   ├── features/                  # 각 기능(feature)에 대한 상태 관리를 담당하는 디렉토리
-│   │   └── dataSlice.js           # 데이터를 다루는 Redux 슬라이스가 정의된 파일
-│   ├── utils/                     # 유틸리티 함수 또는 설정 파일들이 포함된 디렉토리
-│   │   └── supabase.js            # Supabase와의 통신을 설정하는 파일
-│   ├── App.js                     # React 애플리케이션의 루트 컴포넌트
-│   ├── index.js                   # ReactDOM을 사용해 애플리케이션을 렌더링하는 진입점 파일
-│   └── postcss.config.js          # PostCSS 설정 파일 (TailwindCSS와 함께 사용)
-├── .env.local                     # 환경 변수를 설정하는 파일
-├── .eslintrc.json                 # ESLint 설정 파일
-├── .gitignore                     # Git에서 추적하지 않을 파일 목록
-├── eslint.config.mjs              # ESLint의 추가 설정 파일
-├── netlify.toml                   # Netlify 배포 설정 파일
-├── package-lock.json              # 프로젝트에서 설치된 npm 패키지 버전 잠금 파일
-├── package.json                   # 프로젝트 정보 및 npm 스크립트, 의존성 목록 파일
-├── README.md                      # 프로젝트에 대한 설명 및 설치 가이드가 포함된 파일
-└── tailwind.config.js             # TailwindCSS 설정 파일
+```json
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "typescript.preferences.importModuleSpecifier": "relative"
+}
 ```
+
+## 🔥 **향후 계획 (Roadmap)**
+
+### 개발 예정 기능
+
+- [ ] 사용자 인증 시스템 (NextAuth.js)
+- [ ] 데이터베이스 연동 (Supabase)
+- [ ] 실시간 댓글 시스템
+- [ ] 출석 통계 및 스트릭
+- [ ] 프로필 커스터마이징
+- [ ] 알림 시스템
+
+### 기술적 개선
+
+- [ ] PWA 구현
+- [ ] 이미지 최적화
+- [ ] 성능 모니터링
+- [ ] 테스트 자동화
 
 ## 🔥 **Contributor**
 
 ### 1st Contributor
 
 - stjoo0925 | 주순태 | [깃허브](https://github.com/Stjoo0925)
-
 - ppudding3861 | 강형석 | [깃허브](https://github.com/ppudding3861)
 
+## 🔥 **라이센스 (License)**
 
-## 🔥 Stack
+이 프로젝트는 MIT 라이센스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
 
-<img src="https://github.com/user-attachments/assets/aa09ee62-ba34-4182-ba44-624394eaf251" alt="VS Code" width="150" height="42">
-<img src="https://github.com/user-attachments/assets/a7f1350b-dfb8-4237-9d99-45f30eaeb279" alt="JavaScript" width="150" height="42">
-<img src="https://github.com/user-attachments/assets/706850e1-df30-4ec9-b227-be226c4e9076" alt="React" width="150" height="42">
-<img src="https://github.com/user-attachments/assets/13a11495-6be9-4344-b5da-f54ba4cff76e" alt="Redux" width="150" height="42">
-<img src="https://github.com/user-attachments/assets/2d7cc200-df4d-484c-937c-5625a2cc91b7" alt="Tailwind CSS" width="150" height="42">
-<img src="https://github.com/user-attachments/assets/ea409869-e1a1-4621-829f-9a881ba39bc6" alt="Storybook" width="150" height="42">
-<img src="https://github.com/user-attachments/assets/ab75815e-708d-4672-8eb8-079c12d06ca4" alt="Netlify" width="150" height="42">
+---
 
+## 🔥 **기술 스택 이미지**
 
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/aa09ee62-ba34-4182-ba44-624394eaf251" alt="VS Code" width="150" height="42">
+  <img src="https://github.com/user-attachments/assets/706850e1-df30-4ec9-b227-be226c4e9076" alt="React" width="150" height="42">
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" width="150" height="42">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" width="150" height="42">
+  <img src="https://github.com/user-attachments/assets/2d7cc200-df4d-484c-937c-5625a2cc91b7" alt="Tailwind CSS" width="150" height="42">
+  <img src="https://img.shields.io/badge/shadcn/ui-000000?style=for-the-badge&logo=shadcnui&logoColor=white" alt="shadcn/ui" width="150" height="42">
+</div>
