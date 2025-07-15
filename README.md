@@ -11,7 +11,10 @@
 
 ## 🔥 **프로젝트 소개 (Introduction)**
 
-> Afterburner는 국비교육 수료생들을 위한 커뮤니티 플랫폼입니다.<br> > **Next.js 15**를 기반으로 한 현대적인 웹 애플리케이션으로, **TypeScript**로 타입 안정성을 확보하고<br> > **shadcn/ui** 컴포넌트 라이브러리를 활용하여 일관되고 접근성 높은 UI를 제공합니다.<br> > **App Router**를 사용한 파일 기반 라우팅과 서버 컴포넌트를 통해 최적화된 성능을 구현했습니다.<br>
+> Afterburner는 국비교육 수료생들을 위한 커뮤니티 플랫폼입니다.<br>
+> **Next.js 15**를 기반으로 한 현대적인 웹 애플리케이션으로, **TypeScript**로 타입 안정성을 확보하고<br>
+> **shadcn/ui** 컴포넌트 라이브러리를 활용하여 일관되고 접근성 높은 UI를 제공합니다.<br>
+> **App Router**를 사용한 파일 기반 라우팅과 서버 컴포넌트를 통해 최적화된 성능을 구현했습니다.<br>
 
 ## 🔥 **주요 기능 (Features)**
 
@@ -224,14 +227,3 @@ Afterburner-Front/
 이 프로젝트는 MIT 라이센스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
 
 ---
-
-## 🔥 **기술 스택 이미지**
-
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/aa09ee62-ba34-4182-ba44-624394eaf251" alt="VS Code" width="150" height="42">
-  <img src="https://github.com/user-attachments/assets/706850e1-df30-4ec9-b227-be226c4e9076" alt="React" width="150" height="42">
-  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" width="150" height="42">
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" width="150" height="42">
-  <img src="https://github.com/user-attachments/assets/2d7cc200-df4d-484c-937c-5625a2cc91b7" alt="Tailwind CSS" width="150" height="42">
-  <img src="https://img.shields.io/badge/shadcn/ui-000000?style=for-the-badge&logo=shadcnui&logoColor=white" alt="shadcn/ui" width="150" height="42">
-</div>
