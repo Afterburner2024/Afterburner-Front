@@ -1,72 +1,45 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MainLayout } from "@/components/layouts/main-layout";
-import Calendar from "react-calendar";
-import { format } from "date-fns";
-import { ko } from "date-fns/locale";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import "react-calendar/dist/Calendar.css";
+import Calendar from "react-calendar";
+import { format } from "date-fns";
+import { ko } from "date-fns/locale";
+
+// Calendar CSS import
 import "@/assets/css/calendar.css";
 
-// TODO: 기능 구현 목록
-// 1. 로그인 연동
-//    - NextAuth.js를 사용한 GitHub OAuth 구현
-//    - 사용자 세션 관리
-//    - 로그인한 사용자만 댓글 작성 가능하도록 제한
-//
-// 2. 댓글 DB 연동
-//    - Supabase 테이블 설계 (users, comments)
-//    - 댓글 CRUD 기능 구현
-//    - 실시간 업데이트 구현
-//
-// 3. 날짜별 댓글 필터링
-//    - 선택된 날짜의 댓글만 표시
-//    - 날짜별 댓글 개수 표시
-//    - 달력에 댓글 있는 날짜 하이라이트
-//
-// 4. 출석 통계
-//    - 월별/주별 출석률 차트
-//    - 개인별 출석 현황
-//    - 전체 출석 순위
-//
-// 5. 출석 스트릭
-//    - GitHub 스타일의 연속 출석 표시
-//    - 최대/현재 스트릭 표시
-//    - 스트릭 달성 시 특별 이펙트
-
-type Comment = {
+interface Comment {
   id: number;
-  user: {
-    name: string;
-    image: string;
-  };
+  user: string;
+  avatar?: string;
   content: string;
-  date: string;
-};
+  timestamp: Date;
+}
 
-// 임시 댓글 데이터
 const initialComments: Comment[] = [
   {
     id: 1,
-    user: {
-      name: "주순태",
-      image: "https://github.com/Stjoo0925.png",
-    },
-    content: "오늘도 화이팅! 👋",
-    date: "2024-03-15T10:00:00",
+    user: "김개발",
+    content: "오늘도 화이팅! 🔥",
+    timestamp: new Date("2024-01-15T09:30:00"),
   },
   {
     id: 2,
-    user: {
-      name: "강형석",
-      image: "https://github.com/ppudding3861.png",
-    },
-    content: "출석체크 완료! 😊",
-    date: "2024-03-15T09:30:00",
+    user: "박코딩",
+    avatar: "/api/placeholder/32/32",
+    content: "새로운 프로젝트 시작했어요! 같이 해요~",
+    timestamp: new Date("2024-01-15T10:15:00"),
+  },
+  {
+    id: 3,
+    user: "이프론트",
+    content: "리액트 공부 중입니다. 질문있어요!",
+    timestamp: new Date("2024-01-15T11:00:00"),
   },
 ];
 
@@ -74,22 +47,73 @@ export default function AttendancePage() {
   const [date, setDate] = useState<Date>(new Date());
   const [comments, setComments] = useState<Comment[]>(initialComments);
   const [newComment, setNewComment] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
 
-  const handleAddComment = () => {
+  // 화면 크기 감지
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const handleSubmit = () => {
     if (!newComment.trim()) return;
 
     const comment: Comment = {
-      id: comments.length + 1,
-      user: {
-        name: "주순태", // 실제로는 로그인한 사용자 정보를 사용
-        image: "https://github.com/Stjoo0925.png",
-      },
+      id: Date.now(),
+      user: "익명",
       content: newComment,
-      date: new Date().toISOString(),
+      timestamp: new Date(),
     };
 
     setComments([comment, ...comments]);
     setNewComment("");
+  };
+
+  // 모바일에서 "일" 제거하는 formatDay 함수
+  const formatDay = (locale: string | undefined, date: Date) => {
+    if (isMobile) {
+      return format(date, "d", { locale: ko }); // 숫자만
+    }
+    return format(date, "d일", { locale: ko }); // 데스크톱에서는 "일" 포함
+  };
+
+  // 요일 표시 포맷팅 (모바일에서 짧게)
+  const formatShortWeekday = (locale: string | undefined, date: Date) => {
+    if (isMobile) {
+      const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+      return weekdays[date.getDay()];
+    }
+    return format(date, "eee", { locale: ko }); // 월, 화, 수...
+  };
+
+  // 월/년 네비게이션 라벨 포맷팅
+  const formatMonthYear = (locale: string | undefined, date: Date) => {
+    if (isMobile) {
+      return format(date, "yy.M", { locale: ko }); // 24.1 형태
+    }
+    return format(date, "yyyy년 M월", { locale: ko }); // 2024년 1월 형태
+  };
+
+  // 월 선택기 포맷팅
+  const formatMonth = (locale: string | undefined, date: Date) => {
+    if (isMobile) {
+      return format(date, "M", { locale: ko }); // 1, 2, 3...
+    }
+    return format(date, "M월", { locale: ko }); // 1월, 2월, 3월...
+  };
+
+  // 년 선택기 포맷팅
+  const formatYear = (locale: string | undefined, date: Date) => {
+    if (isMobile) {
+      return format(date, "yy", { locale: ko }); // 24, 25...
+    }
+    return format(date, "yyyy", { locale: ko }); // 2024, 2025...
   };
 
   return (
@@ -118,6 +142,11 @@ export default function AttendancePage() {
                 value={date}
                 locale="ko"
                 className="w-full border-none calendar-modern"
+                formatDay={formatDay}
+                formatShortWeekday={formatShortWeekday}
+                formatMonthYear={formatMonthYear}
+                formatMonth={formatMonth}
+                formatYear={formatYear}
               />
             </Card>
           </section>
@@ -129,25 +158,18 @@ export default function AttendancePage() {
             </h2>
 
             {/* 댓글 입력 */}
-            <Card className="p-6 shadow-lg bg-white dark:bg-gray-800 hover:shadow-xl transition-shadow duration-300">
+            <Card className="p-6 bg-white dark:bg-gray-800">
               <div className="space-y-4">
-                <div className="relative">
-                  <Textarea
-                    placeholder="오늘의 기분은 어때요? 따뜻한 한마디 남겨주세요... ✨"
-                    value={newComment}
-                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                      setNewComment(e.target.value)
-                    }
-                    className="min-h-[120px] resize-none border-2 border-gray-200 dark:border-gray-700 focus:border-blue-500 transition-colors duration-300"
-                  />
-                  <div className="absolute bottom-3 right-3 text-sm text-gray-400">
-                    {newComment.length}/200
-                  </div>
-                </div>
+                <Textarea
+                  placeholder="오늘 하루는 어떠셨나요? 자유롭게 이야기해보세요! 💭"
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  className="min-h-[100px] resize-none"
+                />
                 <div className="flex justify-end">
                   <Button
-                    onClick={handleAddComment}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 font-medium transition-colors duration-300"
+                    onClick={handleSubmit}
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-6"
                   >
                     등록하기
                   </Button>
@@ -160,30 +182,30 @@ export default function AttendancePage() {
               {comments.map((comment) => (
                 <Card
                   key={comment.id}
-                  className="p-6 shadow-md bg-white dark:bg-gray-800 hover:shadow-lg transition-shadow duration-300"
+                  className="p-4 bg-white dark:bg-gray-800 hover:shadow-md transition-shadow"
                 >
-                  <div className="flex items-start space-x-4">
-                    <Avatar className="ring-2 ring-gray-200 dark:ring-gray-700">
-                      <AvatarImage
-                        src={comment.user.image}
-                        alt={comment.user.name}
-                      />
-                      <AvatarFallback className="bg-blue-600 text-white">
-                        {comment.user.name[0]}
-                      </AvatarFallback>
+                  <div className="flex items-start space-x-3">
+                    <Avatar className="w-10 h-10 flex-shrink-0">
+                      {comment.avatar ? (
+                        <AvatarImage src={comment.avatar} alt={comment.user} />
+                      ) : (
+                        <AvatarFallback className="bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
+                          {comment.user.charAt(0)}
+                        </AvatarFallback>
+                      )}
                     </Avatar>
-                    <div className="flex-1 space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="font-semibold text-gray-900 dark:text-white">
-                          {comment.user.name}
-                        </span>
-                        <span className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
-                          {format(new Date(comment.date), "PPP p", {
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between mb-2">
+                        <h4 className="text-sm font-semibold text-gray-900 dark:text-white">
+                          {comment.user}
+                        </h4>
+                        <time className="text-xs text-gray-500 dark:text-gray-400">
+                          {format(comment.timestamp, "MM월 dd일 HH:mm", {
                             locale: ko,
                           })}
-                        </span>
+                        </time>
                       </div>
-                      <p className="text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg">
+                      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
                         {comment.content}
                       </p>
                     </div>
@@ -192,6 +214,15 @@ export default function AttendancePage() {
               ))}
             </div>
           </section>
+
+          {/* TODO: 향후 개발 예정 기능들 */}
+          {/* 
+          - 로그인 연동 (NextAuth.js with GitHub OAuth)
+          - 데이터베이스 연동 (Supabase) 
+          - 날짜별 댓글 필터링
+          - 출석 통계 표시
+          - 출석 스트릭 기능
+          */}
         </div>
       </div>
     </MainLayout>
