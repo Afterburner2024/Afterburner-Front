@@ -88,4 +88,15 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* 모바일 브라우저 주소바 대응 */
+  html {
+    height: -webkit-fill-available;
+  }
+
+  body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    min-height: 100svh;
+  }
 }

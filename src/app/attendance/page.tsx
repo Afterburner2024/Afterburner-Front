@@ -94,7 +94,7 @@ export default function AttendancePage() {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 select-none">
+      <div className="min-h-svh bg-gray-50 dark:bg-gray-900 select-none">
         <div className="flex flex-col space-y-8 p-6">
           {/* 헤더 섹션 */}
           <section className="flex flex-col items-center space-y-4 pt-8">

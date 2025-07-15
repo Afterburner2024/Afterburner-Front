@@ -51,11 +51,13 @@ interface SideNavProps extends React.HTMLAttributes<HTMLElement> {
     title: string;
     icon: React.ReactNode;
   }[];
+  onItemClick?: () => void;
 }
 
 export function SideNav({
   className,
   items = sidebarNavItems,
+  onItemClick,
   ...props
 }: SideNavProps) {
   const pathname = usePathname();
@@ -72,6 +74,7 @@ export function SideNav({
         <Link
           key={item.id}
           href={item.href}
+          onClick={onItemClick}
           className={cn(
             "flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
             pathname === item.href

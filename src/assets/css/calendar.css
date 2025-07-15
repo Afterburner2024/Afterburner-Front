@@ -224,10 +224,36 @@
 
   .react-calendar__navigation button {
     font-size: 14px !important;
+    min-width: 36px !important;
+    padding: 8px !important;
   }
 
   .react-calendar__tile {
-    padding: 6px !important;
+    padding: 8px !important;
     font-size: 13px !important;
+    min-height: 36px !important;
+  }
+
+  .react-calendar__month-view__weekdays__weekday {
+    padding: 8px 4px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* 모바일 브라우저 주소바 대응 */
+@supports (height: 100svh) {
+  .calendar-container {
+    height: calc(100svh - 200px);
+  }
+}
+
+/* 터치 디바이스 최적화 */
+@media (hover: none) and (pointer: coarse) {
+  .react-calendar__tile {
+    touch-action: manipulation;
+  }
+
+  .react-calendar__navigation button {
+    touch-action: manipulation;
   }
 }
