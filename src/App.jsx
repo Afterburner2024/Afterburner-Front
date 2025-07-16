@@ -8,6 +8,7 @@ import Afterburner from "./pages/Afterburner";
 import AttendancePage from "./pages/attendance";
 import RecruitmentPage from "./pages/recruitment";
 import ProjectLogPage from "./pages/project-log";
+import "animate.css";
 
 function App() {
   return (

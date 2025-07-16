@@ -26,7 +26,7 @@ export function Header({ onMobileMenuOpen }: HeaderProps) {
     ? theme === "dark"
       ? "/images/afterburner-logo.png"
       : "/images/afterburner-logo-dark.png"
-    : "/images/afterburner-logo-dark.png"; // 기본값
+    : "/images/afterburner-logo-dark.png";
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
