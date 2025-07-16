@@ -80,33 +80,36 @@ export function RecruitmentCard({ post }: RecruitmentCardProps) {
         </h3>
 
         {/* 내용 */}
-        <p className="text-sm text-gray-600 dark:text-[#a0a0a0] mb-4 line-clamp-3 h-16">
+        <p className="text-sm text-gray-600 dark:text-[#a0a0a0] mb-4 line-clamp-4 flex-1">
           {post.content}
         </p>
 
-        {/* 기술 스택 */}
-        <div className="mb-4 h-16 overflow-hidden">
-          <div className="flex flex-wrap gap-1 content-start">
-            {post.stacks.slice(0, 6).map((stack, index) => (
-              <div
-                key={index}
-                className={`text-xs px-2 py-1 rounded-md font-medium ${getStackColor(
-                  stack
-                )}`}
-              >
-                {stack}
-              </div>
-            ))}
-            {post.stacks.length > 6 && (
-              <div className="text-xs px-2 py-1 rounded-md font-medium bg-gray-600 text-white">
-                +{post.stacks.length - 6}
-              </div>
-            )}
-          </div>
-        </div>
-
         {/* 하단 영역 */}
-        <div className="mt-auto space-y-3">
+        <div className="space-y-4">
+          {/* 기술 스택 */}
+          <div className="min-h-[48px]">
+            <div className="flex flex-wrap gap-1 content-start">
+              {post.stacks.slice(0, 6).map((stack, index) => (
+                <div
+                  key={index}
+                  className={`text-xs px-2 py-1 rounded-md font-medium ${getStackColor(
+                    stack
+                  )}`}
+                  style={{ minHeight: 24 }}
+                >
+                  {stack}
+                </div>
+              ))}
+              {post.stacks.length > 6 && (
+                <div
+                  className="text-xs px-2 py-1 rounded-md font-medium bg-gray-600 text-white"
+                  style={{ minHeight: 24 }}
+                >
+                  +{post.stacks.length - 6}
+                </div>
+              )}
+            </div>
+          </div>
           {/* 모집 정보 */}
           <div className="flex justify-between items-center text-xs text-gray-500 dark:text-[#a0a0a0]">
             <div className="flex items-center gap-1">

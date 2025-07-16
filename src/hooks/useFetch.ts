@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axiosInstance from "@/util/axiosInstance";
+import axiosInstance from "@/utils/axiosInstance";
 import { AxiosError, AxiosRequestConfig } from "axios";
 
 interface UseFetchState<T> {
