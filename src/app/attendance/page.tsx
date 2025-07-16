@@ -118,21 +118,21 @@ export default function AttendancePage() {
 
   return (
     <MainLayout>
-      <div className="min-h-svh bg-gray-50 dark:bg-gray-900 select-none">
+      <div className="min-h-svh bg-gray-50 dark:bg-[#0a0a0a] select-none">
         <div className="flex flex-col space-y-8 p-6">
           {/* 헤더 섹션 */}
           <section className="flex flex-col items-center space-y-4 pt-8">
-            <h1 className="text-5xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-5xl font-bold text-gray-900 dark:text-[#ffffff]">
               출석 게시판
             </h1>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl text-center">
+            <p className="text-gray-600 dark:text-[#a0a0a0] max-w-2xl text-center">
               매일매일 함께하는 애프터버너 출석체크 🔥
             </p>
           </section>
 
           {/* 달력 섹션 */}
           <section className="flex flex-col items-center space-y-4">
-            <Card className="p-6 w-full max-w-4xl shadow-lg bg-white dark:bg-gray-800">
+            <Card className="p-6 w-full max-w-4xl shadow-lg bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333]">
               <Calendar
                 onChange={(value) => {
                   if (value instanceof Date) {
@@ -153,23 +153,23 @@ export default function AttendancePage() {
 
           {/* 댓글 섹션 */}
           <section className="w-full max-w-4xl mx-auto space-y-6">
-            <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white">
+            <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-[#ffffff]">
               오늘의 한마디 😛
             </h2>
 
             {/* 댓글 입력 */}
-            <Card className="p-6 bg-white dark:bg-gray-800">
+            <Card className="p-6 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333]">
               <div className="space-y-4">
                 <Textarea
                   placeholder="오늘 하루는 어떠셨나요? 자유롭게 이야기해보세요! 💭"
                   value={newComment}
                   onChange={(e) => setNewComment(e.target.value)}
-                  className="min-h-[100px] resize-none"
+                  className="min-h-[100px] resize-none bg-white border-gray-300 dark:border-[#333333] text-gray-900 placeholder:text-gray-500 dark:placeholder:text-[#a0a0a0]"
                 />
                 <div className="flex justify-end">
                   <Button
                     onClick={handleSubmit}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-6"
+                    className="bg-blue-600 hover:bg-blue-700 dark:bg-[#00ff88] dark:hover:bg-[#00cc6a] text-white dark:text-[#0a0a0a] px-6"
                   >
                     등록하기
                   </Button>
@@ -182,30 +182,30 @@ export default function AttendancePage() {
               {comments.map((comment) => (
                 <Card
                   key={comment.id}
-                  className="p-4 bg-white dark:bg-gray-800 hover:shadow-md transition-shadow"
+                  className="p-4 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] hover:shadow-md transition-shadow"
                 >
                   <div className="flex items-start space-x-3">
                     <Avatar className="w-10 h-10 flex-shrink-0">
                       {comment.avatar ? (
                         <AvatarImage src={comment.avatar} alt={comment.user} />
                       ) : (
-                        <AvatarFallback className="bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
+                        <AvatarFallback className="bg-blue-100 text-blue-600 dark:bg-[#333333] dark:text-[#ffffff]">
                           {comment.user.charAt(0)}
                         </AvatarFallback>
                       )}
                     </Avatar>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-2">
-                        <h4 className="text-sm font-semibold text-gray-900 dark:text-white">
+                        <h4 className="text-sm font-semibold text-gray-900 dark:text-[#ffffff]">
                           {comment.user}
                         </h4>
-                        <time className="text-xs text-gray-500 dark:text-gray-400">
+                        <time className="text-xs text-gray-500 dark:text-[#a0a0a0]">
                           {format(comment.timestamp, "MM월 dd일 HH:mm", {
                             locale: ko,
                           })}
                         </time>
                       </div>
-                      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                      <p className="text-gray-700 dark:text-[#ffffff] text-sm leading-relaxed">
                         {comment.content}
                       </p>
                     </div>

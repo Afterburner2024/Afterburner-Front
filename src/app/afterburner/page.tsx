@@ -103,11 +103,7 @@ export default function AfterburnerPage() {
             <h2 className="text-2xl font-bold">Contributor</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {contributors.map((contributor, index) => (
-                <div
-                  key={contributor.id}
-                  className="animate-in fade-in slide-in-from-bottom duration-500"
-                  style={{ animationDelay: `${index * 300}ms` }}
-                >
+                <div key={contributor.id}>
                   <ProfileCard user={contributor} />
                 </div>
               ))}

@@ -1,0 +1,143 @@
+/* Afterburner 페이지 전용 스타일 */
+
+/* 사이버펑크 글로우 애니메이션 */
+@keyframes cyber-glow {
+  0%, 100% {
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+  }
+  50% {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    border-color: rgba(0, 255, 136, 0.2);
+    box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4);
+  }
+  50% {
+    border-color: rgba(0, 255, 136, 0.6);
+    box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
+  }
+}
+
+@keyframes neon-flicker {
+  0%, 100% { opacity: 1; }
+  2%, 8%, 10%, 12%, 20%, 22%, 24%, 26% { opacity: 0.8; }
+  4%, 6%, 14%, 16%, 18% { opacity: 0.95; }
+}
+
+/* 타이틀 글로우 효과 */
+.cyber-title {
+  animation: cyber-glow 2s ease-in-out infinite;
+}
+
+/* 플로팅 애니메이션 */
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* 펄스 보더 애니메이션 */
+.pulse-border {
+  animation: pulse-border 2s infinite;
+}
+
+/* 네온 플리커 효과 */
+.neon-flicker {
+  animation: neon-flicker 1.5s infinite linear;
+}
+
+/* 호버 글로우 효과 */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.5));
+}
+
+/* 그라디언트 텍스트 애니메이션 */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-text-animated {
+  background: linear-gradient(-45deg, #00ff88, #ffffff, #00ff88, #ffffff);
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* 카드 호버 효과 */
+.card-hover-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.card-hover-effect:hover::before {
+  left: 100%;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+  .cyber-title {
+    animation-duration: 3s;
+  }
+  
+  .float-animation {
+    animation-duration: 4s;
+  }
+}
+
+/* 다크모드 전용 스타일 */
+.dark .afterburner-bg {
+  background: radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 40% 40%, rgba(0, 255, 136, 0.03) 0%, transparent 50%);
+}
+
+/* 스크롤 페이드 인 애니메이션 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
