@@ -21,12 +21,8 @@ export function Header({ onMobileMenuOpen }: HeaderProps) {
     setMounted(true);
   }, []);
 
-  // 더 안전한 로고 경로 설정
-  const logoSrc = mounted
-    ? theme === "dark"
-      ? "/images/afterburner-logo.png"
-      : "/images/afterburner-logo-dark.png"
-    : "/images/afterburner-logo-dark.png";
+  // 항상 같은 로고 사용 (SSR 안전)
+  const logoSrc = "/images/afterburner-logo.png";
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -51,11 +47,6 @@ export function Header({ onMobileMenuOpen }: HeaderProps) {
               height={24}
               className="h-6 w-auto"
               priority
-              onError={(e) => {
-                // 이미지 로드 실패 시 기본 이미지로 대체
-                const target = e.target as HTMLImageElement;
-                target.src = "/images/afterburner-logo-dark.png";
-              }}
             />
           </Link>
         </div>

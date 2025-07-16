@@ -19,6 +19,7 @@ import {
   SortOption,
 } from "@/types/filters";
 import { filterOptions } from "@/constants/filterOptions";
+import { getStackColor } from "@/utils/stackColors";
 import { Search, Filter, X, ChevronDown, ChevronUp } from "lucide-react";
 
 interface RecruitmentFiltersProps {
@@ -35,17 +36,27 @@ export function RecruitmentFilters({
   filteredCount,
 }: RecruitmentFiltersProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [selectedStack, setSelectedStack] = useState("");
 
   const handleSearchChange = (search: string) => {
     onFiltersChange({ ...filters, search });
   };
 
-  const handleTechStackToggle = (tech: string) => {
-    const newTechStacks = filters.techStacks.includes(tech)
-      ? filters.techStacks.filter((t) => t !== tech)
-      : [...filters.techStacks, tech];
+  const handleTechStackAdd = (tech: string) => {
+    if (tech && !filters.techStacks.includes(tech)) {
+      onFiltersChange({
+        ...filters,
+        techStacks: [...filters.techStacks, tech],
+      });
+      setSelectedStack("");
+    }
+  };
 
-    onFiltersChange({ ...filters, techStacks: newTechStacks });
+  const handleTechStackRemove = (tech: string) => {
+    onFiltersChange({
+      ...filters,
+      techStacks: filters.techStacks.filter((t) => t !== tech),
+    });
   };
 
   const handleStatusChange = (status: StatusFilter) => {
@@ -77,31 +88,26 @@ export function RecruitmentFilters({
     filters.dateFilter !== "all";
 
   return (
-    <Card className="p-6 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] space-y-4">
+    <Card className="p-4 sm:p-6 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] space-y-4">
       {/* 상단 검색 및 요약 */}
-      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-        <div className="flex-1 max-w-md">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <Input
-              placeholder="제목, 내용, 작성자 검색..."
-              value={filters.search}
-              onChange={(e) => handleSearchChange(e.target.value)}
-              className="pl-10 bg-white dark:bg-[#0a0a0a] border-gray-300 dark:border-[#333333]"
-            />
-          </div>
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+        {/* 검색창 */}
+        <div className="relative w-full">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+          <Input
+            placeholder="제목, 내용, 작성자 검색..."
+            value={filters.search}
+            onChange={(e) => handleSearchChange(e.target.value)}
+            className="pl-10 bg-white dark:bg-[#0a0a0a] border-gray-300 dark:border-[#333333]"
+          />
         </div>
 
-        <div className="flex items-center gap-4">
-          <span className="text-sm text-gray-600 dark:text-[#a0a0a0]">
-            {filteredCount}개 / 전체 {totalCount}개
-          </span>
-
+        {/* 필터 버튼 */}
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
           <Button
             variant="outline"
-            size="sm"
             onClick={() => setIsExpanded(!isExpanded)}
-            className="flex items-center gap-2"
+            className="flex items-center justify-center gap-2 w-full sm:w-auto"
           >
             <Filter className="w-4 h-4" />
             상세 필터
@@ -112,13 +118,26 @@ export function RecruitmentFilters({
             )}
           </Button>
         </div>
+
+        {/* 초기화 버튼 */}
+        <div className="flex items-end">
+          <Button
+            variant="outline"
+            onClick={handleClearFilters}
+            disabled={!hasActiveFilters}
+            className="w-full h-10 text-sm"
+          >
+            <X className="w-4 h-4 mr-1" />
+            초기화
+          </Button>
+        </div>
       </div>
 
       {/* 상세 필터 (펼침/접힘) */}
       {isExpanded && (
         <div className="space-y-4 pt-4 border-t border-gray-200 dark:border-[#333333]">
           {/* 필터 선택 */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* 상태 필터 */}
             <div>
               <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-[#ffffff]">
@@ -178,19 +197,6 @@ export function RecruitmentFilters({
                 </SelectContent>
               </Select>
             </div>
-
-            {/* 초기화 버튼 */}
-            <div className="flex items-end">
-              <Button
-                variant="outline"
-                onClick={handleClearFilters}
-                disabled={!hasActiveFilters}
-                className="w-full h-10 text-sm"
-              >
-                <X className="w-4 h-4 mr-1" />
-                초기화
-              </Button>
-            </div>
           </div>
 
           {/* 기술 스택 선택 */}
@@ -198,24 +204,44 @@ export function RecruitmentFilters({
             <label className="block text-sm font-medium mb-3 text-gray-700 dark:text-[#ffffff]">
               기술 스택 ({filters.techStacks.length}개 선택)
             </label>
-            <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto">
-              {filterOptions.availableTechStacks.map((tech) => (
-                <Badge
-                  key={tech}
-                  variant={
-                    filters.techStacks.includes(tech) ? "default" : "outline"
-                  }
-                  className={`cursor-pointer transition-colors ${
-                    filters.techStacks.includes(tech)
-                      ? "bg-blue-600 hover:bg-blue-700 text-white"
-                      : "hover:bg-gray-100 dark:hover:bg-[#333333]"
-                  }`}
-                  onClick={() => handleTechStackToggle(tech)}
-                >
-                  {tech}
-                </Badge>
-              ))}
+
+            {/* Select로 기술 스택 선택 */}
+            <div className="mb-3">
+              <Select value={selectedStack} onValueChange={handleTechStackAdd}>
+                <SelectTrigger className="bg-white dark:bg-[#0a0a0a] border-gray-300 dark:border-[#333333]">
+                  <SelectValue placeholder="기술 스택을 선택하세요" />
+                </SelectTrigger>
+                <SelectContent>
+                  {filterOptions.availableTechStacks
+                    .filter((stack) => !filters.techStacks.includes(stack))
+                    .map((stack) => (
+                      <SelectItem key={stack} value={stack}>
+                        {stack}
+                      </SelectItem>
+                    ))}
+                </SelectContent>
+              </Select>
             </div>
+
+            {/* 선택된 스택들 미리보기 */}
+            {filters.techStacks.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {filters.techStacks.map((stack) => (
+                  <div
+                    key={stack}
+                    className={`text-xs px-2 py-1 rounded-md font-medium ${getStackColor(
+                      stack
+                    )} flex items-center gap-1`}
+                  >
+                    {stack}
+                    <X
+                      className="w-3 h-3 cursor-pointer"
+                      onClick={() => handleTechStackRemove(stack)}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* 선택된 필터 요약 */}
@@ -274,7 +300,7 @@ export function RecruitmentFilters({
                   {tech}
                   <X
                     className="w-3 h-3 cursor-pointer"
-                    onClick={() => handleTechStackToggle(tech)}
+                    onClick={() => handleTechStackRemove(tech)}
                   />
                 </Badge>
               ))}

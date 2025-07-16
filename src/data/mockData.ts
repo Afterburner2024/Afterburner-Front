@@ -44,9 +44,9 @@ export const mockPosts: RecruitmentPost[] = [
   },
   {
     id: 4,
-    title: "Vue.js 프론트엔드 개발자 모집",
+    title: "Vue 프론트엔드 개발자 모집",
     content: "스타트업에서 사용할 관리자 대시보드를 함께 만들어요!",
-    stacks: ["Vue.js", "Nuxt.js", "TypeScript", "Tailwind CSS"],
+    stacks: ["Vue", "Nuxt.js", "TypeScript", "Tailwind"],
     deadline: getDateString(3), // 3일 후 (마감임박)
     memberCount: 2,
     author: "정프론트",
@@ -56,8 +56,8 @@ export const mockPosts: RecruitmentPost[] = [
   {
     id: 5,
     title: "백엔드 API 개발팀원 구함",
-    content: "Spring Boot로 RESTful API를 개발할 팀원을 찾습니다.",
-    stacks: ["Java", "Spring Boot", "PostgreSQL", "Docker"],
+    content: "Spring으로 RESTful API를 개발할 팀원을 찾습니다.",
+    stacks: ["Java", "Spring", "PostgreSQL", "Docker"],
     deadline: getDateString(45), // 45일 후
     memberCount: 3,
     author: "최백엔드",
@@ -79,7 +79,7 @@ export const mockPosts: RecruitmentPost[] = [
     id: 7,
     title: "Flutter 앱 개발 프로젝트",
     content: "크로스 플랫폼 앱을 개발할 팀원을 모집합니다. 초보자도 환영!",
-    stacks: ["Flutter", "Dart", "Firebase", "SQLite"],
+    stacks: ["Flutter", "Firebase"],
     deadline: getDateString(1), // 내일 마감 (초급 마감임박)
     memberCount: 3,
     author: "박모바일",
@@ -90,7 +90,7 @@ export const mockPosts: RecruitmentPost[] = [
     id: 8,
     title: "웹 디자인 + 프론트엔드 협업 프로젝트",
     content: "포트폴리오 사이트를 함께 만들어요. 디자이너와 개발자 모두 환영!",
-    stacks: ["Figma", "React", "Styled-components", "Framer Motion"],
+    stacks: ["Figma", "React"],
     deadline: getDateString(60), // 60일 후
     memberCount: 2,
     author: "김디자인",
@@ -101,7 +101,7 @@ export const mockPosts: RecruitmentPost[] = [
     id: 9,
     title: "데이터 분석 스터디 그룹",
     content: "머신러닝과 데이터 분석을 함께 공부할 분들을 찾습니다.",
-    stacks: ["Python", "Pandas", "NumPy", "Scikit-learn", "Jupyter"],
+    stacks: ["Python", "Pandas"],
     deadline: getDateString(7), // 7일 후 (경계선)
     memberCount: 5,
     author: "이데이터",
@@ -113,7 +113,7 @@ export const mockPosts: RecruitmentPost[] = [
     title: "게임 개발 팀원 모집 (Unity)",
     content:
       "인디 게임을 함께 만들어요! 게임 개발에 관심 있는 분들 지원해주세요.",
-    stacks: ["Unity", "C#", "Blender", "Git"],
+    stacks: ["Git", "C#"],
     deadline: getDateString(21), // 21일 후
     memberCount: 4,
     author: "최게임",
