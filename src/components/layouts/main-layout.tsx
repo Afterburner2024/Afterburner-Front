@@ -48,7 +48,7 @@ export function MainLayout({ children }: MainLayoutProps) {
           </SheetContent>
         </Sheet>
 
-        <main className="flex-1 bg-gray-50 dark:bg-[#0a0a0a]">
+        <main className="flex-1 bg-gray-50 dark:bg-[#171515]">
           <ScrollArea className="h-[calc(100svh-7rem)]">
             <div className="p-4 h-full">{children}</div>
           </ScrollArea>

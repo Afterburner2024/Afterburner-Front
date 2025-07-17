@@ -20,13 +20,13 @@ export function StandardPageLayout({
 }: StandardPageLayoutProps) {
   return (
     <MainLayout>
-      <div className={`min-h-svh bg-gray-50 dark:bg-[#0a0a0a] ${className}`}>
+      <div className={`min-h-svh bg-gray-50 dark:bg-[#171515] ${className}`}>
         <div className="flex flex-col space-y-8 p-6">
           {/* 표준 헤더 섹션 */}
           <section
-            className={`flex flex-col items-center space-y-4 pt-8 ${headerClassName}`}
+            className={`flex flex-col items-center space-y-4 pt-4 ${headerClassName}`}
           >
-            <h1 className="text-5xl font-bold text-gray-900 dark:text-[#ffffff] text-center">
+            <h1 className="text-5xl font-bold text-gray-900 dark:text-[#ffa500] text-center">
               {title}
             </h1>
             {description && (
