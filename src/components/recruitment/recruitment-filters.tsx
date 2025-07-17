@@ -229,7 +229,7 @@ export function RecruitmentFilters({
                 {filters.techStacks.map((stack) => (
                   <div
                     key={stack}
-                    className={`text-xs px-2 py-1 rounded-md font-medium ${getStackColor(
+                    className={`text-xs sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md font-medium ${getStackColor(
                       stack
                     )} flex items-center gap-1`}
                   >

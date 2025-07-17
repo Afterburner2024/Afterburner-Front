@@ -69,7 +69,7 @@ export function RecruitmentCard({ post }: RecruitmentCardProps) {
           {/* 상태 배지 */}
           <div className="flex justify-between items-start mb-3">
             <div
-              className={`inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-semibold ${statusColorClass}`}
+              className={`inline-flex items-center rounded-md px-2 sm:px-2.5 py-0.5 text-xs font-semibold ${statusColorClass}`}
             >
               {statusLabel}
             </div>
@@ -96,18 +96,18 @@ export function RecruitmentCard({ post }: RecruitmentCardProps) {
                 {post.stacks.slice(0, 6).map((stack, index) => (
                   <div
                     key={index}
-                    className={`text-xs px-2 py-1 rounded-md font-medium ${getStackColor(
+                    className={`text-xs sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md font-medium ${getStackColor(
                       stack
                     )}`}
-                    style={{ minHeight: 24 }}
+                    style={{ minHeight: 20 }}
                   >
                     {stack}
                   </div>
                 ))}
                 {post.stacks.length > 6 && (
                   <div
-                    className="text-xs px-2 py-1 rounded-md font-medium bg-gray-600 text-white"
-                    style={{ minHeight: 24 }}
+                    className="text-xs sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md font-medium bg-gray-600 text-white"
+                    style={{ minHeight: 20 }}
                   >
                     +{post.stacks.length - 6}
                   </div>

@@ -144,11 +144,11 @@ export function ApplicationModal({
               </Select>
             </div>
             {formData.skills.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-3">
+              <div className="flex flex-wrap gap-1 sm:gap-2 mt-3">
                 {formData.skills.map((skill, index) => (
                   <div
                     key={index}
-                    className={`text-xs px-3 py-1 rounded-md font-medium ${getStackColor(
+                    className={`text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded-md font-medium ${getStackColor(
                       skill
                     )} flex items-center gap-1`}
                   >
