@@ -143,15 +143,8 @@ export default function LoginPage() {
         {/* 하단 텍스트 */}
         <div className="text-center mt-6">
           <p className="text-xs text-gray-500 dark:text-[#666666]">
-            로그인하면 Afterburner의{" "}
-            <span className="text-blue-600 dark:text-blue-400 hover:underline cursor-pointer">
-              이용약관
-            </span>{" "}
-            및{" "}
-            <span className="text-blue-600 dark:text-blue-400 hover:underline cursor-pointer">
-              개인정보처리방침
-            </span>
-            에 동의하는 것으로 간주됩니다.
+            © 2024 - {new Date().getFullYear()} Afterburner. All rights
+            reserved.
           </p>
         </div>
       </div>
