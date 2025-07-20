@@ -214,6 +214,12 @@ export const filterOptions: FilterOptions = {
     "Zustand",
   ],
 
+  typeOptions: [
+    { value: "all", label: "전체" },
+    { value: "project", label: "🚀 팀프로젝트" },
+    { value: "study", label: "📚 스터디" },
+  ],
+
   statusOptions: [
     { value: "all", label: "전체" },
     { value: "recruiting", label: "모집중" },
