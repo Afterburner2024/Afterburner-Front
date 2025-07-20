@@ -4,6 +4,7 @@ import {
   SortOption,
   StatusFilter,
   DateFilter,
+  TypeFilter,
 } from "@/types/filters";
 import {
   isWithinInterval,
@@ -47,6 +48,15 @@ export const filterByTechStacks = (
       )
     )
   );
+};
+
+// 타입별 필터링 (프로젝트/스터디)
+export const filterByType = (
+  posts: RecruitmentPost[],
+  typeFilter: TypeFilter
+): RecruitmentPost[] => {
+  if (typeFilter === "all") return posts;
+  return posts.filter((post) => post.type === typeFilter);
 };
 
 // 상태별 필터링 (동적 상태 계산)
@@ -148,6 +158,7 @@ export const applyFilters = (
   // 순차적으로 필터 적용
   filteredPosts = filterBySearch(filteredPosts, filters.search);
   filteredPosts = filterByTechStacks(filteredPosts, filters.techStacks);
+  filteredPosts = filterByType(filteredPosts, filters.typeFilter);
   filteredPosts = filterByStatus(filteredPosts, filters.status);
   filteredPosts = filterByDate(filteredPosts, filters.dateFilter);
 

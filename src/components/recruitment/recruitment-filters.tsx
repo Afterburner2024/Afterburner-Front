@@ -17,6 +17,7 @@ import {
   StatusFilter,
   DateFilter,
   SortOption,
+  TypeFilter,
 } from "@/types/filters";
 import { filterOptions } from "@/constants/filterOptions";
 import { getStackColor } from "@/utils/stackColors";
@@ -71,6 +72,10 @@ export function RecruitmentFilters({
     onFiltersChange({ ...filters, sortBy });
   };
 
+  const handleTypeFilterChange = (typeFilter: TypeFilter) => {
+    onFiltersChange({ ...filters, typeFilter });
+  };
+
   const handleClearFilters = () => {
     onFiltersChange({
       search: "",
@@ -78,6 +83,7 @@ export function RecruitmentFilters({
       status: "all",
       dateFilter: "all",
       sortBy: "latest",
+      typeFilter: "all",
     });
   };
 
@@ -85,7 +91,8 @@ export function RecruitmentFilters({
     filters.search ||
     filters.techStacks.length > 0 ||
     filters.status !== "all" ||
-    filters.dateFilter !== "all";
+    filters.dateFilter !== "all" ||
+    filters.typeFilter !== "all";
 
   return (
     <Card className="p-4 sm:p-6 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] space-y-4">
@@ -138,7 +145,29 @@ export function RecruitmentFilters({
         <div className="space-y-4 pt-4 border-t border-gray-200 dark:border-[#333333]">
           {/* 필터 선택 */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* 상태 필터 */}
+            {/* 타입 필터 */}
+            <div>
+              <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-[#ffffff]">
+                모집 타입
+              </label>
+              <Select
+                value={filters.typeFilter}
+                onValueChange={handleTypeFilterChange}
+              >
+                <SelectTrigger className="bg-white dark:bg-[#0a0a0a] border-gray-300 dark:border-[#333333]">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {filterOptions.typeOptions.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* 모집 상태 */}
             <div>
               <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-[#ffffff]">
                 모집 상태
@@ -257,6 +286,21 @@ export function RecruitmentFilters({
                   <X
                     className="w-3 h-3 cursor-pointer"
                     onClick={() => handleSearchChange("")}
+                  />
+                </Badge>
+              )}
+
+              {filters.typeFilter !== "all" && (
+                <Badge variant="secondary" className="flex items-center gap-1">
+                  타입:{" "}
+                  {
+                    filterOptions.typeOptions.find(
+                      (o) => o.value === filters.typeFilter
+                    )?.label
+                  }
+                  <X
+                    className="w-3 h-3 cursor-pointer"
+                    onClick={() => handleTypeFilterChange("all")}
                   />
                 </Badge>
               )}

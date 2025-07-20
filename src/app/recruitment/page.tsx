@@ -21,6 +21,7 @@ export default function RecruitmentPage() {
     status: "all",
     dateFilter: "all",
     sortBy: "latest",
+    typeFilter: "all",
   });
 
   const handleAddPost = (
@@ -82,56 +83,61 @@ export default function RecruitmentPage() {
           </section>
 
           {/* 프로젝트 섹션 */}
-          <section className="w-full max-w-7xl mx-auto space-y-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-                  🚀 프로젝트
-                </h2>
-                <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full text-sm font-medium">
-                  {projectPosts.length}개
-                </span>
+          {(filters.typeFilter === "all" ||
+            filters.typeFilter === "project") && (
+            <section className="w-full max-w-7xl mx-auto space-y-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    🚀 프로젝트
+                  </h2>
+                  <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full text-sm font-medium">
+                    {projectPosts.length}개
+                  </span>
+                </div>
               </div>
-            </div>
-            {projectPosts.length > 0 ? (
-              <RecruitmentGrid posts={projectPosts} />
-            ) : (
-              <div className="text-center py-12 bg-white dark:bg-[#1a1a1a] rounded-lg border border-gray-200 dark:border-[#333333]">
-                <p className="text-gray-500 dark:text-[#a0a0a0] text-lg mb-2">
-                  조건에 맞는 프로젝트가 없습니다
-                </p>
-                <p className="text-gray-400 dark:text-[#666666] text-sm">
-                  필터 조건을 변경하거나 새로운 프로젝트를 등록해보세요
-                </p>
-              </div>
-            )}
-          </section>
+              {projectPosts.length > 0 ? (
+                <RecruitmentGrid posts={projectPosts} />
+              ) : (
+                <div className="text-center py-12 bg-white dark:bg-[#1a1a1a] rounded-lg border border-gray-200 dark:border-[#333333]">
+                  <p className="text-gray-500 dark:text-[#a0a0a0] text-lg mb-2">
+                    조건에 맞는 프로젝트가 없습니다
+                  </p>
+                  <p className="text-gray-400 dark:text-[#666666] text-sm">
+                    필터 조건을 변경하거나 새로운 프로젝트를 등록해보세요
+                  </p>
+                </div>
+              )}
+            </section>
+          )}
 
           {/* 스터디 섹션 */}
-          <section className="w-full max-w-7xl mx-auto space-y-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-                  📚 스터디
-                </h2>
-                <span className="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-3 py-1 rounded-full text-sm font-medium">
-                  {studyPosts.length}개
-                </span>
+          {(filters.typeFilter === "all" || filters.typeFilter === "study") && (
+            <section className="w-full max-w-7xl mx-auto space-y-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    📚 스터디
+                  </h2>
+                  <span className="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-3 py-1 rounded-full text-sm font-medium">
+                    {studyPosts.length}개
+                  </span>
+                </div>
               </div>
-            </div>
-            {studyPosts.length > 0 ? (
-              <RecruitmentGrid posts={studyPosts} />
-            ) : (
-              <div className="text-center py-12 bg-white dark:bg-[#1a1a1a] rounded-lg border border-gray-200 dark:border-[#333333]">
-                <p className="text-gray-500 dark:text-[#a0a0a0] text-lg mb-2">
-                  조건에 맞는 스터디가 없습니다
-                </p>
-                <p className="text-gray-400 dark:text-[#666666] text-sm">
-                  필터 조건을 변경하거나 새로운 스터디를 등록해보세요
-                </p>
-              </div>
-            )}
-          </section>
+              {studyPosts.length > 0 ? (
+                <RecruitmentGrid posts={studyPosts} />
+              ) : (
+                <div className="text-center py-12 bg-white dark:bg-[#1a1a1a] rounded-lg border border-gray-200 dark:border-[#333333]">
+                  <p className="text-gray-500 dark:text-[#a0a0a0] text-lg mb-2">
+                    조건에 맞는 스터디가 없습니다
+                  </p>
+                  <p className="text-gray-400 dark:text-[#666666] text-sm">
+                    필터 조건을 변경하거나 새로운 스터디를 등록해보세요
+                  </p>
+                </div>
+              )}
+            </section>
+          )}
 
           {/* 전체 검색 결과가 없을 때 */}
           {filteredPosts.length === 0 && posts.length > 0 && (
