@@ -1,65 +1,259 @@
 // 기술 스택별 색상 정의
 export const getStackColor = (stack: string): string => {
   const stackColors: { [key: string]: string } = {
-    // Frontend
+    // Frontend Frameworks & Libraries
     React: "bg-blue-500 text-white",
     Vue: "bg-green-500 text-white",
     Angular: "bg-red-600 text-white",
+    Svelte: "bg-orange-500 text-white",
+    SvelteKit: "bg-orange-600 text-white",
+    "Solid.js": "bg-blue-600 text-white",
+    Preact: "bg-purple-500 text-white",
+    "Alpine.js": "bg-teal-500 text-white",
+    Lit: "bg-blue-400 text-white",
+    Stencil: "bg-indigo-500 text-white",
+
+    // Frontend Languages & Core
     JavaScript: "bg-yellow-400 text-black",
     TypeScript: "bg-blue-600 text-white",
     HTML: "bg-orange-500 text-white",
     CSS: "bg-blue-400 text-white",
+    WebAssembly: "bg-purple-600 text-white",
     Sass: "bg-pink-500 text-white",
+    Less: "bg-blue-700 text-white",
+    Stylus: "bg-green-600 text-white",
+
+    // CSS Frameworks & Tools
     Tailwind: "bg-cyan-500 text-white",
+    Bootstrap: "bg-purple-700 text-white",
+    Bulma: "bg-green-500 text-white",
+    "Chakra UI": "bg-teal-400 text-white",
+    "Material-UI": "bg-blue-500 text-white",
+    "Ant Design": "bg-blue-600 text-white",
+    "Styled Components": "bg-pink-400 text-white",
+    Emotion: "bg-purple-500 text-white",
+
+    // Meta Frameworks
     "Next.js": "bg-black text-white",
     "Nuxt.js": "bg-green-600 text-white",
+    Gatsby: "bg-purple-600 text-white",
+    Remix: "bg-blue-600 text-white",
+    Astro: "bg-orange-500 text-white",
+    Vite: "bg-purple-500 text-white",
+    Webpack: "bg-blue-700 text-white",
+    Parcel: "bg-brown-500 text-white",
+    Rollup: "bg-red-600 text-white",
 
-    // Backend
+    // Backend Languages
     "Node.js": "bg-green-700 text-white",
-    Express: "bg-gray-600 text-white",
     Python: "bg-blue-500 text-white",
-    Django: "bg-green-800 text-white",
-    FastAPI: "bg-teal-600 text-white",
     Java: "bg-red-500 text-white",
-    Spring: "bg-green-600 text-white",
-    PHP: "bg-purple-600 text-white",
     "C#": "bg-purple-700 text-white",
     Go: "bg-cyan-600 text-white",
     Rust: "bg-orange-600 text-white",
+    PHP: "bg-purple-600 text-white",
+    Ruby: "bg-red-600 text-white",
+    Kotlin: "bg-purple-500 text-white",
+    Scala: "bg-red-700 text-white",
+    Elixir: "bg-purple-600 text-white",
+    Dart: "bg-blue-600 text-white",
+    "C++": "bg-blue-800 text-white",
+    C: "bg-gray-700 text-white",
 
-    // Database
+    // Backend Frameworks
+    Express: "bg-gray-600 text-white",
+    Fastify: "bg-green-600 text-white",
+    Koa: "bg-gray-500 text-white",
+    NestJS: "bg-red-600 text-white",
+    Django: "bg-green-800 text-white",
+    FastAPI: "bg-teal-600 text-white",
+    Flask: "bg-gray-800 text-white",
+    Spring: "bg-green-600 text-white",
+    "Spring Boot": "bg-green-700 text-white",
+    Laravel: "bg-red-500 text-white",
+    Symfony: "bg-gray-800 text-white",
+    "Ruby on Rails": "bg-red-700 text-white",
+    "ASP.NET": "bg-blue-700 text-white",
+    Gin: "bg-cyan-500 text-white",
+    Echo: "bg-blue-500 text-white",
+    Fiber: "bg-cyan-600 text-white",
+
+    // Databases
     MongoDB: "bg-green-500 text-white",
     MySQL: "bg-blue-600 text-white",
     PostgreSQL: "bg-blue-800 text-white",
+    SQLite: "bg-blue-400 text-white",
     Redis: "bg-red-600 text-white",
+    Cassandra: "bg-blue-700 text-white",
+    DynamoDB: "bg-orange-600 text-white",
+    InfluxDB: "bg-blue-500 text-white",
+    Neo4j: "bg-green-600 text-white",
+    CouchDB: "bg-red-500 text-white",
+    MariaDB: "bg-blue-600 text-white",
+    Oracle: "bg-red-700 text-white",
+    "SQL Server": "bg-red-600 text-white",
+
+    // Cloud & BaaS
     Firebase: "bg-yellow-600 text-white",
     Supabase: "bg-green-600 text-white",
-
-    // Mobile
-    "React Native": "bg-blue-500 text-white",
-    Flutter: "bg-blue-400 text-white",
-    Swift: "bg-orange-500 text-white",
-    Kotlin: "bg-purple-500 text-white",
-
-    // DevOps
-    Docker: "bg-blue-600 text-white",
     AWS: "bg-orange-400 text-black",
     GCP: "bg-blue-500 text-white",
     Azure: "bg-blue-700 text-white",
-    Kubernetes: "bg-blue-600 text-white",
+    Vercel: "bg-black text-white",
+    Netlify: "bg-teal-500 text-white",
+    Heroku: "bg-purple-600 text-white",
+    DigitalOcean: "bg-blue-600 text-white",
+    Cloudflare: "bg-orange-500 text-white",
 
-    // AI/ML
+    // Mobile Development
+    "React Native": "bg-blue-500 text-white",
+    Flutter: "bg-blue-400 text-white",
+    Swift: "bg-orange-500 text-white",
+    SwiftUI: "bg-blue-600 text-white",
+    "Java Android": "bg-green-600 text-white",
+    Xamarin: "bg-purple-600 text-white",
+    Ionic: "bg-blue-500 text-white",
+    Cordova: "bg-gray-600 text-white",
+
+    // DevOps & Infrastructure
+    Docker: "bg-blue-600 text-white",
+    Kubernetes: "bg-blue-600 text-white",
+    Jenkins: "bg-blue-800 text-white",
+    "GitHub Actions": "bg-gray-800 text-white",
+    "GitLab CI": "bg-orange-500 text-white",
+    CircleCI: "bg-green-600 text-white",
+    Terraform: "bg-purple-600 text-white",
+    Ansible: "bg-red-600 text-white",
+    Chef: "bg-orange-600 text-white",
+    Puppet: "bg-yellow-600 text-white",
+    Vagrant: "bg-blue-500 text-white",
+    Nginx: "bg-green-600 text-white",
+    Apache: "bg-red-600 text-white",
+
+    // AI/ML & Data Science
     TensorFlow: "bg-orange-500 text-white",
     PyTorch: "bg-red-500 text-white",
+    Keras: "bg-red-600 text-white",
+    "Scikit-learn": "bg-orange-600 text-white",
     OpenAI: "bg-black text-white",
     Pandas: "bg-blue-600 text-white",
+    NumPy: "bg-blue-700 text-white",
+    Matplotlib: "bg-blue-800 text-white",
+    Jupyter: "bg-orange-500 text-white",
+    OpenCV: "bg-green-600 text-white",
+    "Hugging Face": "bg-yellow-500 text-black",
+    LangChain: "bg-green-700 text-white",
 
-    // Tools
+    // Game Development
+    Unity: "bg-gray-800 text-white",
+    "Unreal Engine": "bg-blue-800 text-white",
+    Godot: "bg-blue-600 text-white",
+    "Three.js": "bg-gray-700 text-white",
+    "Babylon.js": "bg-orange-600 text-white",
+    Phaser: "bg-purple-600 text-white",
+    GameMaker: "bg-green-700 text-white",
+
+    // Blockchain & Web3
+    Solidity: "bg-gray-800 text-white",
+    "Web3.js": "bg-orange-500 text-white",
+    "Ethers.js": "bg-blue-600 text-white",
+    Hardhat: "bg-yellow-600 text-white",
+    Truffle: "bg-brown-600 text-white",
+    MetaMask: "bg-orange-500 text-white",
+    IPFS: "bg-teal-600 text-white",
+
+    // Desktop Development
+    Electron: "bg-blue-600 text-white",
+    Tauri: "bg-yellow-600 text-white",
+    Qt: "bg-green-600 text-white",
+    GTK: "bg-blue-700 text-white",
+    WPF: "bg-blue-600 text-white",
+    JavaFX: "bg-red-600 text-white",
+    Tkinter: "bg-blue-500 text-white",
+
+    // Testing
+    Jest: "bg-red-600 text-white",
+    Cypress: "bg-green-600 text-white",
+    Playwright: "bg-green-700 text-white",
+    Selenium: "bg-green-600 text-white",
+    Mocha: "bg-brown-600 text-white",
+    Chai: "bg-yellow-600 text-white",
+    "Testing Library": "bg-red-500 text-white",
+    Vitest: "bg-green-500 text-white",
+    Puppeteer: "bg-green-700 text-white",
+
+    // Tools & Platforms
     Git: "bg-orange-600 text-white",
     GitHub: "bg-gray-800 text-white",
     GitLab: "bg-orange-500 text-white",
+    Bitbucket: "bg-blue-600 text-white",
+    Jira: "bg-blue-700 text-white",
+    Trello: "bg-blue-500 text-white",
+    Notion: "bg-gray-800 text-white",
+    Slack: "bg-purple-600 text-white",
+    Discord: "bg-purple-700 text-white",
+    Linear: "bg-purple-500 text-white",
+
+    // Design & UI/UX
     Figma: "bg-purple-500 text-white",
+    Sketch: "bg-orange-500 text-white",
+    "Adobe XD": "bg-purple-600 text-white",
     Photoshop: "bg-blue-600 text-white",
+    Illustrator: "bg-orange-600 text-white",
+    InVision: "bg-pink-500 text-white",
+    Zeplin: "bg-orange-500 text-white",
+    Framer: "bg-blue-600 text-white",
+    Principle: "bg-purple-600 text-white",
+
+    // CMS & E-commerce
+    WordPress: "bg-blue-600 text-white",
+    Drupal: "bg-blue-700 text-white",
+    Strapi: "bg-purple-600 text-white",
+    Sanity: "bg-red-500 text-white",
+    Contentful: "bg-blue-500 text-white",
+    Shopify: "bg-green-600 text-white",
+    WooCommerce: "bg-purple-700 text-white",
+    Magento: "bg-orange-600 text-white",
+
+    // Real-time & Communication
+    "Socket.io": "bg-gray-800 text-white",
+    WebRTC: "bg-green-600 text-white",
+    GraphQL: "bg-pink-500 text-white",
+    Apollo: "bg-purple-600 text-white",
+    Relay: "bg-orange-500 text-white",
+    tRPC: "bg-blue-600 text-white",
+    "REST API": "bg-green-600 text-white",
+    gRPC: "bg-blue-700 text-white",
+
+    // State Management
+    Redux: "bg-purple-600 text-white",
+    MobX: "bg-orange-600 text-white",
+    Zustand: "bg-brown-600 text-white",
+    Recoil: "bg-blue-600 text-white",
+    Jotai: "bg-purple-500 text-white",
+    Valtio: "bg-teal-600 text-white",
+    Pinia: "bg-green-600 text-white",
+    Vuex: "bg-green-700 text-white",
+
+    // Monitoring & Analytics
+    Sentry: "bg-purple-700 text-white",
+    LogRocket: "bg-purple-600 text-white",
+    "Google Analytics": "bg-orange-500 text-white",
+    Mixpanel: "bg-blue-600 text-white",
+    Amplitude: "bg-blue-700 text-white",
+    "New Relic": "bg-green-600 text-white",
+    Datadog: "bg-purple-600 text-white",
+
+    // Others
+    Storybook: "bg-pink-500 text-white",
+    ESLint: "bg-purple-600 text-white",
+    Prettier: "bg-gray-700 text-white",
+    Babel: "bg-yellow-500 text-black",
+    PostCSS: "bg-red-600 text-white",
+    PWA: "bg-green-600 text-white",
+    "Service Workers": "bg-blue-600 text-white",
+    IndexedDB: "bg-orange-600 text-white",
+    LocalStorage: "bg-gray-600 text-white",
   };
 
   return stackColors[stack] || "bg-gray-500 text-white"; // 기본 색상

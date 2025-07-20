@@ -28,6 +28,7 @@ interface ApplicationModalProps {
   onClose: () => void;
   onSubmit: (applicationData: ApplicationFormData) => void;
   projectTitle: string;
+  projectType: "project" | "study";
 }
 
 export interface ApplicationFormData {
@@ -42,6 +43,7 @@ export function ApplicationModal({
   onClose,
   onSubmit,
   projectTitle,
+  projectType,
 }: ApplicationModalProps) {
   const [formData, setFormData] = useState<ApplicationFormData>({
     introduction: "",
@@ -94,11 +96,21 @@ export function ApplicationModal({
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333]">
         <DialogHeader>
-          <DialogTitle className="text-gray-900 dark:text-[#ffffff]">
-            프로젝트 신청
+          <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-[#ffffff] flex items-center gap-2">
+            <Badge
+              className={
+                projectType === "project"
+                  ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+                  : "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
+              }
+            >
+              {projectType === "project" ? "🚀 프로젝트" : "📚 스터디"}
+            </Badge>
+            신청
           </DialogTitle>
           <p className="text-sm text-gray-500 dark:text-[#a0a0a0] mt-1">
-            "{projectTitle}" 프로젝트에 신청합니다
+            "{projectTitle}" {projectType === "project" ? "프로젝트" : "스터디"}
+            에 신청합니다
           </p>
         </DialogHeader>
 

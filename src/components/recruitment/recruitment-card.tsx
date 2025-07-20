@@ -68,10 +68,21 @@ export function RecruitmentCard({ post }: RecruitmentCardProps) {
         >
           {/* 상태 배지 */}
           <div className="flex justify-between items-start mb-3">
-            <div
-              className={`inline-flex items-center rounded-md px-2 sm:px-2.5 py-0.5 text-xs font-semibold ${statusColorClass}`}
-            >
-              {statusLabel}
+            <div className="flex gap-2">
+              <Badge
+                className={
+                  post.type === "project"
+                    ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs"
+                    : "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs"
+                }
+              >
+                {post.type === "project" ? "🚀" : "📚"}
+              </Badge>
+              <div
+                className={`inline-flex items-center rounded-md px-2 sm:px-2.5 py-0.5 text-xs font-semibold ${statusColorClass}`}
+              >
+                {statusLabel}
+              </div>
             </div>
             <span className="text-xs text-gray-500 dark:text-[#a0a0a0]">
               {dDayText}
