@@ -8,6 +8,8 @@ export interface RecruitmentPost {
   author: string;
   createdAt: string;
   status?: "recruiting" | "urgent" | "completed";
+  // 프로젝트 타입 구분 (프로젝트 vs 스터디)
+  type: "project" | "study";
   // 신청자 관련 필드 추가
   applicants?: Applicant[];
   applicationCount?: number;
@@ -33,4 +35,5 @@ export interface NewPostForm {
   stacks: string;
   deadline: string;
   memberCount: number;
+  type: "project" | "study";
 }

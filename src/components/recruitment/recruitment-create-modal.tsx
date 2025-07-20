@@ -43,6 +43,7 @@ export function RecruitmentCreateModal({
     deadline: "",
     stacks: [] as string[],
     author: "익명",
+    type: "project" as "project" | "study",
   });
 
   const [selectedStack, setSelectedStack] = useState("");
@@ -83,6 +84,7 @@ export function RecruitmentCreateModal({
       deadline: "",
       stacks: [],
       author: "익명",
+      type: "project",
     });
 
     onClose();
@@ -113,16 +115,59 @@ export function RecruitmentCreateModal({
           <div className="grid grid-cols-1 lg:grid-cols-10 gap-6">
             {/* 왼쪽 영역 */}
             <div className="lg:col-span-4 space-y-6">
+              {/* 모집 타입 선택 */}
+              <div>
+                <Label>모집 타입 *</Label>
+                <div className="flex gap-4 mt-2">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="type"
+                      value="project"
+                      checked={formData.type === "project"}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          type: e.target.value as "project" | "study",
+                        }))
+                      }
+                      className="w-4 h-4 text-blue-600"
+                    />
+                    <span className="text-sm font-medium">🚀 프로젝트</span>
+                  </label>
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="type"
+                      value="study"
+                      checked={formData.type === "study"}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          type: e.target.value as "project" | "study",
+                        }))
+                      }
+                      className="w-4 h-4 text-green-600"
+                    />
+                    <span className="text-sm font-medium">📚 스터디</span>
+                  </label>
+                </div>
+              </div>
+
               {/* 제목 */}
               <div>
-                <Label htmlFor="title">프로젝트 제목 *</Label>
+                <Label htmlFor="title">
+                  {formData.type === "project" ? "프로젝트" : "스터디"} 제목 *
+                </Label>
                 <Input
                   id="title"
                   value={formData.title}
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, title: e.target.value }))
                   }
-                  placeholder="프로젝트 제목을 입력하세요"
+                  placeholder={`${
+                    formData.type === "project" ? "프로젝트" : "스터디"
+                  } 제목을 입력하세요`}
                   required
                 />
               </div>
@@ -222,9 +267,11 @@ export function RecruitmentCreateModal({
               </div>
             </div>
 
-            {/* 오른쪽 영역 - 프로젝트 설명 */}
+            {/* 오른쪽 영역 - 프로젝트/스터디 설명 */}
             <div className="lg:col-span-6">
-              <Label htmlFor="content">프로젝트 설명 *</Label>
+              <Label htmlFor="content">
+                {formData.type === "project" ? "프로젝트" : "스터디"} 설명 *
+              </Label>
               <Textarea
                 id="content"
                 value={formData.content}
@@ -232,7 +279,9 @@ export function RecruitmentCreateModal({
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, content: e.target.value }))
                 }
-                placeholder="프로젝트에 대한 상세한 설명을 작성하세요"
+                placeholder={`${
+                  formData.type === "project" ? "프로젝트" : "스터디"
+                }에 대한 상세한 설명을 작성하세요`}
                 required
               />
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">

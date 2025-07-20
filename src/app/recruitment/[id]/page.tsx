@@ -132,9 +132,22 @@ export default function RecruitmentDetailPage() {
         </div>
 
         {/* 제목 */}
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-[#ffffff] mb-4">
-          {post.title}
-        </h1>
+        <div className="mb-4">
+          <div className="flex items-center gap-2 mb-2">
+            <Badge
+              className={
+                post.type === "project"
+                  ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+                  : "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
+              }
+            >
+              {post.type === "project" ? "🚀 프로젝트" : "📚 스터디"}
+            </Badge>
+          </div>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-[#ffffff]">
+            {post.title}
+          </h1>
+        </div>
 
         {/* 기본 정보 */}
         <div className="flex flex-wrap gap-4 mb-6 text-sm text-gray-600 dark:text-[#a0a0a0]">
@@ -308,6 +321,7 @@ export default function RecruitmentDetailPage() {
         onClose={() => setShowApplyModal(false)}
         onSubmit={handleApplicationSubmit}
         projectTitle={post.title}
+        projectType={post.type}
       />
     </div>
   );
