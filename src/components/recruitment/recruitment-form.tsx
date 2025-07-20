@@ -27,6 +27,7 @@ export function RecruitmentForm({ onSubmit }: RecruitmentFormProps) {
     stacks: "",
     deadline: "",
     memberCount: 1,
+    type: "project",
   });
 
   const handleSubmit = () => {
@@ -47,6 +48,7 @@ export function RecruitmentForm({ onSubmit }: RecruitmentFormProps) {
       memberCount: newPost.memberCount,
       author: "현재사용자",
       createdAt: new Date().toISOString().split("T")[0],
+      type: newPost.type,
     };
 
     onSubmit(post);
@@ -56,6 +58,7 @@ export function RecruitmentForm({ onSubmit }: RecruitmentFormProps) {
       stacks: "",
       deadline: "",
       memberCount: 1,
+      type: "project",
     });
     setIsDialogOpen(false);
   };
