@@ -48,11 +48,13 @@ export default function Home() {
               <div className="space-y-8">
                 <div className="space-y-4">
                   <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
+                    국비교육 수료
+                    <br />
                     개발자들을 위한
                     <br />
                     <span className="text-yellow-400">팀원 모집</span> 플랫폼
                   </h1>
-                  <p className="text-xl text-blue-100 leading-relaxed">
+                  <p className="text-lg lg:text-xl text-blue-100 leading-relaxed">
                     함께할 팀원을 찾거나 프로젝트에 참여해보세요.
                     <br />
                     최신 기술 트렌드와 함께 성장하는 개발자 커뮤니티입니다.
@@ -139,7 +141,7 @@ export default function Home() {
               <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
                 🔥 인기 모집글
               </h2>
-              <p className="text-gray-600 dark:text-[#a0a0a0] text-lg">
+              <p className="text-gray-600 dark:text-[#a0a0a0] text-base lg:text-lg">
                 최근 주목받고 있는 프로젝트와 스터디를 확인해보세요
               </p>
             </div>
