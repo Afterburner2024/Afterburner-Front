@@ -25,13 +25,13 @@ export default function Home() {
     return applyDynamicStatusToPosts(mockPosts);
   }, []);
 
-  // 인기 프로젝트/스터디 (최근 생성된 6개)
+  // 인기 프로젝트/스터디 (최근 생성된 4개)
   const popularPosts = postsWithDynamicStatus
     .sort(
       (a, b) =>
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     )
-    .slice(0, 6);
+    .slice(0, 4);
 
   const projectCount = mockPosts.filter((p) => p.type === "project").length;
   const studyCount = mockPosts.filter((p) => p.type === "study").length;
@@ -108,7 +108,7 @@ export default function Home() {
                   <TrendingUp className="w-5 h-5" />
                   <h2 className="text-xl font-bold">최신 기술 컬럼</h2>
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-2">
                   {techArticles.slice(0, 2).map((article) => (
                     <NewsArticleCard
                       key={article.id}
@@ -117,12 +117,15 @@ export default function Home() {
                     />
                   ))}
                 </div>
-                <Button
-                  variant="outline"
-                  className="w-full border-white text-white hover:bg-white hover:text-blue-600"
-                >
-                  <Link href="/tech-articles">더 많은 컬럼 보기</Link>
-                </Button>
+                <div className="mt-2"></div>
+                <Link href="/tech-articles" className="w-full">
+                  <Button
+                    variant="outline"
+                    className="w-full border-white text-white hover:bg-white hover:text-blue-600"
+                  >
+                    더 많은 컬럼 보기
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
