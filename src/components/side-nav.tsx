@@ -9,6 +9,7 @@ import {
   Handshake,
   NotebookPen,
   SquareCode,
+  Newspaper,
 } from "lucide-react";
 
 const sidebarNavItems = [
@@ -29,6 +30,12 @@ const sidebarNavItems = [
     title: "팀원모집",
     icon: <Handshake className="w-4 h-4" />,
     href: "/recruitment",
+  },
+  {
+    id: "tech-articles",
+    title: "기술 아티클",
+    icon: <Newspaper className="w-4 h-4" />,
+    href: "/tech-articles",
   },
   {
     id: "project-log",
