@@ -1,6 +1,6 @@
 import { MainLayout } from "@/components/layouts/main-layout";
 import { AfterburnerCarousel } from "@/components/afterburner-carousel";
-import { ProfileCard } from "@/components/profile-card";
+import { ContributorCard } from "@/components/contributor-card";
 
 const backgrounds = [
   "/images/main-bg-1.webp",
@@ -104,7 +104,7 @@ export default function AfterburnerPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {contributors.map((contributor, index) => (
                 <div key={contributor.id}>
-                  <ProfileCard user={contributor} />
+                  <ContributorCard contributor={contributor} />
                 </div>
               ))}
             </div>
