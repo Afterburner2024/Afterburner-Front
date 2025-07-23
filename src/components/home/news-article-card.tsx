@@ -98,7 +98,7 @@ export function NewsArticleCard({
     return (
       <Card className="overflow-hidden bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] hover:shadow-lg transition-all duration-300 cursor-pointer group">
         <div className="flex">
-          <div className="relative w-32 h-24 flex-shrink-0">
+          <div className="relative w-32 h-28 flex-shrink-0">
             <Image
               src={article.imageUrl}
               alt={article.title}

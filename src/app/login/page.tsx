@@ -31,18 +31,14 @@ export default function LoginPage() {
     // TODO: 실제 소셜 로그인 API 연동
     console.log(`Logging in with ${provider}`);
 
-    // 임시 사용자 데이터 생성
+    // 임시 사용자 데이터 생성 (GitHub 전용)
     const mockUserData = {
-      id: `user_${Date.now()}`,
-      name:
-        provider === "github"
-          ? "GitHub User"
-          : provider === "google"
-          ? "Google User"
-          : "Discord User",
-      email: `user@${provider}.com`,
-      provider: provider,
-      avatar: undefined,
+      id: "1", // 김개발 사용자 ID
+      name: "김개발",
+      email: "kim.dev@example.com",
+      provider: "github",
+      avatar:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
     };
 
     // 로그인 처리
@@ -60,14 +56,6 @@ export default function LoginPage() {
       bgColor: "bg-gray-900 hover:bg-gray-800",
       textColor: "text-white",
       description: "GitHub 계정으로 로그인",
-    },
-    {
-      id: "google",
-      name: "Google",
-      icon: Mail,
-      bgColor: "bg-red-500 hover:bg-red-600",
-      textColor: "text-white",
-      description: "Google 계정으로 로그인",
     },
   ];
 
