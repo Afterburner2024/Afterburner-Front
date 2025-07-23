@@ -51,9 +51,7 @@ export default function RecruitmentDetailPage() {
           <p className="text-gray-500 dark:text-[#a0a0a0] mb-4">
             요청하신 모집글을 찾을 수 없습니다.
           </p>
-          <Button onClick={() => router.push("/recruitment")}>
-            목록으로 돌아가기
-          </Button>
+          <Button onClick={() => router.back()}>뒤로가기</Button>
         </div>
       </div>
     );
@@ -103,11 +101,11 @@ export default function RecruitmentDetailPage() {
       {/* 뒤로가기 버튼 */}
       <Button
         variant="ghost"
-        onClick={() => router.push("/recruitment")}
+        onClick={() => router.back()}
         className="flex items-center gap-2 mb-4"
       >
         <ArrowLeft className="w-4 h-4" />
-        목록으로 돌아가기
+        뒤로가기
       </Button>
 
       {/* 프로젝트 정보 카드 */}

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ModeToggle } from "@/components/mode-toggle";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { User, Menu, LogIn, LogOut } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -102,6 +102,9 @@ export function Header({ onMobileMenuOpen }: HeaderProps) {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="rounded-full">
                   <Avatar className="h-8 w-8">
+                    {user.avatar && (
+                      <AvatarImage src={user.avatar} alt={user.name} />
+                    )}
                     <AvatarFallback>
                       {user.name.charAt(0).toUpperCase()}
                     </AvatarFallback>
@@ -115,7 +118,10 @@ export function Header({ onMobileMenuOpen }: HeaderProps) {
                 </div>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href="/profile" className="flex items-center gap-2">
+                  <Link
+                    href={`/profile/${user.id}`}
+                    className="flex items-center gap-2"
+                  >
                     <User className="h-4 w-4" />
                     프로필
                   </Link>
