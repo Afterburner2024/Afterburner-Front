@@ -23,6 +23,7 @@ import { QuestionPost, Answer } from "@/types/question";
 import { questionMockData } from "@/data/questionMockData";
 import { formatDistanceToNow } from "date-fns";
 import { ko } from "date-fns/locale";
+import { MainLayout } from "@/components/layouts/main-layout";
 
 export default function QuestionDetailPage() {
   const params = useParams();
@@ -146,195 +147,234 @@ export default function QuestionDetailPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* 뒤로가기 버튼 */}
-      <Button variant="ghost" onClick={() => router.back()} className="mb-6">
-        <ArrowLeft className="w-4 h-4 mr-2" />
-        목록으로 돌아가기
-      </Button>
-
-      {/* 질문 상세 */}
-      <Card className="mb-8">
-        <CardHeader>
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-4">
-                {getStatusIcon(question.status, question.isSolved)}
-                <h1 className="text-2xl font-bold">{question.title}</h1>
-              </div>
-
-              <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                <div className="flex items-center gap-2">
-                  <Avatar className="w-6 h-6">
-                    <AvatarImage src="" />
-                    <AvatarFallback>{question.author[0]}</AvatarFallback>
-                  </Avatar>
-                  <span>{question.author}</span>
-                </div>
-                <span>•</span>
-                <span>
-                  {formatDistanceToNow(new Date(question.createdAt), {
-                    addSuffix: true,
-                    locale: ko,
-                  })}
-                </span>
-                <span>•</span>
-                <div className="flex items-center gap-1">
-                  <Eye className="w-4 h-4" />
-                  <span>{question.viewCount}</span>
-                </div>
-                <span>•</span>
-                <div className="flex items-center gap-1">
-                  <MessageSquare className="w-4 h-4" />
-                  <span>{answers.length}</span>
-                </div>
-              </div>
-
-              <div className="flex gap-2 mb-4">
-                {question.difficulty && (
-                  <Badge className={getDifficultyColor(question.difficulty)}>
-                    {question.difficulty === "beginner"
-                      ? "초급"
-                      : question.difficulty === "intermediate"
-                      ? "중급"
-                      : "고급"}
-                  </Badge>
-                )}
-                {question.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm">
-                <Edit className="w-4 h-4 mr-2" />
-                수정
-              </Button>
-              <Button variant="outline" size="sm" className="text-destructive">
-                <Trash2 className="w-4 h-4 mr-2" />
-                삭제
-              </Button>
-            </div>
-          </div>
-        </CardHeader>
-
-        <CardContent>
-          <div className="prose max-w-none">
-            <p className="whitespace-pre-wrap">{question.content}</p>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* 답변 목록 */}
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4">답변 ({answers.length})</h2>
-
-        <div className="space-y-6">
-          {answers.map((answer) => (
-            <Card
-              key={answer.id}
-              className={
-                answer.isAccepted ? "border-green-500 bg-green-50" : ""
-              }
+    <MainLayout>
+      <div className="min-h-svh bg-gray-50 dark:bg-[#171515]">
+        <div className="flex flex-col space-y-8 p-6">
+          {/* 뒤로가기 버튼 */}
+          <div className="w-full max-w-7xl mx-auto">
+            <Button
+              variant="ghost"
+              onClick={() => router.back()}
+              className="mb-6"
             >
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-4">
-                  <div className="flex flex-col items-center gap-2">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => handleVote(answer.id, true)}
-                    >
-                      <ThumbsUp className="w-4 h-4" />
-                    </Button>
-                    <span className="text-sm font-medium">
-                      {answer.voteCount}
-                    </span>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => handleVote(answer.id, false)}
-                    >
-                      <ThumbsDown className="w-4 h-4" />
-                    </Button>
-                  </div>
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              목록으로 돌아가기
+            </Button>
+          </div>
 
+          {/* 질문 상세 */}
+          <section className="w-full max-w-7xl mx-auto">
+            <Card className="mb-8">
+              <CardHeader>
+                <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2 mb-4">
+                      {getStatusIcon(question.status, question.isSolved)}
+                      <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+                        {question.title}
+                      </h1>
+                    </div>
+
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                       <div className="flex items-center gap-2">
-                        <Avatar className="w-8 h-8">
+                        <Avatar className="w-6 h-6">
                           <AvatarImage src="" />
-                          <AvatarFallback>{answer.author[0]}</AvatarFallback>
+                          <AvatarFallback>{question.author[0]}</AvatarFallback>
                         </Avatar>
-                        <div>
-                          <div className="font-medium">{answer.author}</div>
-                          <div className="text-sm text-muted-foreground">
-                            {formatDistanceToNow(new Date(answer.createdAt), {
-                              addSuffix: true,
-                              locale: ko,
-                            })}
-                          </div>
-                        </div>
+                        <span>{question.author}</span>
                       </div>
+                      <span>•</span>
+                      <span>
+                        {formatDistanceToNow(new Date(question.createdAt), {
+                          addSuffix: true,
+                          locale: ko,
+                        })}
+                      </span>
+                      <span>•</span>
+                      <div className="flex items-center gap-1">
+                        <Eye className="w-4 h-4" />
+                        <span>{question.viewCount}</span>
+                      </div>
+                      <span>•</span>
+                      <div className="flex items-center gap-1">
+                        <MessageSquare className="w-4 h-4" />
+                        <span>{answers.length}</span>
+                      </div>
+                    </div>
 
-                      {!answer.isAccepted && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => handleAcceptAnswer(answer.id)}
+                    <div className="flex gap-2 mb-4">
+                      {question.difficulty && (
+                        <Badge
+                          className={getDifficultyColor(question.difficulty)}
                         >
-                          <CheckCircle className="w-4 h-4 mr-2" />
-                          채택
-                        </Button>
-                      )}
-
-                      {answer.isAccepted && (
-                        <Badge className="bg-green-100 text-green-800">
-                          <CheckCircle className="w-4 h-4 mr-1" />
-                          채택됨
+                          {question.difficulty === "beginner"
+                            ? "초급"
+                            : question.difficulty === "intermediate"
+                            ? "중급"
+                            : "고급"}
                         </Badge>
                       )}
-                    </div>
-
-                    <div className="prose max-w-none">
-                      <p className="whitespace-pre-wrap">{answer.content}</p>
+                      {question.tags.map((tag) => (
+                        <Badge key={tag} variant="secondary">
+                          {tag}
+                        </Badge>
+                      ))}
                     </div>
                   </div>
+
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm">
+                      <Edit className="w-4 h-4 mr-2" />
+                      수정
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="text-destructive"
+                    >
+                      <Trash2 className="w-4 h-4 mr-2" />
+                      삭제
+                    </Button>
+                  </div>
+                </div>
+              </CardHeader>
+
+              <CardContent>
+                <div className="prose max-w-none">
+                  <p className="whitespace-pre-wrap text-gray-700 dark:text-gray-300">
+                    {question.content}
+                  </p>
                 </div>
               </CardContent>
             </Card>
-          ))}
+          </section>
+
+          {/* 답변 목록 */}
+          <section className="w-full max-w-7xl mx-auto">
+            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+              답변 ({answers.length})
+            </h2>
+
+            <div className="space-y-6">
+              {answers.map((answer) => (
+                <Card
+                  key={answer.id}
+                  className={
+                    answer.isAccepted
+                      ? "border-green-500 bg-green-50 dark:bg-green-900/20"
+                      : ""
+                  }
+                >
+                  <CardContent className="pt-6">
+                    <div className="flex items-start gap-4">
+                      <div className="flex flex-col items-center gap-2">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleVote(answer.id, true)}
+                        >
+                          <ThumbsUp className="w-4 h-4" />
+                        </Button>
+                        <span className="text-sm font-medium">
+                          {answer.voteCount}
+                        </span>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleVote(answer.id, false)}
+                        >
+                          <ThumbsDown className="w-4 h-4" />
+                        </Button>
+                      </div>
+
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="flex items-center gap-2">
+                            <Avatar className="w-8 h-8">
+                              <AvatarImage src="" />
+                              <AvatarFallback>
+                                {answer.author[0]}
+                              </AvatarFallback>
+                            </Avatar>
+                            <div>
+                              <div className="font-medium text-gray-900 dark:text-white">
+                                {answer.author}
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                {formatDistanceToNow(
+                                  new Date(answer.createdAt),
+                                  {
+                                    addSuffix: true,
+                                    locale: ko,
+                                  }
+                                )}
+                              </div>
+                            </div>
+                          </div>
+
+                          {!answer.isAccepted && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => handleAcceptAnswer(answer.id)}
+                            >
+                              <CheckCircle className="w-4 h-4 mr-2" />
+                              채택
+                            </Button>
+                          )}
+
+                          {answer.isAccepted && (
+                            <Badge className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                              <CheckCircle className="w-4 h-4 mr-1" />
+                              채택됨
+                            </Badge>
+                          )}
+                        </div>
+
+                        <div className="prose max-w-none">
+                          <p className="whitespace-pre-wrap text-gray-700 dark:text-gray-300">
+                            {answer.content}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          {/* 답변 작성 */}
+          <section className="w-full max-w-7xl mx-auto">
+            <Card>
+              <CardHeader>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  답변 작성
+                </h3>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmitAnswer}>
+                  <Textarea
+                    value={newAnswer}
+                    onChange={(e) => setNewAnswer(e.target.value)}
+                    placeholder="답변을 입력하세요..."
+                    rows={6}
+                    className="mb-4"
+                  />
+                  <div className="flex justify-end">
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting || !newAnswer.trim()}
+                    >
+                      {isSubmitting ? "등록 중..." : "답변 등록"}
+                    </Button>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+          </section>
         </div>
       </div>
-
-      {/* 답변 작성 */}
-      <Card>
-        <CardHeader>
-          <h3 className="text-lg font-semibold">답변 작성</h3>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmitAnswer}>
-            <Textarea
-              value={newAnswer}
-              onChange={(e) => setNewAnswer(e.target.value)}
-              placeholder="답변을 입력하세요..."
-              rows={6}
-              className="mb-4"
-            />
-            <div className="flex justify-end">
-              <Button
-                type="submit"
-                disabled={isSubmitting || !newAnswer.trim()}
-              >
-                {isSubmitting ? "등록 중..." : "답변 등록"}
-              </Button>
-            </div>
-          </form>
-        </CardContent>
-      </Card>
-    </div>
+    </MainLayout>
   );
 }
