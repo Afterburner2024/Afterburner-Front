@@ -10,6 +10,7 @@ import {
   NotebookPen,
   SquareCode,
   Newspaper,
+  HelpCircle,
 } from "lucide-react";
 
 const sidebarNavItems = [
@@ -30,6 +31,12 @@ const sidebarNavItems = [
     title: "팀원모집",
     icon: <Handshake className="w-4 h-4" />,
     href: "/recruitment",
+  },
+  {
+    id: "questions",
+    title: "질문게시판",
+    icon: <HelpCircle className="w-4 h-4" />,
+    href: "/questions",
   },
   {
     id: "tech-articles",
