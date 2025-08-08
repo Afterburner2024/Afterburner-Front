@@ -16,6 +16,7 @@ import { QuestionPost } from "@/types/question";
 import { questionMockData } from "@/data/questionMockData";
 import { formatDistanceToNow } from "date-fns";
 import { ko } from "date-fns/locale";
+import { Reveal } from "@/components/ui/reveal";
 
 interface QuestionGridProps {
   searchQuery: string;
@@ -147,83 +148,87 @@ export function QuestionGrid({
 
       {/* 질문 목록 */}
       <div className="grid gap-4">
-        {filteredQuestions.map((question) => (
-          <Card key={question.id} className="hover:shadow-md transition-shadow">
-            <CardHeader className="pb-3">
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    {getStatusIcon(question.status, question.isSolved)}
-                    <Link
-                      href={`/questions/${question.id}`}
-                      className="text-lg font-semibold hover:text-primary transition-colors"
-                    >
-                      {question.title}
-                    </Link>
+        {filteredQuestions.map((question, idx) => (
+          <Reveal key={question.id} delayMs={idx * 50}>
+            <Card className="hover:shadow-md transition-shadow">
+              <CardHeader className="pb-3">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      {getStatusIcon(question.status, question.isSolved)}
+                      <Link
+                        href={`/questions/${question.id}`}
+                        className="text-lg font-semibold hover:text-primary transition-colors"
+                      >
+                        {question.title}
+                      </Link>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <span>{question.author}</span>
+                      <span>•</span>
+                      <span>
+                        {formatDistanceToNow(new Date(question.createdAt), {
+                          addSuffix: true,
+                          locale: ko,
+                        })}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span>{question.author}</span>
-                    <span>•</span>
-                    <span>
-                      {formatDistanceToNow(new Date(question.createdAt), {
-                        addSuffix: true,
-                        locale: ko,
-                      })}
-                    </span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  {question.difficulty && (
-                    <Badge className={getDifficultyColor(question.difficulty)}>
-                      {question.difficulty === "beginner"
-                        ? "초급"
-                        : question.difficulty === "intermediate"
-                        ? "중급"
-                        : "고급"}
-                    </Badge>
-                  )}
-                  {question.priority && (
-                    <Badge className={getPriorityColor(question.priority)}>
-                      {question.priority === "low"
-                        ? "낮음"
-                        : question.priority === "medium"
-                        ? "보통"
-                        : "높음"}
-                    </Badge>
-                  )}
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent className="pt-0">
-              <p className="text-muted-foreground mb-3 line-clamp-2">
-                {question.content}
-              </p>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <Eye className="w-4 h-4" />
-                    <span>{question.viewCount}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <MessageSquare className="w-4 h-4" />
-                    <span>{question.answerCount}</span>
+                  <div className="flex items-center gap-2">
+                    {question.difficulty && (
+                      <Badge
+                        className={getDifficultyColor(question.difficulty)}
+                      >
+                        {question.difficulty === "beginner"
+                          ? "초급"
+                          : question.difficulty === "intermediate"
+                          ? "중급"
+                          : "고급"}
+                      </Badge>
+                    )}
+                    {question.priority && (
+                      <Badge className={getPriorityColor(question.priority)}>
+                        {question.priority === "low"
+                          ? "낮음"
+                          : question.priority === "medium"
+                          ? "보통"
+                          : "높음"}
+                      </Badge>
+                    )}
                   </div>
                 </div>
-                <div className="flex gap-1">
-                  {question.tags.slice(0, 3).map((tag) => (
-                    <Badge key={tag} variant="secondary" className="text-xs">
-                      {tag}
-                    </Badge>
-                  ))}
-                  {question.tags.length > 3 && (
-                    <Badge variant="secondary" className="text-xs">
-                      +{question.tags.length - 3}
-                    </Badge>
-                  )}
+              </CardHeader>
+              <CardContent className="pt-0">
+                <p className="text-muted-foreground mb-3 line-clamp-2">
+                  {question.content}
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <Eye className="w-4 h-4" />
+                      <span>{question.viewCount}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <MessageSquare className="w-4 h-4" />
+                      <span>{question.answerCount}</span>
+                    </div>
+                  </div>
+                  <div className="flex gap-1">
+                    {question.tags.slice(0, 3).map((tag) => (
+                      <Badge key={tag} variant="secondary" className="text-xs">
+                        {tag}
+                      </Badge>
+                    ))}
+                    {question.tags.length > 3 && (
+                      <Badge variant="secondary" className="text-xs">
+                        +{question.tags.length - 3}
+                      </Badge>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </Reveal>
         ))}
       </div>
 

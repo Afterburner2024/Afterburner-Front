@@ -15,6 +15,7 @@ import {
 import { techArticles } from "@/data/mockData";
 import { useState, useMemo } from "react";
 import { Search, Filter, TrendingUp, Clock, Grid, List } from "lucide-react";
+import { Reveal } from "@/components/ui/reveal";
 
 export default function TechArticlesPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -84,7 +85,10 @@ export default function TechArticlesPage() {
       contentClassName="space-y-8"
     >
       {/* 필터 & 검색 */}
-      <div className="bg-white dark:bg-[#1a1a1a] rounded-lg border border-gray-200 dark:border-[#333333] p-6 space-y-6">
+      <Reveal
+        as="div"
+        className="bg-white dark:bg-[#1a1a1a] rounded-lg border border-gray-200 dark:border-[#333333] p-6 space-y-6"
+      >
         {/* 상단 컨트롤 */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
@@ -209,14 +213,14 @@ export default function TechArticlesPage() {
             </Button>
           </div>
         )}
-      </div>
+      </Reveal>
 
       {/* 아티클 컨텐츠 */}
       {filteredArticles.length > 0 ? (
         <div className="space-y-8">
           {/* 피처드 아티클 (첫 번째) */}
           {featuredArticle && viewMode === "grid" && (
-            <div>
+            <Reveal as="div">
               <div className="flex items-center gap-2 mb-4">
                 <Badge className="bg-red-600 text-white">Featured</Badge>
                 <span className="text-sm text-gray-600 dark:text-[#a0a0a0]">
@@ -224,28 +228,24 @@ export default function TechArticlesPage() {
                 </span>
               </div>
               <NewsArticleCard article={featuredArticle} variant="featured" />
-            </div>
+            </Reveal>
           )}
 
           {/* 일반 아티클들 */}
           {viewMode === "grid" ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {regularArticles.map((article) => (
-                <NewsArticleCard
-                  key={article.id}
-                  article={article}
-                  variant="default"
-                />
+              {regularArticles.map((article, idx) => (
+                <Reveal key={article.id} delayMs={idx * 60}>
+                  <NewsArticleCard article={article} variant="default" />
+                </Reveal>
               ))}
             </div>
           ) : (
             <div className="space-y-4">
-              {filteredArticles.map((article) => (
-                <NewsArticleCard
-                  key={article.id}
-                  article={article}
-                  variant="compact"
-                />
+              {filteredArticles.map((article, idx) => (
+                <Reveal key={article.id} delayMs={idx * 60}>
+                  <NewsArticleCard article={article} variant="compact" />
+                </Reveal>
               ))}
             </div>
           )}

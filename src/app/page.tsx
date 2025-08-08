@@ -18,6 +18,7 @@ import {
 } from "@/data/mockData";
 import { applyDynamicStatusToPosts } from "@/utils/statusUtils";
 import { useMemo } from "react";
+import { Reveal } from "@/components/ui/reveal";
 
 export default function Home() {
   // 동적 상태가 적용된 게시글
@@ -46,7 +47,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* 좌측: 메인 카피 */}
               <div className="space-y-8">
-                <div className="space-y-4">
+                <Reveal as="div" className="space-y-4">
                   <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
                     국비교육 수료
                     <br />
@@ -59,34 +60,38 @@ export default function Home() {
                     <br />
                     최신 기술 트렌드와 함께 성장하는 개발자 커뮤니티입니다.
                   </p>
-                </div>
+                </Reveal>
 
                 {/* 통계 */}
                 <div className="grid grid-cols-3 gap-6">
-                  <div className="text-center">
+                  <Reveal as="div" className="text-center" delayMs={50}>
                     <div className="text-3xl font-bold text-yellow-400">
                       {projectCount}
                     </div>
                     <div className="text-blue-100 text-sm">
                       진행중인 프로젝트
                     </div>
-                  </div>
-                  <div className="text-center">
+                  </Reveal>
+                  <Reveal as="div" className="text-center" delayMs={120}>
                     <div className="text-3xl font-bold text-yellow-400">
                       {studyCount}
                     </div>
                     <div className="text-blue-100 text-sm">활성 스터디</div>
-                  </div>
-                  <div className="text-center">
+                  </Reveal>
+                  <Reveal as="div" className="text-center" delayMs={180}>
                     <div className="text-3xl font-bold text-yellow-400">
                       1,234
                     </div>
                     <div className="text-blue-100 text-sm">등록된 개발자</div>
-                  </div>
+                  </Reveal>
                 </div>
 
                 {/* CTA 버튼 */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                <Reveal
+                  as="div"
+                  className="flex flex-col sm:flex-row gap-4"
+                  delayMs={220}
+                >
                   <Button
                     asChild
                     variant="outline"
@@ -101,34 +106,34 @@ export default function Home() {
                       팀원 모집하기
                     </Link>
                   </Button>
-                </div>
+                </Reveal>
               </div>
 
               {/* 우측: 최신 기술 컬럼 */}
-              <div className="space-y-6">
+              <Reveal as="div" className="space-y-6" delayMs={120}>
                 <div className="flex items-center gap-2 text-white">
                   <TrendingUp className="w-5 h-5" />
                   <h2 className="text-xl font-bold">최신 기술 컬럼</h2>
                 </div>
                 <div className="space-y-2">
-                  {techArticles.slice(0, 2).map((article) => (
-                    <NewsArticleCard
-                      key={article.id}
-                      article={article}
-                      variant="compact"
-                    />
+                  {techArticles.slice(0, 2).map((article, idx) => (
+                    <Reveal key={article.id} delayMs={160 + idx * 80}>
+                      <NewsArticleCard article={article} variant="compact" />
+                    </Reveal>
                   ))}
                 </div>
                 <div className="mt-2"></div>
-                <Link href="/tech-articles" className="w-full">
-                  <Button
-                    variant="outline"
-                    className="w-full border-white text-white hover:bg-white hover:text-blue-600"
-                  >
-                    더 많은 컬럼 보기
-                  </Button>
-                </Link>
-              </div>
+                <Reveal as="div" delayMs={260}>
+                  <Link href="/tech-articles" className="w-full">
+                    <Button
+                      variant="outline"
+                      className="w-full border-white text-white hover:bg-white hover:text-blue-600"
+                    >
+                      더 많은 컬럼 보기
+                    </Button>
+                  </Link>
+                </Reveal>
+              </Reveal>
             </div>
           </div>
         </section>
@@ -137,29 +142,35 @@ export default function Home() {
         <section className="max-w-7xl mx-auto px-6 py-16 space-y-16">
           {/* 인기 프로젝트/스터디 */}
           <div className="space-y-8">
-            <div className="text-center space-y-4">
+            <Reveal as="div" className="text-center space-y-4">
               <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
                 🔥 인기 모집글
               </h2>
               <p className="text-gray-600 dark:text-[#a0a0a0] text-base lg:text-lg">
                 최근 주목받고 있는 프로젝트와 스터디를 확인해보세요
               </p>
-            </div>
-            <RecruitmentGrid posts={popularPosts} />
-            <div className="text-center">
+            </Reveal>
+            <Reveal>
+              <RecruitmentGrid posts={popularPosts} />
+            </Reveal>
+            <Reveal as="div" className="text-center" delayMs={80}>
               <Button asChild size="lg" variant="outline">
                 <Link href="/recruitment" className="flex items-center gap-2">
                   더 많은 모집글 보기
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>
-            </div>
+            </Reveal>
           </div>
 
           {/* 기술 트렌드 & 이달의 개발자 */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <TechTrends trends={techTrends} />
-            <MonthlyDevelopers developers={monthlyDevelopers} />
+            <Reveal>
+              <TechTrends trends={techTrends} />
+            </Reveal>
+            <Reveal delayMs={100}>
+              <MonthlyDevelopers developers={monthlyDevelopers} />
+            </Reveal>
           </div>
         </section>
       </div>

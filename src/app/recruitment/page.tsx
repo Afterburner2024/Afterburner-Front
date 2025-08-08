@@ -11,6 +11,7 @@ import { RecruitmentCreateModal } from "@/components/recruitment/recruitment-cre
 import { applyFilters } from "@/utils/filterUtils";
 import { applyDynamicStatusToPosts } from "@/utils/statusUtils";
 import { MainLayout } from "@/components/layouts/main-layout";
+import { Reveal } from "@/components/ui/reveal";
 
 export default function RecruitmentPage() {
   const [posts, setPosts] = useState<RecruitmentPost[]>(mockPosts);
@@ -58,17 +59,24 @@ export default function RecruitmentPage() {
       <div className="min-h-svh bg-gray-50 dark:bg-[#171515]">
         <div className="flex flex-col space-y-8 p-6">
           {/* 페이지 헤더 */}
-          <section className="flex flex-col items-center space-y-4 pt-4">
+          <Reveal
+            as="section"
+            className="flex flex-col items-center space-y-4 pt-4"
+          >
             <h1 className="text-5xl font-bold text-gray-900 dark:text-[#ffa500] text-center">
               팀원 모집 게시판
             </h1>
             <p className="text-gray-600 dark:text-[#a0a0a0] max-w-2xl text-center">
               함께할 팀원을 찾거나 프로젝트에 참여해보세요! 🚀
             </p>
-          </section>
+          </Reveal>
 
           {/* 전체 헤더 및 필터링 */}
-          <section className="w-full max-w-7xl mx-auto space-y-6">
+          <Reveal
+            as="section"
+            className="w-full max-w-7xl mx-auto space-y-6"
+            delayMs={80}
+          >
             <RecruitmentHeader
               totalPosts={filteredPosts.length}
               onCreatePost={() => setIsModalOpen(true)}
@@ -80,7 +88,7 @@ export default function RecruitmentPage() {
               totalCount={posts.length}
               filteredCount={filteredPosts.length}
             />
-          </section>
+          </Reveal>
 
           {/* 프로젝트 섹션 */}
           {(filters.typeFilter === "all" ||
