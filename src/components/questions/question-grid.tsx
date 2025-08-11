@@ -1,86 +1,32 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { memo } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  MessageSquare,
-  Eye,
-  Clock,
-  CheckCircle,
-  AlertCircle,
-} from "lucide-react";
+import { MessageSquare, Eye, CheckCircle, AlertCircle } from "lucide-react";
 import { QuestionPost } from "@/types/question";
-import { questionMockData } from "@/data/questionMockData";
+import { QuestionSort } from "@/utils/query";
+import {
+  getDifficultyBadgeClass,
+  getPriorityBadgeClass,
+} from "@/utils/statusColors";
 import { formatDistanceToNow } from "date-fns";
 import { ko } from "date-fns/locale";
 import { Reveal } from "@/components/ui/reveal";
 
 interface QuestionGridProps {
-  searchQuery: string;
-  selectedCategory: string;
-  selectedStatus: string;
+  questions: QuestionPost[];
+  sortBy: QuestionSort;
+  onChangeSort: (sort: QuestionSort) => void;
 }
 
-export function QuestionGrid({
-  searchQuery,
-  selectedCategory,
-  selectedStatus,
+function QuestionGridComponent({
+  questions,
+  sortBy,
+  onChangeSort,
 }: QuestionGridProps) {
-  const [sortBy, setSortBy] = useState<"latest" | "popular" | "unanswered">(
-    "latest"
-  );
-
-  const filteredQuestions = useMemo(() => {
-    let filtered = questionMockData;
-
-    // 검색어 필터링
-    if (searchQuery) {
-      filtered = filtered.filter(
-        (question) =>
-          question.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          question.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          question.tags.some((tag) =>
-            tag.toLowerCase().includes(searchQuery.toLowerCase())
-          )
-      );
-    }
-
-    // 카테고리 필터링
-    if (selectedCategory !== "all") {
-      filtered = filtered.filter(
-        (question) => question.category === selectedCategory
-      );
-    }
-
-    // 상태 필터링
-    if (selectedStatus !== "all") {
-      filtered = filtered.filter(
-        (question) => question.status === selectedStatus
-      );
-    }
-
-    // 정렬
-    switch (sortBy) {
-      case "latest":
-        filtered.sort(
-          (a, b) =>
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        );
-        break;
-      case "popular":
-        filtered.sort((a, b) => b.viewCount - a.viewCount);
-        break;
-      case "unanswered":
-        filtered.sort((a, b) => a.answerCount - b.answerCount);
-        break;
-    }
-
-    return filtered;
-  }, [searchQuery, selectedCategory, selectedStatus, sortBy]);
-
   const getStatusIcon = (status: string, isSolved: boolean) => {
     if (isSolved) return <CheckCircle className="w-4 h-4 text-green-500" />;
     if (status === "open")
@@ -88,58 +34,37 @@ export function QuestionGrid({
     return <AlertCircle className="w-4 h-4 text-gray-500" />;
   };
 
-  const getDifficultyColor = (difficulty?: string) => {
-    switch (difficulty) {
-      case "beginner":
-        return "bg-green-100 text-green-800";
-      case "intermediate":
-        return "bg-yellow-100 text-yellow-800";
-      case "advanced":
-        return "bg-red-100 text-red-800";
-      default:
-        return "bg-gray-100 text-gray-800";
-    }
-  };
-
-  const getPriorityColor = (priority?: string) => {
-    switch (priority) {
-      case "low":
-        return "bg-blue-100 text-blue-800";
-      case "medium":
-        return "bg-yellow-100 text-yellow-800";
-      case "high":
-        return "bg-red-100 text-red-800";
-      default:
-        return "bg-gray-100 text-gray-800";
-    }
-  };
+  const getDifficultyColor = (difficulty?: string) =>
+    getDifficultyBadgeClass(difficulty);
+  const getPriorityColor = (priority?: string) =>
+    getPriorityBadgeClass(priority);
 
   return (
     <div className="space-y-4">
       {/* 정렬 옵션 */}
       <div className="flex justify-between items-center">
         <div className="text-sm text-muted-foreground">
-          총 {filteredQuestions.length}개의 질문
+          총 {questions.length}개의 질문
         </div>
         <div className="flex gap-2">
           <Button
             variant={sortBy === "latest" ? "default" : "outline"}
             size="sm"
-            onClick={() => setSortBy("latest")}
+            onClick={() => onChangeSort("latest")}
           >
             최신순
           </Button>
           <Button
             variant={sortBy === "popular" ? "default" : "outline"}
             size="sm"
-            onClick={() => setSortBy("popular")}
+            onClick={() => onChangeSort("popular")}
           >
             인기순
           </Button>
           <Button
             variant={sortBy === "unanswered" ? "default" : "outline"}
             size="sm"
-            onClick={() => setSortBy("unanswered")}
+            onClick={() => onChangeSort("unanswered")}
           >
             답변없음
           </Button>
@@ -148,7 +73,7 @@ export function QuestionGrid({
 
       {/* 질문 목록 */}
       <div className="grid gap-4">
-        {filteredQuestions.map((question, idx) => (
+        {questions.map((question, idx) => (
           <Reveal key={question.id} delayMs={idx * 50}>
             <Card className="hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
@@ -158,7 +83,8 @@ export function QuestionGrid({
                       {getStatusIcon(question.status, question.isSolved)}
                       <Link
                         href={`/questions/${question.id}`}
-                        className="text-lg font-semibold hover:text-primary transition-colors"
+                        aria-label={`질문 상세보기: ${question.title}`}
+                        className="text-lg font-semibold hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
                       >
                         {question.title}
                       </Link>
@@ -232,7 +158,7 @@ export function QuestionGrid({
         ))}
       </div>
 
-      {filteredQuestions.length === 0 && (
+      {questions.length === 0 && (
         <div className="text-center py-12">
           <div className="text-muted-foreground mb-4">
             검색 결과가 없습니다.
@@ -245,3 +171,5 @@ export function QuestionGrid({
     </div>
   );
 }
+
+export const QuestionGrid = memo(QuestionGridComponent);

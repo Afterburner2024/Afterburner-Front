@@ -1,6 +1,7 @@
 "use client";
 
 import { UserStats } from "@/types/user";
+import { memo } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -17,7 +18,7 @@ interface UserStatsCardProps {
   className?: string;
 }
 
-export function UserStatsCard({ stats, className }: UserStatsCardProps) {
+function UserStatsCardComponent({ stats, className }: UserStatsCardProps) {
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("ko-KR", {
       year: "numeric",
@@ -207,3 +208,5 @@ export function UserStatsCard({ stats, className }: UserStatsCardProps) {
     </Card>
   );
 }
+
+export const UserStatsCard = memo(UserStatsCardComponent);

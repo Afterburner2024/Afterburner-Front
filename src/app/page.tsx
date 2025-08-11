@@ -19,6 +19,7 @@ import {
 import { applyDynamicStatusToPosts } from "@/utils/statusUtils";
 import { useMemo } from "react";
 import { Reveal } from "@/components/ui/reveal";
+import { CountUp } from "@/components/ui/count-up";
 
 export default function Home() {
   // 동적 상태가 적용된 게시글
@@ -66,7 +67,7 @@ export default function Home() {
                 <div className="grid grid-cols-3 gap-6">
                   <Reveal as="div" className="text-center" delayMs={50}>
                     <div className="text-3xl font-bold text-yellow-400">
-                      {projectCount}
+                      <CountUp value={projectCount} />
                     </div>
                     <div className="text-blue-100 text-sm">
                       진행중인 프로젝트
@@ -74,13 +75,13 @@ export default function Home() {
                   </Reveal>
                   <Reveal as="div" className="text-center" delayMs={120}>
                     <div className="text-3xl font-bold text-yellow-400">
-                      {studyCount}
+                      <CountUp value={studyCount} />
                     </div>
                     <div className="text-blue-100 text-sm">활성 스터디</div>
                   </Reveal>
                   <Reveal as="div" className="text-center" delayMs={180}>
                     <div className="text-3xl font-bold text-yellow-400">
-                      1,234
+                      <CountUp value={1234} />
                     </div>
                     <div className="text-blue-100 text-sm">등록된 개발자</div>
                   </Reveal>
@@ -96,10 +97,11 @@ export default function Home() {
                     asChild
                     variant="outline"
                     size="lg"
-                    className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold"
+                    className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
                   >
                     <Link
                       href="/recruitment"
+                      aria-label="팀원 모집 페이지로 이동"
                       className="flex items-center gap-2"
                     >
                       <Users className="w-5 h-5" />
@@ -124,7 +126,11 @@ export default function Home() {
                 </div>
                 <div className="mt-2"></div>
                 <Reveal as="div" delayMs={260}>
-                  <Link href="/tech-articles" className="w-full">
+                  <Link
+                    href="/tech-articles"
+                    className="w-full"
+                    aria-label="기술 컬럼 더 보기"
+                  >
                     <Button
                       variant="outline"
                       className="w-full border-white text-white hover:bg-white hover:text-blue-600"
@@ -155,7 +161,11 @@ export default function Home() {
             </Reveal>
             <Reveal as="div" className="text-center" delayMs={80}>
               <Button asChild size="lg" variant="outline">
-                <Link href="/recruitment" className="flex items-center gap-2">
+                <Link
+                  href="/recruitment"
+                  className="flex items-center gap-2"
+                  aria-label="모집글 더 보기"
+                >
                   더 많은 모집글 보기
                   <ArrowRight className="w-4 h-4" />
                 </Link>

@@ -40,7 +40,10 @@ export function MonthlyDevelopers({ developers }: MonthlyDevelopersProps) {
               <div className="flex items-start gap-4">
                 <div className="relative">
                   <Avatar className="w-16 h-16">
-                    <AvatarImage src={dev.avatar} alt={dev.name} />
+                    <AvatarImage
+                      src={dev.avatar}
+                      alt={`${dev.name}의 아바타`}
+                    />
                     <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white font-bold">
                       {dev.name.slice(0, 2)}
                     </AvatarFallback>
@@ -66,7 +69,8 @@ export function MonthlyDevelopers({ developers }: MonthlyDevelopersProps) {
                       href={dev.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 hover:bg-gray-100 dark:hover:bg-[#2a2a2a] rounded-full transition-colors"
+                      aria-label={`${dev.name}의 GitHub로 이동`}
+                      className="p-2 hover:bg-gray-100 dark:hover:bg-[#2a2a2a] rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
                     >
                       <Github className="w-4 h-4 text-gray-600 dark:text-[#a0a0a0]" />
                     </a>

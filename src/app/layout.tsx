@@ -27,6 +27,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
   ),
+  manifest: "/manifest.json",
   openGraph: {
     type: "website",
     locale: "ko_KR",

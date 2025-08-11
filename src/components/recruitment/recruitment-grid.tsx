@@ -1,12 +1,13 @@
 import { RecruitmentPost } from "@/types/recruitment";
 import { RecruitmentCard } from "./recruitment-card";
 import { Reveal } from "@/components/ui/reveal";
+import { memo } from "react";
 
 interface RecruitmentGridProps {
   posts: RecruitmentPost[];
 }
 
-export function RecruitmentGrid({ posts }: RecruitmentGridProps) {
+function RecruitmentGridComponent({ posts }: RecruitmentGridProps) {
   if (posts.length === 0) {
     return (
       <div className="text-center py-12">
@@ -31,3 +32,5 @@ export function RecruitmentGrid({ posts }: RecruitmentGridProps) {
     </div>
   );
 }
+
+export const RecruitmentGrid = memo(RecruitmentGridComponent);

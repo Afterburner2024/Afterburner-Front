@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Clock, ExternalLink } from "lucide-react";
 import { getStackColor } from "@/utils/stackColors";
+import { memo } from "react";
 
 interface TechArticle {
   id: number;
@@ -18,9 +19,9 @@ interface TechArticleCardProps {
   article: TechArticle;
 }
 
-export function TechArticleCard({ article }: TechArticleCardProps) {
+function TechArticleCardComponent({ article }: TechArticleCardProps) {
   return (
-    <Card className="p-6 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+    <Card className="p-6 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] hover:shadow-lg transition-shadow duration-300 cursor-pointer focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary rounded">
       <div className="space-y-4">
         {/* 소스와 날짜 */}
         <div className="flex items-center justify-between text-sm text-gray-500 dark:text-[#a0a0a0]">
@@ -61,3 +62,5 @@ export function TechArticleCard({ article }: TechArticleCardProps) {
     </Card>
   );
 }
+
+export const TechArticleCard = memo(TechArticleCardComponent);

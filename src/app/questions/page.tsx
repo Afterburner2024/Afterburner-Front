@@ -9,24 +9,21 @@ import { QuestionFilters } from "@/components/questions/question-filters";
 import { QuestionCreateModal } from "@/components/questions/question-create-modal";
 import { MainLayout } from "@/components/layouts/main-layout";
 import { Reveal } from "@/components/ui/reveal";
+import { useQuestions } from "@/hooks/useQuestions";
 
 export default function QuestionsPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [selectedStatus, setSelectedStatus] = useState<string>("all");
+  const {
+    questions,
+    searchQuery,
+    selectedCategory,
+    selectedStatus,
+    sortBy,
+    setSearchQuery,
+    setSelectedCategory,
+    setSelectedStatus,
+    setSortBy,
+  } = useQuestions();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-  };
-
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-  };
-
-  const handleStatusChange = (status: string) => {
-    setSelectedStatus(status);
-  };
 
   return (
     <MainLayout>
@@ -58,7 +55,7 @@ export default function QuestionsPage() {
                   <Input
                     placeholder="질문을 검색해보세요..."
                     value={searchQuery}
-                    onChange={(e) => handleSearch(e.target.value)}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-10"
                   />
                 </div>
@@ -67,8 +64,8 @@ export default function QuestionsPage() {
                 <QuestionFilters
                   selectedCategory={selectedCategory}
                   selectedStatus={selectedStatus}
-                  onCategoryChange={handleCategoryChange}
-                  onStatusChange={handleStatusChange}
+                  onCategoryChange={setSelectedCategory}
+                  onStatusChange={setSelectedStatus}
                 />
                 <Button
                   onClick={() => setIsCreateModalOpen(true)}
@@ -84,9 +81,9 @@ export default function QuestionsPage() {
           {/* 질문 목록 섹션 */}
           <section className="w-full max-w-7xl mx-auto">
             <QuestionGrid
-              searchQuery={searchQuery}
-              selectedCategory={selectedCategory}
-              selectedStatus={selectedStatus}
+              questions={questions}
+              sortBy={sortBy}
+              onChangeSort={setSortBy}
             />
           </section>
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { CommentForm } from "./comment-form";
 import { CommentList } from "./comment-list";
 import { Comment } from "@/types/attendance";
+import { Reveal } from "@/components/ui/reveal";
 
 interface CommentsSectionProps {
   comments: Comment[];
@@ -30,19 +31,24 @@ export function CommentsSection({
 
   return (
     <section className="w-full max-w-4xl mx-auto space-y-6">
-      <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-[#ffffff]">
+      <Reveal
+        as="h2"
+        className="text-3xl font-bold text-center text-gray-900 dark:text-[#ffffff]"
+      >
         오늘의 한마디 😛
-      </h2>
+      </Reveal>
 
-      {/* 댓글 입력 */}
-      <CommentForm
-        newComment={newComment}
-        onCommentChange={setNewComment}
-        onSubmit={handleSubmit}
-      />
+      <Reveal>
+        <CommentForm
+          newComment={newComment}
+          onCommentChange={setNewComment}
+          onSubmit={handleSubmit}
+        />
+      </Reveal>
 
-      {/* 댓글 목록 */}
-      <CommentList comments={comments} />
+      <Reveal>
+        <CommentList comments={comments} />
+      </Reveal>
     </section>
   );
 }

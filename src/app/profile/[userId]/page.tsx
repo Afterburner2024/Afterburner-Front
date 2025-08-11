@@ -18,24 +18,41 @@ import {
 import { ArrowLeft, Share, Flag } from "lucide-react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { Reveal } from "@/components/ui/reveal";
+import {
+  mergeUserWithOverride,
+  saveProfileOverride,
+} from "@/utils/profileStorage";
+import { useToast } from "@/hooks/useToast";
 
 export default function UserProfilePage() {
   const params = useParams();
   const router = useRouter();
   const { user: currentUser } = useAuth();
+  const { success } = useToast();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const userId = parseInt(params.userId as string);
-  const user = mockUsers.find((u) => u.userId === userId);
+  const baseUser = mockUsers.find((u) => u.userId === userId);
+  const [mergedUser, setMergedUser] = useState(() =>
+    baseUser ? mergeUserWithOverride(baseUser) : undefined
+  );
+
   const userStats = mockUserStats[userId];
   const userActivities = mockUserActivities[userId] || [];
   const userProjects = mockUserProjects[userId] || [];
 
-  // 현재 로그인된 사용자 ID와 비교 (쿠키의 id는 string, mockUser의 userId는 number)
   const isOwner = currentUser?.id === userId.toString();
 
-  if (!user) {
+  useEffect(() => {
+    if (baseUser) {
+      setMergedUser(mergeUserWithOverride(baseUser));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId]);
+
+  if (!baseUser || !mergedUser) {
     return (
       <MainLayout>
         <div className="max-w-7xl mx-auto p-4">
@@ -56,8 +73,7 @@ export default function UserProfilePage() {
     );
   }
 
-  // 비공개 프로필 체크
-  if (!user.isPublic && !isOwner) {
+  if (!mergedUser.isPublic && !isOwner) {
     return (
       <MainLayout>
         <div className="max-w-7xl mx-auto p-4">
@@ -77,30 +93,25 @@ export default function UserProfilePage() {
     );
   }
 
-  const handleEditProfile = () => {
-    setIsEditModalOpen(true);
-  };
+  const handleEditProfile = () => setIsEditModalOpen(true);
 
   const handleShareProfile = async () => {
     try {
       await navigator.share({
-        title: `${user.userName}님의 프로필`,
-        text: `${user.userName}님의 프로필을 확인해보세요!`,
+        title: `${mergedUser.userName}님의 프로필`,
+        text: `${mergedUser.userName}님의 프로필을 확인해보세요!`,
         url: window.location.href,
       });
-    } catch (err) {
-      // 웹 공유 API를 지원하지 않는 경우 클립보드에 복사
-      navigator.clipboard.writeText(window.location.href);
-      // 토스트 알림 (실제로는 toast 라이브러리 사용)
-      alert("프로필 링크가 클립보드에 복사되었습니다!");
+    } catch {
+      await navigator.clipboard.writeText(window.location.href);
+      success("프로필 링크가 복사되었습니다.");
     }
   };
 
   return (
     <MainLayout>
       <div className="max-w-7xl mx-auto p-4">
-        {/* 상단 네비게이션 */}
-        <div className="flex items-center justify-between mb-4">
+        <Reveal as="div" className="flex items-center justify-between mb-4">
           <Button
             variant="ghost"
             size="sm"
@@ -134,36 +145,41 @@ export default function UserProfilePage() {
               </>
             )}
           </div>
-        </div>
+        </Reveal>
 
-        {/* 프로필 레이아웃 */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* 왼쪽: 프로필 카드 */}
           <div className="lg:col-span-1">
-            <UserProfileCard
-              user={user}
-              isOwner={isOwner}
-              onEditProfile={handleEditProfile}
-            />
+            <Reveal>
+              <UserProfileCard
+                user={mergedUser}
+                isOwner={isOwner}
+                onEditProfile={handleEditProfile}
+              />
+            </Reveal>
           </div>
 
-          {/* 오른쪽: 메인 콘텐츠 */}
           <div className="lg:col-span-3 space-y-8">
-            {/* 통계 카드 */}
-            {userStats && <UserStatsCard stats={userStats} />}
+            {userStats && (
+              <Reveal>
+                <UserStatsCard stats={userStats} />
+              </Reveal>
+            )}
 
-            {/* 프로젝트와 활동을 나란히 배치 */}
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-              {/* 참여한 프로젝트 */}
-              <UserProjectsGrid projects={userProjects} />
+              <Reveal>
+                <UserProjectsGrid projects={userProjects} />
+              </Reveal>
 
-              {/* 최근 활동 */}
-              <UserActivityTimeline activities={userActivities} />
+              <Reveal delayMs={80}>
+                <UserActivityTimeline activities={userActivities} />
+              </Reveal>
             </div>
 
-            {/* GitHub 스타일 기여도 히트맵 (추후 구현 예정) */}
-            {user.githubUsername && (
-              <div className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-[#333333] rounded-lg p-6">
+            {mergedUser.githubUsername && (
+              <Reveal
+                as="div"
+                className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-[#333333] rounded-lg p-6"
+              >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -179,22 +195,22 @@ export default function UserProfilePage() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             )}
           </div>
         </div>
       </div>
 
-      {/* 프로필 편집 모달 */}
       {isEditModalOpen && (
         <ProfileEditModal
-          user={user}
+          user={mergedUser}
           open={isEditModalOpen}
           onClose={() => setIsEditModalOpen(false)}
           onSave={(formData: any) => {
-            // TODO: 실제 API 호출로 프로필 업데이트
-            console.log("프로필 업데이트:", formData);
+            saveProfileOverride(userId, formData);
+            setMergedUser((prev) => (prev ? { ...prev, ...formData } : prev));
             setIsEditModalOpen(false);
+            success("프로필이 저장되었습니다.");
           }}
         />
       )}
