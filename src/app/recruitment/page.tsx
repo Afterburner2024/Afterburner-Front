@@ -1,86 +1,63 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { RecruitmentPost } from "@/types/recruitment";
-import { FilterState } from "@/types/filters";
-import { mockPosts } from "@/data/mockData";
+import { useMemo, useState } from "react";
 import { RecruitmentHeader } from "@/components/recruitment/recruitment-header";
 import { RecruitmentGrid } from "@/components/recruitment/recruitment-grid";
 import { RecruitmentFilters } from "@/components/recruitment/recruitment-filters";
 import { RecruitmentCreateModal } from "@/components/recruitment/recruitment-create-modal";
-import { applyFilters } from "@/utils/filterUtils";
-import { applyDynamicStatusToPosts } from "@/utils/statusUtils";
+import { useRecruitment } from "@/hooks/useRecruitment";
 import { MainLayout } from "@/components/layouts/main-layout";
+import { Reveal } from "@/components/ui/reveal";
 
 export default function RecruitmentPage() {
-  const [posts, setPosts] = useState<RecruitmentPost[]>(mockPosts);
+  const { posts, totalCount, addPost, filters, setFilters } = useRecruitment();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [filters, setFilters] = useState<FilterState>({
-    search: "",
-    techStacks: [],
-    status: "all",
-    dateFilter: "all",
-    sortBy: "latest",
-    typeFilter: "all",
-  });
-
-  const handleAddPost = (
-    newPostData: Omit<RecruitmentPost, "id" | "createdAt">
-  ) => {
-    const newPost: RecruitmentPost = {
-      ...newPostData,
-      id: Math.max(...posts.map((p) => p.id)) + 1,
-      createdAt: new Date().toISOString(),
-    };
-    setPosts([newPost, ...posts]);
-  };
-
-  const handleFiltersChange = (newFilters: FilterState) => {
-    setFilters(newFilters);
-  };
-
-  // 동적 상태가 적용된 게시글
-  const postsWithDynamicStatus = useMemo(() => {
-    return applyDynamicStatusToPosts(posts);
-  }, [posts]);
-
-  // 필터링된 게시글
-  const filteredPosts = useMemo(() => {
-    return applyFilters(postsWithDynamicStatus, filters);
-  }, [postsWithDynamicStatus, filters]);
 
   // 프로젝트와 스터디로 분리
-  const projectPosts = filteredPosts.filter((post) => post.type === "project");
-  const studyPosts = filteredPosts.filter((post) => post.type === "study");
+  const projectPosts = useMemo(
+    () => posts.filter((post) => post.type === "project"),
+    [posts]
+  );
+  const studyPosts = useMemo(
+    () => posts.filter((post) => post.type === "study"),
+    [posts]
+  );
 
   return (
     <MainLayout>
       <div className="min-h-svh bg-gray-50 dark:bg-[#171515]">
         <div className="flex flex-col space-y-8 p-6">
           {/* 페이지 헤더 */}
-          <section className="flex flex-col items-center space-y-4 pt-4">
+          <Reveal
+            as="section"
+            className="flex flex-col items-center space-y-4 pt-4"
+          >
             <h1 className="text-5xl font-bold text-gray-900 dark:text-[#ffa500] text-center">
               팀원 모집 게시판
             </h1>
             <p className="text-gray-600 dark:text-[#a0a0a0] max-w-2xl text-center">
               함께할 팀원을 찾거나 프로젝트에 참여해보세요! 🚀
             </p>
-          </section>
+          </Reveal>
 
           {/* 전체 헤더 및 필터링 */}
-          <section className="w-full max-w-7xl mx-auto space-y-6">
+          <Reveal
+            as="section"
+            className="w-full max-w-7xl mx-auto space-y-6"
+            delayMs={80}
+          >
             <RecruitmentHeader
-              totalPosts={filteredPosts.length}
+              totalPosts={posts.length}
               onCreatePost={() => setIsModalOpen(true)}
             />
 
             <RecruitmentFilters
               filters={filters}
-              onFiltersChange={handleFiltersChange}
-              totalCount={posts.length}
-              filteredCount={filteredPosts.length}
+              onFiltersChange={setFilters}
+              totalCount={totalCount}
+              filteredCount={posts.length}
             />
-          </section>
+          </Reveal>
 
           {/* 프로젝트 섹션 */}
           {(filters.typeFilter === "all" ||
@@ -140,7 +117,7 @@ export default function RecruitmentPage() {
           )}
 
           {/* 전체 검색 결과가 없을 때 */}
-          {filteredPosts.length === 0 && posts.length > 0 && (
+          {posts.length === 0 && totalCount > 0 && (
             <section className="w-full max-w-7xl mx-auto">
               <div className="text-center py-12">
                 <p className="text-gray-500 dark:text-[#a0a0a0] text-lg mb-4">
@@ -159,7 +136,7 @@ export default function RecruitmentPage() {
           <RecruitmentCreateModal
             isOpen={isModalOpen}
             onClose={() => setIsModalOpen(false)}
-            onSubmit={handleAddPost}
+            onSubmit={addPost}
           />
         </div>
       </div>

@@ -47,7 +47,7 @@ export function Header({ onMobileMenuOpen }: HeaderProps) {
               <Menu className="h-5 w-5" />
               <span className="sr-only">메뉴 열기</span>
             </Button>
-            <Link href="/" className="font-semibold">
+            <Link href="/" className="font-semibold" aria-label="홈으로 이동">
               <Image
                 src={logoSrc}
                 alt="Afterburner"
@@ -82,7 +82,7 @@ export function Header({ onMobileMenuOpen }: HeaderProps) {
             <span className="sr-only">메뉴 열기</span>
           </Button>
 
-          <Link href="/" className="font-semibold">
+          <Link href="/" className="font-semibold" aria-label="홈으로 이동">
             <Image
               src={logoSrc}
               alt="Afterburner"

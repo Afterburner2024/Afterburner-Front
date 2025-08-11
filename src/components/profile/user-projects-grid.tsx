@@ -17,13 +17,14 @@ import {
   ExternalLink,
 } from "lucide-react";
 import Link from "next/link";
+import { memo } from "react";
 
 interface UserProjectsGridProps {
   projects: UserProject[];
   className?: string;
 }
 
-export function UserProjectsGrid({
+function UserProjectsGridComponent({
   projects,
   className,
 }: UserProjectsGridProps) {
@@ -188,7 +189,8 @@ export function UserProjectsGrid({
                         )}
                         <Link
                           href={`/recruitment/${project.id}`}
-                          className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                          aria-label={`${project.title} 모집글 상세로 이동`}
+                          className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
                         >
                           <ExternalLink className="w-4 h-4" />
                         </Link>
@@ -220,3 +222,5 @@ export function UserProjectsGrid({
     </Card>
   );
 }
+
+export const UserProjectsGrid = memo(UserProjectsGridComponent);

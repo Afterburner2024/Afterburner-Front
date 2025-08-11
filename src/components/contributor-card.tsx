@@ -23,10 +23,11 @@ export function ContributorCard({ contributor }: ContributorCardProps) {
           <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 dark:border-gray-700 transition-transform group-hover:scale-105">
             <Image
               src={contributor.image}
-              alt={contributor.name}
+              alt={`${contributor.name}의 아바타`}
               width={64}
               height={64}
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
           <div className="flex flex-col justify-center gap-2 flex-1">
@@ -40,7 +41,8 @@ export function ContributorCard({ contributor }: ContributorCardProps) {
               href={contributor.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors relative z-10"
+              aria-label={`${contributor.name}의 GitHub로 이동`}
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors relative z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
             >
               <Github className="h-4 w-4" />
               <span className="underline-offset-4 group-hover:underline">
@@ -53,4 +55,4 @@ export function ContributorCard({ contributor }: ContributorCardProps) {
       <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-background/0 opacity-0 transition-opacity group-hover:opacity-100 z-[1]" />
     </Card>
   );
-} 
+}

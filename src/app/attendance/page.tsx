@@ -6,13 +6,17 @@ import { AttendanceCalendar } from "@/components/attendance/attendance-calendar"
 import { CommentsSection } from "@/components/attendance/comments-section";
 import { Comment } from "@/types/attendance";
 import { initialComments } from "@/data/attendanceMockData";
+import { AttendanceStats } from "@/components/attendance/attendance-stats";
+import { useToast } from "@/hooks/useToast";
 
 export default function AttendancePage() {
   const [date, setDate] = useState<Date>(new Date());
   const [comments, setComments] = useState<Comment[]>(initialComments);
+  const { success } = useToast();
 
   const handleAddComment = (comment: Comment) => {
     setComments([comment, ...comments]);
+    success("댓글이 등록되었습니다.");
   };
 
   return (
@@ -25,17 +29,17 @@ export default function AttendancePage() {
       {/* 달력 섹션 */}
       <AttendanceCalendar date={date} onChange={setDate} />
 
+      {/* 통계/스트릭 */}
+      <AttendanceStats comments={comments} />
+
       {/* 댓글 섹션 */}
       <CommentsSection comments={comments} onAddComment={handleAddComment} />
 
       {/* TODO: 향후 개발 예정 기능들 */}
-      {/* 
-      - 로그인 연동 (NextAuth.js with GitHub OAuth)
-      - 데이터베이스 연동 (Supabase) 
-      - 날짜별 댓글 필터링
-      - 출석 통계 표시
-      - 출석 스트릭 기능
-      */}
+      {/** - 로그인 연동 (NextAuth.js with GitHub OAuth)
+       * - 데이터베이스 연동 (Supabase)
+       * - 날짜별 댓글 필터링
+       */}
     </StandardPageLayout>
   );
 }

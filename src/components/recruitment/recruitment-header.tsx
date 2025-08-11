@@ -18,7 +18,8 @@ export function RecruitmentHeader({
       </p>
       <Button
         onClick={onCreatePost}
-        className="flex items-center justify-center gap-2 w-full sm:w-auto"
+        className="flex items-center justify-center gap-2 w-full sm:w-auto focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+        aria-label="새 모집글 작성"
       >
         <Plus className="w-4 h-4" />새 모집글
       </Button>

@@ -12,18 +12,30 @@ import {
   SheetTitle,
   SheetDescription,
 } from "@/components/ui/sheet";
+import { DarkVeil } from "@/components/ui/backgrounds/dark-veil";
 
 interface MainLayoutProps {
   children: ReactNode;
+  showBackground?: boolean;
 }
 
-export function MainLayout({ children }: MainLayoutProps) {
+export function MainLayout({
+  children,
+  showBackground = false,
+}: MainLayoutProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
+  const mainBgClass = showBackground
+    ? "flex-1 bg-gray-50/60 dark:bg-transparent"
+    : "flex-1 bg-gray-50 dark:bg-[#171515]";
+
   return (
-    <div className="flex min-h-svh flex-col">
+    <div className="flex min-h-svh flex-col relative">
+      {/* 배경 레이어 (옵션) */}
+      {showBackground && <DarkVeil />}
+
       <Header onMobileMenuOpen={() => setIsMobileMenuOpen(true)} />
       <div className="flex flex-1">
         {/* 데스크톱 사이드바 */}
@@ -48,7 +60,7 @@ export function MainLayout({ children }: MainLayoutProps) {
           </SheetContent>
         </Sheet>
 
-        <main className="flex-1 bg-gray-50 dark:bg-[#171515]">
+        <main className={mainBgClass}>
           <ScrollArea className="h-[calc(100svh-7rem)]">
             <div className="p-4 h-full">{children}</div>
           </ScrollArea>

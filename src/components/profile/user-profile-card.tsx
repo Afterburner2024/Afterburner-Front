@@ -105,7 +105,7 @@ export function UserProfileCard({
               variant="outline"
               size="sm"
               onClick={onEditProfile}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
             >
               <Edit className="w-4 h-4" />
               프로필 편집

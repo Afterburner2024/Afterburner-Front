@@ -29,17 +29,22 @@ export function ProfileCard({
 
   if (compact) {
     return (
-      <Link href={`/profile/${user.userId}`}>
+      <Link
+        href={`/profile/${user.userId}`}
+        aria-label={`${user.userName} 프로필로 이동`}
+        className="focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+      >
         <Card className="p-4 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] hover:shadow-lg transition-all duration-200 cursor-pointer">
           <div className="flex items-center gap-3">
             <Avatar className="w-12 h-12">
               {user.userImage ? (
                 <Image
                   src={user.userImage}
-                  alt={user.userName}
+                  alt={`${user.userName}의 아바타`}
                   width={48}
                   height={48}
                   className="object-cover rounded-full"
+                  loading="lazy"
                 />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-lg font-bold">
@@ -73,7 +78,11 @@ export function ProfileCard({
   }
 
   return (
-    <Link href={`/profile/${user.userId}`}>
+    <Link
+      href={`/profile/${user.userId}`}
+      aria-label={`${user.userName} 프로필로 이동`}
+      className="focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+    >
       <Card className="p-6 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] hover:shadow-lg transition-all duration-200 cursor-pointer">
         <div className="space-y-4">
           {/* 상단: 프로필 이미지와 기본 정보 */}
@@ -83,10 +92,11 @@ export function ProfileCard({
                 {user.userImage ? (
                   <Image
                     src={user.userImage}
-                    alt={user.userName}
+                    alt={`${user.userName}의 아바타`}
                     width={64}
                     height={64}
                     className="object-cover rounded-full"
+                    loading="lazy"
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold">

@@ -21,11 +21,13 @@ export function CommentForm({
           value={newComment}
           onChange={(e) => onCommentChange(e.target.value)}
           className="min-h-[100px] resize-none bg-white border-gray-300 dark:border-[#333333] text-gray-900 placeholder:text-gray-800"
+          aria-label="출석 게시판 댓글 입력"
         />
         <div className="flex justify-end">
           <Button
             onClick={onSubmit}
-            className="bg-blue-600 hover:bg-blue-700 dark:bg-[#00ff88] dark:hover:bg-[#00cc6a] text-white dark:text-[#0a0a0a] px-6"
+            className="bg-blue-600 hover:bg-blue-700 dark:bg-[#00ff88] dark:hover:bg-[#00cc6a] text-white dark:text-[#0a0a0a] px-6 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+            aria-label="댓글 등록"
           >
             등록하기
           </Button>

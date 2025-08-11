@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, TrendingDown } from "lucide-react";
+import { CountUp } from "@/components/ui/count-up";
 
 interface TechTrend {
   name: string;
@@ -39,7 +40,7 @@ export function TechTrends({ trends }: TechTrendsProps) {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-bold text-gray-900 dark:text-white">
-                    {trend.percentage}%
+                    <CountUp value={trend.percentage} suffix="%" />
                   </span>
                   <div
                     className={`flex items-center gap-1 text-xs ${

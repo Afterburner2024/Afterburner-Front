@@ -1,6 +1,7 @@
 import { MainLayout } from "@/components/layouts/main-layout";
 import { AfterburnerCarousel } from "@/components/afterburner-carousel";
 import { ContributorCard } from "@/components/contributor-card";
+import { Reveal } from "@/components/ui/reveal";
 
 const backgrounds = [
   "/images/main-bg-1.webp",
@@ -89,23 +90,23 @@ export default function AfterburnerPage() {
         <AfterburnerCarousel backgrounds={backgrounds} />
         <div className="flex-1 flex flex-col p-6 space-y-8">
           {/* 타이틀 및 내용 */}
-          <div className="w-full">
+          <Reveal as="div" className="w-full">
             <h1 className="text-4xl font-bold mb-4">
               {afterburnerData.afterburner_title}
             </h1>
             <p className="text-lg text-muted-foreground whitespace-pre-line">
               {afterburnerData.afterburner_contents}
             </p>
-          </div>
+          </Reveal>
 
           {/* 기여자 섹션 */}
           <div className="space-y-4">
             <h2 className="text-2xl font-bold">Contributor</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {contributors.map((contributor, index) => (
-                <div key={contributor.id}>
+                <Reveal key={contributor.id} delayMs={index * 60}>
                   <ContributorCard contributor={contributor} />
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -114,20 +115,21 @@ export default function AfterburnerPage() {
           <div className="space-y-4">
             <h2 className="text-2xl font-bold">Join our Community</h2>
             <div className="flex flex-wrap gap-4">
-              {communities.map((community) => (
-                <a
-                  key={community.name}
-                  href={community.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-transform hover:scale-105"
-                >
-                  <img
-                    src={community.image}
-                    alt={community.name}
-                    className="w-[100px] h-auto rounded-lg shadow-lg"
-                  />
-                </a>
+              {communities.map((community, idx) => (
+                <Reveal key={community.name} delayMs={idx * 60}>
+                  <a
+                    href={community.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-transform hover:scale-105"
+                  >
+                    <img
+                      src={community.image}
+                      alt={community.name}
+                      className="w-[100px] h-auto rounded-lg shadow-lg"
+                    />
+                  </a>
+                </Reveal>
               ))}
             </div>
           </div>

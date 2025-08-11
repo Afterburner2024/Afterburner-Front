@@ -12,12 +12,13 @@ import {
 import { format, parseISO } from "date-fns";
 import { ko } from "date-fns/locale";
 import Link from "next/link";
+import { memo } from "react";
 
 interface RecruitmentCardProps {
   post: RecruitmentPost;
 }
 
-export function RecruitmentCard({ post }: RecruitmentCardProps) {
+function RecruitmentCardComponent({ post }: RecruitmentCardProps) {
   const dynamicStatus = calculateDynamicStatus(post);
   const statusLabel = getStatusLabel(dynamicStatus);
   const statusColorClass = getStatusColorClass(dynamicStatus);
@@ -26,7 +27,11 @@ export function RecruitmentCard({ post }: RecruitmentCardProps) {
   const isUrgent = dynamicStatus === "urgent";
 
   return (
-    <Link href={`/recruitment/${post.id}`}>
+    <Link
+      href={`/recruitment/${post.id}`}
+      aria-label={`모집글 상세보기: ${post.title}`}
+      className="focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+    >
       <Card
         className={`
           relative p-6 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] 
@@ -156,3 +161,5 @@ export function RecruitmentCard({ post }: RecruitmentCardProps) {
     </Link>
   );
 }
+
+export const RecruitmentCard = memo(RecruitmentCardComponent);

@@ -24,6 +24,7 @@ import { questionMockData } from "@/data/questionMockData";
 import { formatDistanceToNow } from "date-fns";
 import { ko } from "date-fns/locale";
 import { MainLayout } from "@/components/layouts/main-layout";
+import { Reveal } from "@/components/ui/reveal";
 
 export default function QuestionDetailPage() {
   const params = useParams();
@@ -152,101 +153,111 @@ export default function QuestionDetailPage() {
         <div className="flex flex-col space-y-8 p-6">
           {/* 뒤로가기 버튼 */}
           <div className="w-full max-w-7xl mx-auto">
-            <Button
-              variant="ghost"
-              onClick={() => router.back()}
-              className="mb-6"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              목록으로 돌아가기
-            </Button>
+            <Reveal>
+              <Button
+                variant="ghost"
+                onClick={() => router.back()}
+                className="mb-6 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+                aria-label="목록으로 돌아가기"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                목록으로 돌아가기
+              </Button>
+            </Reveal>
           </div>
 
           {/* 질문 상세 */}
           <section className="w-full max-w-7xl mx-auto">
-            <Card className="mb-8">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-4">
-                      {getStatusIcon(question.status, question.isSolved)}
-                      <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                        {question.title}
-                      </h1>
+            <Reveal>
+              <Card className="mb-8">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-4">
+                        {getStatusIcon(question.status, question.isSolved)}
+                        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+                          {question.title}
+                        </h1>
+                      </div>
+
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+                        <div className="flex items-center gap-2">
+                          <Avatar className="w-6 h-6">
+                            <AvatarImage
+                              src=""
+                              alt={`${question.author}의 아바타`}
+                            />
+                            <AvatarFallback>
+                              {question.author[0]}
+                            </AvatarFallback>
+                          </Avatar>
+                          <span>{question.author}</span>
+                        </div>
+                        <span>•</span>
+                        <span>
+                          {formatDistanceToNow(new Date(question.createdAt), {
+                            addSuffix: true,
+                            locale: ko,
+                          })}
+                        </span>
+                        <span>•</span>
+                        <div className="flex items-center gap-1">
+                          <Eye className="w-4 h-4" />
+                          <span>{question.viewCount}</span>
+                        </div>
+                        <span>•</span>
+                        <div className="flex items-center gap-1">
+                          <MessageSquare className="w-4 h-4" />
+                          <span>{answers.length}</span>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-2 mb-4">
+                        {question.difficulty && (
+                          <Badge
+                            className={getDifficultyColor(question.difficulty)}
+                          >
+                            {question.difficulty === "beginner"
+                              ? "초급"
+                              : question.difficulty === "intermediate"
+                              ? "중급"
+                              : "고급"}
+                          </Badge>
+                        )}
+                        {question.tags.map((tag) => (
+                          <Badge key={tag} variant="secondary">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
 
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                      <div className="flex items-center gap-2">
-                        <Avatar className="w-6 h-6">
-                          <AvatarImage src="" />
-                          <AvatarFallback>{question.author[0]}</AvatarFallback>
-                        </Avatar>
-                        <span>{question.author}</span>
-                      </div>
-                      <span>•</span>
-                      <span>
-                        {formatDistanceToNow(new Date(question.createdAt), {
-                          addSuffix: true,
-                          locale: ko,
-                        })}
-                      </span>
-                      <span>•</span>
-                      <div className="flex items-center gap-1">
-                        <Eye className="w-4 h-4" />
-                        <span>{question.viewCount}</span>
-                      </div>
-                      <span>•</span>
-                      <div className="flex items-center gap-1">
-                        <MessageSquare className="w-4 h-4" />
-                        <span>{answers.length}</span>
-                      </div>
-                    </div>
-
-                    <div className="flex gap-2 mb-4">
-                      {question.difficulty && (
-                        <Badge
-                          className={getDifficultyColor(question.difficulty)}
-                        >
-                          {question.difficulty === "beginner"
-                            ? "초급"
-                            : question.difficulty === "intermediate"
-                            ? "중급"
-                            : "고급"}
-                        </Badge>
-                      )}
-                      {question.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary">
-                          {tag}
-                        </Badge>
-                      ))}
+                    <div className="flex gap-2">
+                      <Button variant="outline" size="sm">
+                        <Edit className="w-4 h-4 mr-2" />
+                        수정
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="text-destructive"
+                      >
+                        <Trash2 className="w-4 h-4 mr-2" />
+                        삭제
+                      </Button>
                     </div>
                   </div>
+                </CardHeader>
 
-                  <div className="flex gap-2">
-                    <Button variant="outline" size="sm">
-                      <Edit className="w-4 h-4 mr-2" />
-                      수정
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-destructive"
-                    >
-                      <Trash2 className="w-4 h-4 mr-2" />
-                      삭제
-                    </Button>
+                <CardContent>
+                  <div className="prose max-w-none">
+                    <p className="whitespace-pre-wrap text-gray-700 dark:text-gray-300">
+                      {question.content}
+                    </p>
                   </div>
-                </div>
-              </CardHeader>
-
-              <CardContent>
-                <div className="prose max-w-none">
-                  <p className="whitespace-pre-wrap text-gray-700 dark:text-gray-300">
-                    {question.content}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </Reveal>
           </section>
 
           {/* 답변 목록 */}
@@ -256,90 +267,100 @@ export default function QuestionDetailPage() {
             </h2>
 
             <div className="space-y-6">
-              {answers.map((answer) => (
-                <Card
-                  key={answer.id}
-                  className={
-                    answer.isAccepted
-                      ? "border-green-500 bg-green-50 dark:bg-green-900/20"
-                      : ""
-                  }
-                >
-                  <CardContent className="pt-6">
-                    <div className="flex items-start gap-4">
-                      <div className="flex flex-col items-center gap-2">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleVote(answer.id, true)}
-                        >
-                          <ThumbsUp className="w-4 h-4" />
-                        </Button>
-                        <span className="text-sm font-medium">
-                          {answer.voteCount}
-                        </span>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleVote(answer.id, false)}
-                        >
-                          <ThumbsDown className="w-4 h-4" />
-                        </Button>
-                      </div>
+              {answers.map((answer, idx) => (
+                <Reveal key={answer.id} delayMs={idx * 60}>
+                  <Card
+                    className={
+                      answer.isAccepted
+                        ? "border-2 border-green-500 ring-1 ring-green-500/30"
+                        : ""
+                    }
+                  >
+                    <CardContent className="pt-6">
+                      <div className="flex items-start gap-4">
+                        <div className="flex flex-col items-center gap-2">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleVote(answer.id, true)}
+                            aria-label="이 답변에 추천"
+                            className="focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+                          >
+                            <ThumbsUp className="w-4 h-4" />
+                          </Button>
+                          <span className="text-sm font-medium">
+                            {answer.voteCount}
+                          </span>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleVote(answer.id, false)}
+                            aria-label="이 답변에 비추천"
+                            className="focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+                          >
+                            <ThumbsDown className="w-4 h-4" />
+                          </Button>
+                        </div>
 
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="flex items-center gap-2">
-                            <Avatar className="w-8 h-8">
-                              <AvatarImage src="" />
-                              <AvatarFallback>
-                                {answer.author[0]}
-                              </AvatarFallback>
-                            </Avatar>
-                            <div>
-                              <div className="font-medium text-gray-900 dark:text-white">
-                                {answer.author}
-                              </div>
-                              <div className="text-sm text-muted-foreground">
-                                {formatDistanceToNow(
-                                  new Date(answer.createdAt),
-                                  {
-                                    addSuffix: true,
-                                    locale: ko,
-                                  }
-                                )}
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between mb-4">
+                            <div className="flex items-center gap-2">
+                              <Avatar className="w-8 h-8">
+                                <AvatarImage
+                                  src=""
+                                  alt={`${answer.author}의 아바타`}
+                                />
+                                <AvatarFallback>
+                                  {answer.author[0]}
+                                </AvatarFallback>
+                              </Avatar>
+                              <div>
+                                <div className="font-medium text-gray-900 dark:text-white">
+                                  {answer.author}
+                                </div>
+                                <div className="text-sm text-muted-foreground">
+                                  {formatDistanceToNow(
+                                    new Date(answer.createdAt),
+                                    {
+                                      addSuffix: true,
+                                      locale: ko,
+                                    }
+                                  )}
+                                </div>
                               </div>
                             </div>
+
+                            {!answer.isAccepted && (
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => handleAcceptAnswer(answer.id)}
+                                aria-label="이 답변을 채택"
+                                className="focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+                              >
+                                <CheckCircle className="w-4 h-4 mr-2" />
+                                채택
+                              </Button>
+                            )}
+
+                            {answer.isAccepted && (
+                              <Badge className="border border-green-500 text-green-700 bg-transparent">
+                                <CheckCircle className="w-4 h-4 mr-1" />
+                                채택됨
+                              </Badge>
+                            )}
                           </div>
 
-                          {!answer.isAccepted && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => handleAcceptAnswer(answer.id)}
-                            >
-                              <CheckCircle className="w-4 h-4 mr-2" />
-                              채택
-                            </Button>
-                          )}
-
-                          {answer.isAccepted && (
-                            <Badge className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
-                              <CheckCircle className="w-4 h-4 mr-1" />
-                              채택됨
-                            </Badge>
-                          )}
-                        </div>
-
-                        <div className="prose max-w-none">
-                          <p className="whitespace-pre-wrap text-gray-700 dark:text-gray-300">
-                            {answer.content}
-                          </p>
+                          <div className="prose max-w-none">
+                            <p className="whitespace-pre-wrap text-gray-700 dark:text-gray-300">
+                              {answer.content}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </Reveal>
               ))}
             </div>
           </section>

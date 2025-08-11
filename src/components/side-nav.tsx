@@ -78,24 +78,26 @@ export function SideNav({
 
   return (
     <nav className={cn("flex flex-col space-y-1", className)} {...props}>
-      {items.map((item) => (
-        <Link
-          key={item.id}
-          href={item.href}
-          onClick={onItemClick}
-          className={cn(
-            "flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-            pathname === item.href
-              ? "bg-accent text-accent-foreground"
-              : "transparent"
-          )}
-        >
-          <div className="flex items-center gap-2">
-            {item.icon}
-            <span>{item.title}</span>
-          </div>
-        </Link>
-      ))}
+      {items.map((item) => {
+        const isActive =
+          pathname === item.href || pathname.startsWith(item.href + "/");
+        return (
+          <Link
+            key={item.id}
+            href={item.href}
+            onClick={onItemClick}
+            className={cn(
+              "flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
+              isActive ? "bg-accent text-accent-foreground" : "transparent"
+            )}
+          >
+            <div className="flex items-center gap-2">
+              {item.icon}
+              <span>{item.title}</span>
+            </div>
+          </Link>
+        );
+      })}
     </nav>
   );
 }
