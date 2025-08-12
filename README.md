@@ -11,10 +11,20 @@
 
 ## 🔥 **프로젝트 소개 (Introduction)**
 
-> Afterburner는 국비교육 수료생들을 위한 커뮤니티 플랫폼입니다.<br>
-> **Next.js 15**를 기반으로 한 현대적인 웹 애플리케이션으로, **TypeScript**로 타입 안정성을 확보하고<br>
-> **shadcn/ui** 컴포넌트 라이브러리를 활용하여 일관되고 접근성 높은 UI를 제공합니다.<br>
-> **App Router**를 사용한 파일 기반 라우팅과 서버 컴포넌트를 통해 최적화된 성능을 구현했습니다.<br>
+> Afterburner는 국비교육 수료생들을 위한 커뮤니티 플랫폼입니다.<br> > **Next.js 15**를 기반으로 한 현대적인 웹 애플리케이션으로, **TypeScript**로 타입 안정성을 확보하고<br> > **shadcn/ui** 컴포넌트 라이브러리를 활용하여 일관되고 접근성 높은 UI를 제공합니다.<br> > **App Router**를 사용한 파일 기반 라우팅과 서버 컴포넌트를 통해 최적화된 성능을 구현했습니다.<br>
+
+## ✨ **최근 변경 (Latest Changes)**
+
+- 검색/필터 Sticky 바 배경 투명화로 시각적 이질감 제거
+  - 질문게시판: `src/app/questions/page.tsx`의 Sticky 컨테이너를 `bg-transparent`로 변경
+  - 팀원모집: `src/app/recruitment/page.tsx`의 Sticky 컨테이너를 `bg-transparent`로 변경
+- 검색창·셀렉트 배경 톤 정리 (투명 배경 유지)
+  - 질문게시판 검색 `Input`: `bg-transparent border-border`
+  - 팀원모집 필터의 `Input`/`SelectTrigger`: `bg-transparent border-border`
+- 전역 디자인 톤 정리(기 반영)
+  - 카드 톤: `bg-card/95 + backdrop-blur + border-border + rounded-xl`
+  - 메타 배지: 상황에 따라 `soft`/`outline` 통일, 제목 `tracking-tight`
+  - 접근성: 주요 토글/정렬 버튼에 `aria-pressed`, 섹션에 적절한 `aria-label`
 
 ## 🔥 **주요 기능 (Features)**
 

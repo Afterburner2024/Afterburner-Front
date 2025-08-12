@@ -25,17 +25,23 @@ function RecruitmentCardComponent({ post }: RecruitmentCardProps) {
   const dDayText = formatDDay(post.deadline);
   const isCompleted = dynamicStatus === "completed";
   const isUrgent = dynamicStatus === "urgent";
+  const statusTextClass =
+    dynamicStatus === "recruiting"
+      ? "text-blue-600 dark:text-blue-400"
+      : dynamicStatus === "urgent"
+      ? "text-red-600 dark:text-red-400"
+      : "text-gray-600 dark:text-gray-400";
 
   return (
     <Link
       href={`/recruitment/${post.id}`}
       aria-label={`모집글 상세보기: ${post.title}`}
-      className="focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+      className="group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
     >
       <Card
         className={`
-          relative p-6 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] 
-          hover:shadow-lg transition-shadow duration-300 cursor-pointer
+          relative p-6 bg-card/95 backdrop-blur border border-border rounded-xl
+          hover:shadow-lg transition-all cursor-pointer group-hover:-translate-y-0.5
           h-[400px] flex flex-col
           ${
             isUrgent && !isCompleted ? "border-red-500 dark:border-red-400" : ""
@@ -75,21 +81,20 @@ function RecruitmentCardComponent({ post }: RecruitmentCardProps) {
           <div className="flex justify-between items-start mb-3">
             <div className="flex gap-2">
               <Badge
+                variant="soft"
                 className={
                   post.type === "project"
-                    ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs"
-                    : "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs"
+                    ? "text-blue-600 dark:text-blue-400"
+                    : "text-green-600 dark:text-green-400"
                 }
               >
                 {post.type === "project" ? "🚀" : "📚"}
               </Badge>
-              <div
-                className={`inline-flex items-center rounded-md px-2 sm:px-2.5 py-0.5 text-xs font-semibold ${statusColorClass}`}
-              >
+              <Badge variant="outline" className={`text-xs ${statusTextClass}`}>
                 {statusLabel}
-              </div>
+              </Badge>
             </div>
-            <span className="text-xs text-gray-500 dark:text-[#a0a0a0]">
+            <span className="text-[11px] text-gray-500 dark:text-[#a0a0a0]">
               {dDayText}
             </span>
           </div>

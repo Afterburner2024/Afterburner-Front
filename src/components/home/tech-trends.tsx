@@ -15,13 +15,13 @@ interface TechTrendsProps {
 
 export function TechTrends({ trends }: TechTrendsProps) {
   return (
-    <Card className="p-6 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333]">
+    <Card className="p-6 bg-card/95 backdrop-blur border border-border rounded-xl">
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+          <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
             📈 이번 달 인기 기술스택
           </h3>
-          <Badge variant="secondary" className="text-xs">
+          <Badge variant="outline" className="text-xs">
             1월 기준
           </Badge>
         </div>

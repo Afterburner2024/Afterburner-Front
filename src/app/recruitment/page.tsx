@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { RecruitmentHeader } from "@/components/recruitment/recruitment-header";
 import { RecruitmentGrid } from "@/components/recruitment/recruitment-grid";
 import { RecruitmentFilters } from "@/components/recruitment/recruitment-filters";
@@ -12,6 +12,12 @@ import { Reveal } from "@/components/ui/reveal";
 export default function RecruitmentPage() {
   const { posts, totalCount, addPost, filters, setFilters } = useRecruitment();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const t = setTimeout(() => setIsLoading(false), 400);
+    return () => clearTimeout(t);
+  }, []);
 
   // 프로젝트와 스터디로 분리
   const projectPosts = useMemo(
@@ -40,24 +46,25 @@ export default function RecruitmentPage() {
             </p>
           </Reveal>
 
-          {/* 전체 헤더 및 필터링 */}
-          <Reveal
-            as="section"
-            className="w-full max-w-7xl mx-auto space-y-6"
-            delayMs={80}
-          >
-            <RecruitmentHeader
-              totalPosts={posts.length}
-              onCreatePost={() => setIsModalOpen(true)}
-            />
-
-            <RecruitmentFilters
-              filters={filters}
-              onFiltersChange={setFilters}
-              totalCount={totalCount}
-              filteredCount={posts.length}
-            />
-          </Reveal>
+          {/* 전체 헤더 및 필터링 (Sticky) */}
+          <section className="w-full" aria-label="모집글 필터와 전체 헤더">
+            <div className="sticky top-14 z-30 bg-transparent">
+              <div className="w-full max-w-7xl mx-auto py-4">
+                <RecruitmentHeader
+                  totalPosts={posts.length}
+                  onCreatePost={() => setIsModalOpen(true)}
+                />
+                <div className="mt-4">
+                  <RecruitmentFilters
+                    filters={filters}
+                    onFiltersChange={setFilters}
+                    totalCount={totalCount}
+                    filteredCount={posts.length}
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
 
           {/* 프로젝트 섹션 */}
           {(filters.typeFilter === "all" ||
@@ -65,7 +72,7 @@ export default function RecruitmentPage() {
             <section className="w-full max-w-7xl mx-auto space-y-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
                     🚀 프로젝트
                   </h2>
                   <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full text-sm font-medium">
@@ -73,10 +80,10 @@ export default function RecruitmentPage() {
                   </span>
                 </div>
               </div>
-              {projectPosts.length > 0 ? (
-                <RecruitmentGrid posts={projectPosts} />
+              {projectPosts.length > 0 || isLoading ? (
+                <RecruitmentGrid posts={projectPosts} isLoading={isLoading} />
               ) : (
-                <div className="text-center py-12 bg-white dark:bg-[#1a1a1a] rounded-lg border border-gray-200 dark:border-[#333333]">
+                <div className="text-center py-12 bg-card/95 backdrop-blur rounded-lg border border-border">
                   <p className="text-gray-500 dark:text-[#a0a0a0] text-lg mb-2">
                     조건에 맞는 프로젝트가 없습니다
                   </p>
@@ -93,7 +100,7 @@ export default function RecruitmentPage() {
             <section className="w-full max-w-7xl mx-auto space-y-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
                     📚 스터디
                   </h2>
                   <span className="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-3 py-1 rounded-full text-sm font-medium">
@@ -101,10 +108,10 @@ export default function RecruitmentPage() {
                   </span>
                 </div>
               </div>
-              {studyPosts.length > 0 ? (
-                <RecruitmentGrid posts={studyPosts} />
+              {studyPosts.length > 0 || isLoading ? (
+                <RecruitmentGrid posts={studyPosts} isLoading={isLoading} />
               ) : (
-                <div className="text-center py-12 bg-white dark:bg-[#1a1a1a] rounded-lg border border-gray-200 dark:border-[#333333]">
+                <div className="text-center py-12 bg-card/95 backdrop-blur rounded-lg border border-border">
                   <p className="text-gray-500 dark:text-[#a0a0a0] text-lg mb-2">
                     조건에 맞는 스터디가 없습니다
                   </p>

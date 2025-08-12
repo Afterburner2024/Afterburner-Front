@@ -15,18 +15,30 @@ import {
 import { formatDistanceToNow } from "date-fns";
 import { ko } from "date-fns/locale";
 import { Reveal } from "@/components/ui/reveal";
+import { QuestionCardSkeleton } from "./question-card.skeleton";
 
 interface QuestionGridProps {
   questions: QuestionPost[];
   sortBy: QuestionSort;
   onChangeSort: (sort: QuestionSort) => void;
+  isLoading?: boolean;
 }
 
 function QuestionGridComponent({
   questions,
   sortBy,
   onChangeSort,
+  isLoading = false,
 }: QuestionGridProps) {
+  if (isLoading) {
+    return (
+      <div className="grid gap-4 sm:gap-5 md:gap-6" role="list">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <QuestionCardSkeleton key={i} />
+        ))}
+      </div>
+    );
+  }
   const getStatusIcon = (status: string, isSolved: boolean) => {
     if (isSolved) return <CheckCircle className="w-4 h-4 text-green-500" />;
     if (status === "open")
@@ -51,6 +63,7 @@ function QuestionGridComponent({
             variant={sortBy === "latest" ? "default" : "outline"}
             size="sm"
             onClick={() => onChangeSort("latest")}
+            aria-pressed={sortBy === "latest"}
           >
             최신순
           </Button>
@@ -58,6 +71,7 @@ function QuestionGridComponent({
             variant={sortBy === "popular" ? "default" : "outline"}
             size="sm"
             onClick={() => onChangeSort("popular")}
+            aria-pressed={sortBy === "popular"}
           >
             인기순
           </Button>
@@ -65,6 +79,7 @@ function QuestionGridComponent({
             variant={sortBy === "unanswered" ? "default" : "outline"}
             size="sm"
             onClick={() => onChangeSort("unanswered")}
+            aria-pressed={sortBy === "unanswered"}
           >
             답변없음
           </Button>
@@ -72,10 +87,13 @@ function QuestionGridComponent({
       </div>
 
       {/* 질문 목록 */}
-      <div className="grid gap-4">
+      <div className="grid gap-4 sm:gap-5 md:gap-6" role="list">
         {questions.map((question, idx) => (
           <Reveal key={question.id} delayMs={idx * 50}>
-            <Card className="hover:shadow-md transition-shadow">
+            <Card
+              className="hover:shadow-md transition-all hover:-translate-y-0.5"
+              role="listitem"
+            >
               <CardHeader className="pb-3">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
@@ -89,7 +107,7 @@ function QuestionGridComponent({
                         {question.title}
                       </Link>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
                       <span>{question.author}</span>
                       <span>•</span>
                       <span>
@@ -103,6 +121,7 @@ function QuestionGridComponent({
                   <div className="flex items-center gap-2">
                     {question.difficulty && (
                       <Badge
+                        variant="soft"
                         className={getDifficultyColor(question.difficulty)}
                       >
                         {question.difficulty === "beginner"
@@ -113,7 +132,10 @@ function QuestionGridComponent({
                       </Badge>
                     )}
                     {question.priority && (
-                      <Badge className={getPriorityColor(question.priority)}>
+                      <Badge
+                        variant="soft"
+                        className={getPriorityColor(question.priority)}
+                      >
                         {question.priority === "low"
                           ? "낮음"
                           : question.priority === "medium"
@@ -129,7 +151,7 @@ function QuestionGridComponent({
                   {question.content}
                 </p>
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-4 text-xs text-muted-foreground">
                     <div className="flex items-center gap-1">
                       <Eye className="w-4 h-4" />
                       <span>{question.viewCount}</span>
@@ -139,14 +161,18 @@ function QuestionGridComponent({
                       <span>{question.answerCount}</span>
                     </div>
                   </div>
-                  <div className="flex gap-1">
+                  <div className="flex gap-1.5">
                     {question.tags.slice(0, 3).map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
+                      <Badge
+                        key={tag}
+                        variant="outline"
+                        className="text-[11px]"
+                      >
                         {tag}
                       </Badge>
                     ))}
                     {question.tags.length > 3 && (
-                      <Badge variant="secondary" className="text-xs">
+                      <Badge variant="outline" className="text-[11px]">
                         +{question.tags.length - 3}
                       </Badge>
                     )}

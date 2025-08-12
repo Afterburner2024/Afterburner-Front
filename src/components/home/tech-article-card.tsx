@@ -21,7 +21,7 @@ interface TechArticleCardProps {
 
 function TechArticleCardComponent({ article }: TechArticleCardProps) {
   return (
-    <Card className="p-6 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] hover:shadow-lg transition-shadow duration-300 cursor-pointer focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary rounded">
+    <Card className="p-6 bg-card/95 backdrop-blur border border-border rounded-xl hover:shadow-lg transition-all duration-300 cursor-pointer focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary">
       <div className="space-y-4">
         {/* 소스와 날짜 */}
         <div className="flex items-center justify-between text-sm text-gray-500 dark:text-[#a0a0a0]">
@@ -45,7 +45,11 @@ function TechArticleCardComponent({ article }: TechArticleCardProps) {
         {/* 태그 */}
         <div className="flex flex-wrap gap-2">
           {article.tags.map((tag) => (
-            <Badge key={tag} className={`text-xs ${getStackColor(tag)}`}>
+            <Badge
+              key={tag}
+              variant="soft"
+              className={`text-xs ${getStackColor(tag)}`}
+            >
               {tag}
             </Badge>
           ))}

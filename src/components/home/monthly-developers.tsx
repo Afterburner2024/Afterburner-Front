@@ -22,13 +22,13 @@ interface MonthlyDevelopersProps {
 
 export function MonthlyDevelopers({ developers }: MonthlyDevelopersProps) {
   return (
-    <Card className="p-6 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333]">
+    <Card className="p-6 bg-card/95 backdrop-blur border border-border rounded-xl">
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+          <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
             🌟 이달의 개발자
           </h3>
-          <Badge variant="secondary" className="text-xs">
+          <Badge variant="outline" className="text-xs">
             1월 선정
           </Badge>
         </div>
@@ -93,6 +93,7 @@ export function MonthlyDevelopers({ developers }: MonthlyDevelopersProps) {
                     {dev.mainStacks.map((stack) => (
                       <Badge
                         key={stack}
+                        variant="soft"
                         className={`text-xs ${getStackColor(stack)}`}
                       >
                         {stack}

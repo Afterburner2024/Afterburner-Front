@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
   // 글꼴의 line-height 로 인해 배지 하단이 잘리는 문제를 방지하기 위해 leading-none 을 추가
-  "inline-flex items-center justify-center rounded-md border px-2.5 py-0.5 text-xs font-semibold leading-none transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex items-center justify-center rounded-md border px-2.5 py-0.5 text-[11px] font-semibold leading-none tracking-wide transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
   {
     variants: {
       variant: {
@@ -15,7 +15,8 @@ const badgeVariants = cva(
           "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
         destructive:
           "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
-        outline: "text-foreground",
+        outline: "text-foreground border-border",
+        soft: "bg-primary/10 text-primary border-transparent",
       },
     },
     defaultVariants: {

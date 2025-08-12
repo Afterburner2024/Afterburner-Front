@@ -95,7 +95,10 @@ export function RecruitmentFilters({
     filters.typeFilter !== "all";
 
   return (
-    <Card className="p-4 sm:p-6 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] space-y-4">
+    <Card
+      className="p-4 sm:p-6 bg-card/95 backdrop-blur border border-border rounded-xl space-y-4"
+      aria-label="모집글 상세 필터"
+    >
       {/* 상단 검색 및 요약 */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         {/* 검색창 */}
@@ -105,7 +108,7 @@ export function RecruitmentFilters({
             placeholder="제목, 내용, 작성자 검색..."
             value={filters.search}
             onChange={(e) => handleSearchChange(e.target.value)}
-            className="pl-10 bg-white dark:bg-[#0a0a0a] border-gray-300 dark:border-[#333333]"
+            className="pl-10 bg-transparent border-border"
           />
         </div>
 
@@ -115,6 +118,8 @@ export function RecruitmentFilters({
             variant="outline"
             onClick={() => setIsExpanded(!isExpanded)}
             className="flex items-center justify-center gap-2 w-full sm:w-auto"
+            aria-expanded={isExpanded}
+            aria-controls="advanced-filter-panel"
           >
             <Filter className="w-4 h-4" />
             상세 필터
@@ -142,7 +147,10 @@ export function RecruitmentFilters({
 
       {/* 상세 필터 (펼침/접힘) */}
       {isExpanded && (
-        <div className="space-y-4 pt-4 border-t border-gray-200 dark:border-[#333333]">
+        <div
+          id="advanced-filter-panel"
+          className="space-y-4 pt-4 border-t border-gray-200 dark:border-[#333333]"
+        >
           {/* 필터 선택 */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* 타입 필터 */}
@@ -154,7 +162,7 @@ export function RecruitmentFilters({
                 value={filters.typeFilter}
                 onValueChange={handleTypeFilterChange}
               >
-                <SelectTrigger className="bg-white dark:bg-[#0a0a0a] border-gray-300 dark:border-[#333333]">
+                <SelectTrigger className="bg-transparent border-border">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -173,7 +181,7 @@ export function RecruitmentFilters({
                 모집 상태
               </label>
               <Select value={filters.status} onValueChange={handleStatusChange}>
-                <SelectTrigger className="bg-white dark:bg-[#0a0a0a] border-gray-300 dark:border-[#333333]">
+                <SelectTrigger className="bg-transparent border-border">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -195,7 +203,7 @@ export function RecruitmentFilters({
                 value={filters.dateFilter}
                 onValueChange={handleDateFilterChange}
               >
-                <SelectTrigger className="bg-white dark:bg-[#0a0a0a] border-gray-300 dark:border-[#333333]">
+                <SelectTrigger className="bg-transparent border-border">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -214,7 +222,7 @@ export function RecruitmentFilters({
                 정렬 기준
               </label>
               <Select value={filters.sortBy} onValueChange={handleSortChange}>
-                <SelectTrigger className="bg-white dark:bg-[#0a0a0a] border-gray-300 dark:border-[#333333]">
+                <SelectTrigger className="bg-transparent border-border">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -237,7 +245,7 @@ export function RecruitmentFilters({
             {/* Select로 기술 스택 선택 */}
             <div className="mb-3">
               <Select value={selectedStack} onValueChange={handleTechStackAdd}>
-                <SelectTrigger className="bg-white dark:bg-[#0a0a0a] border-gray-300 dark:border-[#333333]">
+                <SelectTrigger className="bg-transparent border-border">
                   <SelectValue placeholder="기술 스택을 선택하세요" />
                 </SelectTrigger>
                 <SelectContent>

@@ -30,10 +30,10 @@ export function CommentsSection({
   };
 
   return (
-    <section className="w-full max-w-4xl mx-auto space-y-6">
+    <section className="w-full max-w-4xl mx-auto space-y-8">
       <Reveal
         as="h2"
-        className="text-3xl font-bold text-center text-gray-900 dark:text-[#ffffff]"
+        className="text-2xl sm:text-3xl font-bold tracking-tight text-center"
       >
         오늘의 한마디 😛
       </Reveal>

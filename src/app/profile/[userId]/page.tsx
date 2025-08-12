@@ -110,8 +110,8 @@ export default function UserProfilePage() {
 
   return (
     <MainLayout>
-      <div className="max-w-7xl mx-auto p-4">
-        <Reveal as="div" className="flex items-center justify-between mb-4">
+      <div className="max-w-7xl mx-auto px-6 py-10 space-y-8">
+        <Reveal as="div" className="flex items-center justify-between">
           <Button
             variant="ghost"
             size="sm"
@@ -178,11 +178,11 @@ export default function UserProfilePage() {
             {mergedUser.githubUsername && (
               <Reveal
                 as="div"
-                className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-[#333333] rounded-lg p-6"
+                className="bg-card/95 backdrop-blur border border-border rounded-xl p-6"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
                       기여도 활동
                     </h3>
                     <Badge variant="outline" className="text-xs">

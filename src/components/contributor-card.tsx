@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Github } from "lucide-react";
 import Link from "next/link";
+import { memo } from "react";
 import Image from "next/image";
 
 interface ContributorCardProps {
@@ -15,7 +16,7 @@ interface ContributorCardProps {
   };
 }
 
-export function ContributorCard({ contributor }: ContributorCardProps) {
+function ContributorCardComponent({ contributor }: ContributorCardProps) {
   return (
     <Card className="group relative overflow-hidden transition-all hover:shadow-lg h-[120px]">
       <div className="p-4 h-full">
@@ -56,3 +57,4 @@ export function ContributorCard({ contributor }: ContributorCardProps) {
     </Card>
   );
 }
+export const ContributorCard = memo(ContributorCardComponent);

@@ -137,7 +137,10 @@ export default function ProjectBoardDetailPage() {
       </section>
 
       {/* 칸반 */}
-      <section className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+      <section
+        className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6"
+        aria-label="칸반 보드"
+      >
         {[
           { key: "todo", label: "Todo", items: todo },
           { key: "inProgress", label: "Doing", items: inProgress },
@@ -145,7 +148,7 @@ export default function ProjectBoardDetailPage() {
         ].map((col) => (
           <Card
             key={col.key}
-            className="p-4 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333]"
+            className="p-5 bg-card/95 backdrop-blur border border-border rounded-xl"
           >
             <div className="flex items-center justify-between mb-2">
               <h3 className="text-sm font-semibold text-gray-900 dark:text-white inline-flex items-center gap-2">

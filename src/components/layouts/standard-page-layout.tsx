@@ -21,12 +21,12 @@ export function StandardPageLayout({
   return (
     <MainLayout>
       <div className={`min-h-svh bg-gray-50 dark:bg-[#171515] ${className}`}>
-        <div className="flex flex-col space-y-8 p-6">
+        <div className="flex flex-col space-y-10 p-6">
           {/* 표준 헤더 섹션 */}
           <section
-            className={`flex flex-col items-center space-y-4 pt-4 ${headerClassName}`}
+            className={`flex flex-col items-center space-y-6 pt-4 ${headerClassName}`}
           >
-            <h1 className="text-5xl font-bold text-gray-900 dark:text-[#ffa500] text-center">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900 dark:text-[#ffa500] text-center">
               {title}
             </h1>
             {description && (
