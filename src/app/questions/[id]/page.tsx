@@ -150,7 +150,7 @@ export default function QuestionDetailPage() {
   return (
     <MainLayout>
       <div className="min-h-svh bg-gray-50 dark:bg-[#171515]">
-        <div className="flex flex-col space-y-8 p-6">
+        <div className="flex flex-col space-y-10 p-6">
           {/* 뒤로가기 버튼 */}
           <div className="w-full max-w-7xl mx-auto">
             <Reveal>
@@ -175,7 +175,7 @@ export default function QuestionDetailPage() {
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-4">
                         {getStatusIcon(question.status, question.isSolved)}
-                        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+                        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
                           {question.title}
                         </h1>
                       </div>
@@ -215,6 +215,7 @@ export default function QuestionDetailPage() {
                       <div className="flex gap-2 mb-4">
                         {question.difficulty && (
                           <Badge
+                            variant="soft"
                             className={getDifficultyColor(question.difficulty)}
                           >
                             {question.difficulty === "beginner"
@@ -225,7 +226,7 @@ export default function QuestionDetailPage() {
                           </Badge>
                         )}
                         {question.tags.map((tag) => (
-                          <Badge key={tag} variant="secondary">
+                          <Badge key={tag} variant="soft">
                             {tag}
                           </Badge>
                         ))}
@@ -262,7 +263,7 @@ export default function QuestionDetailPage() {
 
           {/* 답변 목록 */}
           <section className="w-full max-w-7xl mx-auto">
-            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-gray-900 dark:text-white">
               답변 ({answers.length})
             </h2>
 

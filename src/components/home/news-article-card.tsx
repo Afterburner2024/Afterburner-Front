@@ -41,7 +41,7 @@ function NewsArticleCardComponent({
   if (variant === "featured") {
     return (
       <Wrapper>
-        <Card className="overflow-hidden bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] hover:shadow-xl transition-all duration-300 cursor-pointer group">
+        <Card className="overflow-hidden bg-card/95 backdrop-blur border border-border rounded-xl hover:shadow-xl transition-all duration-300 cursor-pointer group">
           <div className="relative h-64 overflow-hidden">
             <Image
               src={article.imageUrl}
@@ -51,7 +51,7 @@ function NewsArticleCardComponent({
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             <div className="absolute top-4 left-4">
-              <Badge className="bg-blue-600 text-white hover:bg-blue-700">
+              <Badge variant="outline" className="text-white border-white/70">
                 {article.category}
               </Badge>
             </div>
@@ -108,7 +108,7 @@ function NewsArticleCardComponent({
   if (variant === "compact") {
     return (
       <Wrapper>
-        <Card className="overflow-hidden bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] hover:shadow-lg transition-all duration-300 cursor-pointer group">
+        <Card className="overflow-hidden bg-card/95 backdrop-blur border border-border rounded-xl hover:shadow-lg transition-all duration-300 cursor-pointer group">
           <div className="flex">
             <div className="relative w-32 h-28 flex-shrink-0">
               <Image
@@ -120,7 +120,7 @@ function NewsArticleCardComponent({
             </div>
             <div className="p-4 flex-1 space-y-2">
               <div className="flex items-center gap-2">
-                <Badge className="text-xs bg-gray-100 dark:bg-[#2a2a2a] text-gray-700 dark:text-[#cccccc]">
+                <Badge variant="soft" className="text-xs">
                   {article.category}
                 </Badge>
                 <span className="text-xs text-gray-500 dark:text-[#666666]">
@@ -145,7 +145,7 @@ function NewsArticleCardComponent({
 
   return (
     <Wrapper>
-      <Card className="overflow-hidden bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] hover:shadow-lg transition-all duration-300 cursor-pointer group">
+      <Card className="overflow-hidden bg-card/95 backdrop-blur border border-border rounded-xl hover:shadow-lg transition-all duration-300 cursor-pointer group">
         <div className="relative h-48 overflow-hidden">
           <Image
             src={article.imageUrl}
@@ -154,7 +154,7 @@ function NewsArticleCardComponent({
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute top-3 left-3">
-            <Badge className="bg-blue-600 text-white hover:bg-blue-700 text-xs">
+            <Badge variant="soft" className="text-xs">
               {article.category}
             </Badge>
           </div>

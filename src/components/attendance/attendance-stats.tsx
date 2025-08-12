@@ -54,8 +54,8 @@ export function AttendanceStats({ comments }: AttendanceStatsProps) {
 
   return (
     <section className="w-full max-w-4xl mx-auto">
-      <Card className="p-4 sm:p-6 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333]">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <Card className="p-6 sm:p-8 bg-card/95 backdrop-blur border border-border rounded-xl">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="space-y-1">
             <div className="text-xs text-gray-500 dark:text-[#a0a0a0]">
               오늘 댓글

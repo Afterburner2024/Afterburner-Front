@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Plus, Search } from "lucide-react";
@@ -24,17 +24,23 @@ export default function QuestionsPage() {
     setSortBy,
   } = useQuestions();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const t = setTimeout(() => setIsLoading(false), 400);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <MainLayout>
       <div className="min-h-svh bg-gray-50 dark:bg-[#171515]">
-        <div className="flex flex-col space-y-8 p-6">
+        <div className="flex flex-col space-y-10 p-6">
           {/* 페이지 헤더 */}
           <Reveal
             as="section"
             className="flex flex-col items-center space-y-4 pt-4"
           >
-            <h1 className="text-5xl font-bold text-gray-900 dark:text-[#ffa500] text-center">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900 dark:text-[#ffa500] text-center">
               질문게시판
             </h1>
             <p className="text-gray-600 dark:text-[#a0a0a0] max-w-2xl text-center">
@@ -42,41 +48,41 @@ export default function QuestionsPage() {
             </p>
           </Reveal>
 
-          {/* 검색 및 필터 섹션 */}
-          <Reveal
-            as="section"
-            className="w-full max-w-7xl mx-auto space-y-6"
-            delayMs={80}
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex-1">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-                  <Input
-                    placeholder="질문을 검색해보세요..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10"
-                  />
+          {/* 검색 및 필터 섹션 (Sticky) */}
+          <section className="w-full">
+            <div className="sticky top-14 z-30 bg-transparent">
+              <div className="w-full max-w-7xl mx-auto px-6 py-3 md:py-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex-1">
+                    <div className="relative">
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                      <Input
+                        placeholder="질문을 검색해보세요..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="pl-10 bg-transparent border-border"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex gap-2 ml-4">
+                    <QuestionFilters
+                      selectedCategory={selectedCategory}
+                      selectedStatus={selectedStatus}
+                      onCategoryChange={setSelectedCategory}
+                      onStatusChange={setSelectedStatus}
+                    />
+                    <Button
+                      onClick={() => setIsCreateModalOpen(true)}
+                      className="flex items-center gap-2"
+                    >
+                      <Plus className="w-4 h-4" />
+                      질문하기
+                    </Button>
+                  </div>
                 </div>
               </div>
-              <div className="flex gap-2 ml-4">
-                <QuestionFilters
-                  selectedCategory={selectedCategory}
-                  selectedStatus={selectedStatus}
-                  onCategoryChange={setSelectedCategory}
-                  onStatusChange={setSelectedStatus}
-                />
-                <Button
-                  onClick={() => setIsCreateModalOpen(true)}
-                  className="flex items-center gap-2"
-                >
-                  <Plus className="w-4 h-4" />
-                  질문하기
-                </Button>
-              </div>
             </div>
-          </Reveal>
+          </section>
 
           {/* 질문 목록 섹션 */}
           <section className="w-full max-w-7xl mx-auto">
@@ -84,6 +90,7 @@ export default function QuestionsPage() {
               questions={questions}
               sortBy={sortBy}
               onChangeSort={setSortBy}
+              isLoading={isLoading}
             />
           </section>
 

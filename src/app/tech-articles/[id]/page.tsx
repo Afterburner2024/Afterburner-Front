@@ -40,7 +40,7 @@ export default function TechArticleDetailPage() {
     <StandardPageLayout
       title={article.title}
       description={article.summary}
-      contentClassName="space-y-8"
+      contentClassName="space-y-10"
     >
       {/* 메타 정보 */}
       <div className="flex items-center justify-between text-sm text-gray-600 dark:text-[#a0a0a0]">
@@ -61,7 +61,9 @@ export default function TechArticleDetailPage() {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <Badge className="bg-blue-600 text-white">{article.category}</Badge>
+          <Badge variant="soft" className="text-xs">
+            {article.category}
+          </Badge>
           <a
             href="#source"
             className="inline-flex items-center gap-1 text-xs text-gray-500 dark:text-[#666666]"
@@ -72,7 +74,7 @@ export default function TechArticleDetailPage() {
       </div>
 
       {/* 이미지 */}
-      <div className="relative w-full h-64 rounded-lg overflow-hidden border border-gray-200 dark:border-[#333333]">
+      <div className="relative w-full h-64 rounded-lg overflow-hidden border border-border">
         <Image
           src={article.imageUrl}
           alt={article.title}
@@ -96,7 +98,7 @@ export default function TechArticleDetailPage() {
       {/* 태그 */}
       <div className="flex flex-wrap gap-2">
         {article.tags.map((tag) => (
-          <Badge key={tag} variant="secondary">
+          <Badge key={tag} variant="outline" className="text-xs">
             {tag}
           </Badge>
         ))}

@@ -37,7 +37,7 @@ export default function ProjectLogDetailPage() {
   }
 
   return (
-    <StandardPageLayout title={log.title} contentClassName="space-y-8">
+    <StandardPageLayout title={log.title} contentClassName="space-y-10">
       {/* 메타 */}
       <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-[#a0a0a0]">
         <div className="flex items-center gap-1">

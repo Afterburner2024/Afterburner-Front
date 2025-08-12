@@ -37,11 +37,11 @@ export default function ProjectLogPage() {
     <StandardPageLayout
       title="프로젝트 일지"
       description="보드별(프로젝트/스터디)로 일지를 관리하고, 칸반 진행도를 확인하세요."
-      contentClassName="space-y-8"
+      contentClassName="space-y-10"
     >
       {/* 히어로 */}
       <section className="w-full max-w-7xl mx-auto">
-        <div className="flex flex-col items-center text-center gap-4">
+        <div className="flex flex-col items-center text-center gap-5">
           <p className="text-gray-600 dark:text-[#a0a0a0] max-w-2xl">
             팀의 진행상황을 보드 단위로 한눈에. 칸반 진행도와 최근 일지를
             확인하세요.
@@ -104,13 +104,14 @@ export default function ProjectLogPage() {
           return (
             <Card
               key={board.id}
-              className="p-5 bg-white dark:bg-[#1a1a1a] border-gray-200 dark:border-[#333333] hover:shadow-lg transition-shadow"
+              className="p-6 bg-card/95 backdrop-blur border border-border rounded-xl hover:shadow-lg transition-all"
             >
               <div className="flex items-start justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     {board.type && (
                       <Badge
+                        variant="soft"
                         className={
                           board.type === "project"
                             ? "bg-blue-100 text-blue-700"
@@ -120,7 +121,7 @@ export default function ProjectLogPage() {
                         {board.type === "project" ? "Project" : "Study"}
                       </Badge>
                     )}
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                    <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                       {board.title}
                     </h3>
                   </div>
@@ -134,6 +135,8 @@ export default function ProjectLogPage() {
                     size="sm"
                     onClick={() => toggle(board.id)}
                     className="inline-flex items-center gap-1"
+                    aria-pressed={isFav}
+                    aria-label={isFav ? "즐겨찾기 해제" : "즐겨찾기 추가"}
                   >
                     <Star className="w-4 h-4" />
                     {isFav ? "즐겨찾기됨" : "즐겨찾기"}
