@@ -63,6 +63,7 @@ export function AttendanceStats({ comments }: AttendanceStatsProps) {
             <CountUp
               value={commentsToday}
               className="text-2xl font-bold text-gray-900 dark:text-white"
+              aria-label={`오늘 댓글 ${commentsToday}개`}
             />
           </div>
           <div className="space-y-1">
@@ -72,6 +73,7 @@ export function AttendanceStats({ comments }: AttendanceStatsProps) {
             <CountUp
               value={commentsThisWeek}
               className="text-2xl font-bold text-gray-900 dark:text-white"
+              aria-label={`이번 주 총 댓글 ${commentsThisWeek}개`}
             />
           </div>
           <div className="space-y-1">
@@ -82,6 +84,7 @@ export function AttendanceStats({ comments }: AttendanceStatsProps) {
               value={activeDaysThisWeek}
               className="text-2xl font-bold text-gray-900 dark:text-white"
               suffix="일"
+              aria-label={`이번 주 활동일 ${activeDaysThisWeek}일`}
             />
           </div>
           <div className="space-y-1">
@@ -92,6 +95,7 @@ export function AttendanceStats({ comments }: AttendanceStatsProps) {
               <CountUp
                 value={streak}
                 className="text-2xl font-bold text-gray-900 dark:text-white"
+                aria-label={`연속 출석 ${streak}일`}
               />
               <Badge variant="secondary">streak</Badge>
             </div>

@@ -26,7 +26,8 @@ export default function ProjectLogDetailPage() {
           </p>
           <Button
             onClick={() => router.back()}
-            className="inline-flex items-center gap-2"
+            className="inline-flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+            aria-label="뒤로가기"
           >
             <ArrowLeft className="w-4 h-4" /> 뒤로가기
           </Button>
@@ -49,7 +50,8 @@ export default function ProjectLogDetailPage() {
         </div>
         <Link
           href={`/recruitment/${log.recruitmentId}`}
-          className="ml-auto inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 hover:underline"
+          className="ml-auto inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+          aria-label="관련 모집글로 이동"
         >
           <LinkIcon className="w-4 h-4" /> 관련 모집글로 이동
         </Link>
@@ -80,7 +82,8 @@ export default function ProjectLogDetailPage() {
         <Button
           variant="ghost"
           onClick={() => router.back()}
-          className="inline-flex items-center gap-2"
+          className="inline-flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+          aria-label="목록으로"
         >
           <ArrowLeft className="w-4 h-4" /> 목록으로
         </Button>

@@ -87,9 +87,11 @@ export function SideNav({
             href={item.href}
             onClick={onItemClick}
             className={cn(
-              "flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
+              "flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary",
               isActive ? "bg-accent text-accent-foreground" : "transparent"
             )}
+            aria-current={isActive ? "page" : undefined}
+            aria-label={`${item.title}로 이동`}
           >
             <div className="flex items-center gap-2">
               {item.icon}

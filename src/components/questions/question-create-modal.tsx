@@ -131,6 +131,7 @@ export function QuestionCreateModal({
               onChange={(e) => handleInputChange("title", e.target.value)}
               placeholder="질문의 제목을 입력하세요"
               required
+              aria-label="질문 제목"
             />
           </div>
 
@@ -143,7 +144,7 @@ export function QuestionCreateModal({
               value={formData.category}
               onValueChange={(value) => handleInputChange("category", value)}
             >
-              <SelectTrigger>
+              <SelectTrigger aria-label="카테고리 선택">
                 <SelectValue placeholder="카테고리를 선택하세요" />
               </SelectTrigger>
               <SelectContent>
@@ -166,7 +167,7 @@ export function QuestionCreateModal({
                   handleInputChange("difficulty", value as any)
                 }
               >
-                <SelectTrigger>
+                <SelectTrigger aria-label="난이도 선택">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -187,7 +188,7 @@ export function QuestionCreateModal({
                   handleInputChange("priority", value as any)
                 }
               >
-                <SelectTrigger>
+                <SelectTrigger aria-label="우선순위 선택">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -211,8 +212,15 @@ export function QuestionCreateModal({
                 onKeyPress={handleKeyPress}
                 placeholder="태그를 입력하고 Enter를 누르세요"
                 className="flex-1"
+                aria-label="태그 입력"
               />
-              <Button type="button" onClick={handleAddTag} size="sm">
+              <Button
+                type="button"
+                onClick={handleAddTag}
+                size="sm"
+                aria-label="태그 추가"
+                className="focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+              >
                 <Plus className="w-4 h-4" />
               </Button>
             </div>
@@ -228,7 +236,8 @@ export function QuestionCreateModal({
                     <button
                       type="button"
                       onClick={() => handleRemoveTag(tag)}
-                      className="ml-1 hover:text-destructive"
+                      className="ml-1 hover:text-destructive focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary rounded"
+                      aria-label={`${tag} 태그 제거`}
                     >
                       <X className="w-3 h-3" />
                     </button>
@@ -250,15 +259,28 @@ export function QuestionCreateModal({
               placeholder="질문의 상세 내용을 입력하세요. 코드 예시나 스크린샷을 포함하면 더 좋은 답변을 받을 수 있습니다."
               rows={8}
               required
+              aria-label="질문 내용"
             />
           </div>
 
           {/* 버튼 */}
           <div className="flex justify-end gap-2">
-            <Button type="button" variant="outline" onClick={onClose}>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={onClose}
+              aria-label="작성 취소"
+              className="focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+            >
               취소
             </Button>
-            <Button type="submit">질문 등록</Button>
+            <Button
+              type="submit"
+              aria-label="질문 등록"
+              className="focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+            >
+              질문 등록
+            </Button>
           </div>
         </form>
       </DialogContent>
